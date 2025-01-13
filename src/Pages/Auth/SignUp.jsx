@@ -81,6 +81,12 @@ const SignUp = () => {
                         </svg>
                         <input {...register("password")} type="password" className=" focus:outline-none" placeholder="password" />
                     </label>
+                    <label className="flex items-center gap-2 mb-4">
+                        <input {...register('role')} type="radio" name="role" value="User" /> 
+                        <span>User</span>
+                        <input  {...register('role')}  type="radio" name="role" value="seller"  />
+                        <span>Seller</span>
+                    </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
                         <button className="btn btn-outline mx-auto w-full">Sign Up</button>

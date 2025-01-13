@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/UseAuth';
 import Swal from 'sweetalert2';
+import { FaGoogle } from 'react-icons/fa';
 
 const SignIn = () => {
-    const { signInuser } = useAuth()
+    const { signInuser, siginUserWithGoogle } = useAuth()
     const navigate = useNavigate()
     const {
         register,
@@ -19,9 +20,22 @@ const SignIn = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "You have been login succefully",
+                    title: "You have been login  succefully",
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
+                });
+                navigate('/')
+            })
+    }
+    const hanldeGoogleSignIn = () => {
+        siginUserWithGoogle()
+            .then(res => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You have been login  succefully",
+                    showConfirmButton: false,
+                    timer: 1000
                 });
                 navigate('/')
             })
@@ -65,6 +79,10 @@ const SignIn = () => {
                         <button className="btn btn-outline mx-auto w-full">Sign Up</button>
                     </label>
                     <p>New in this site? <Link to='/signUp'>Sign Up Now</Link></p>
+                    <label className="flex items-center gap-2 mb-4 mx-auto">
+
+                        <button onClick={hanldeGoogleSignIn} type='button' className="btn btn-outline mx-auto w-full"> <FaGoogle />Google</button>
+                    </label>
                 </div>
             </form>
         </div>
