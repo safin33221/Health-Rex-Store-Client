@@ -1,7 +1,11 @@
+import Navbar from "../Pages/Shared/Navbar";
+
 const MainLayout = () => {
     return (
         <div>
-            <h1>Projects setups done</h1>
+            <nav>
+                <Navbar/>
+            </nav>
         </div>
     );
 };
