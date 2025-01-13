@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 
 import useAuth from "../../Hooks/UseAuth";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdInsertPhoto } from "react-icons/md";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
@@ -85,6 +85,7 @@ const SignUp = () => {
 
                         <button className="btn btn-outline mx-auto w-full">Sign Up</button>
                     </label>
+                    <p>Already have an Account? <Link to='/signIn'>Sign In Now</Link></p>
                 </div>
             </form>
         </div>

@@ -68,7 +68,7 @@ const Navbar = () => {
             {
                 user ? null : <div className="flex-none navbar-end">
                     <div className="dropdown dropdown-end">
-                        <Link to='/signUp'>
+                        <Link to='/signIn'>
                             <button className="btn btn-outline font-bold">
                                 Join Us
                             </button>
