@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import logo from '../../assets/logo.png'
 
 const Navbar = () => {
     const links = <>
@@ -14,7 +15,7 @@ const Navbar = () => {
         </li>
     </>
     return (
-        <div className="navbar bg-primary md:px-16">
+        <div className="navbar bg-primary md:px-16 fixed top-0 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -39,6 +40,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
+                <img src={logo} className="w-16" alt="" />
                 <a className="btn btn-ghost text-xl">HealthRxStore</a>
             </div>
             <div className="navbar-center hidden lg:flex items-center justify-center">
@@ -47,7 +49,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="flex-none navbar-end">
-                <div className="dropdown dropdown-end">
+                {/* <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                         <div className="indicator">
                             <svg
@@ -76,8 +78,15 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="dropdown dropdown-end">
+                    <Link>
+                        <button className="btn btn-outline font-bold">
+                            Join Us
+                        </button>
+                    </Link>
+                </div>
+                {/* <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             <img
@@ -97,7 +106,7 @@ const Navbar = () => {
                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
-                </div>
+                </div> */}
             </div>
         </div>
     );
