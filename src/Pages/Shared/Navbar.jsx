@@ -1,7 +1,8 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png'
-import useAuth from "../../Hooks/UseAuth";
+
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
     const { user, sigoutUser } = useAuth()
@@ -127,7 +128,7 @@ const Navbar = () => {
                                     <span className="badge">New</span>
                                 </a>
                             </li>
-                            <li><a>Dashboard </a></li>
+                            <li><NavLink to='/dashborad'>Dashboard </NavLink></li>
                             <li><button onClick={handleLogout}>Logout</button></li>
                         </ul>
                     </div>
