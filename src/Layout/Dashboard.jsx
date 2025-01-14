@@ -5,8 +5,8 @@ import useSeller from '../Hooks/useSeller';
 const Dashboard = () => {
     const [isSeller] = useSeller()
     return (
-        <div className='flex'>
-            <div className='w-64 min-h-screen bg-accent'>
+        <div className='flex '>
+            <div className='w-64 min-h-screen bg-primary fixed '>
                 {
                     isSeller && <ul className='menu'>
                         <li><NavLink to='/dashboard/sellerHome'>Seller Home Page</NavLink></li>
@@ -16,7 +16,7 @@ const Dashboard = () => {
                     </ul>
                 }
             </div>
-            <div className='flex-1'>
+            <div className='flex-1 ml-48'>
                <Outlet/>
             </div>
 

@@ -1,6 +1,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import AddMedicine from "./AddMedicine";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
@@ -34,14 +35,17 @@ const ManageMedicines = () => {
                                 <td>{medicine.category}</td>
                                 <td>{medicine.massUnit}</td>
                                 <td>{medicine.pricePerUnit}</td>
-                               
+
                             </tr>)
                         }
 
 
                     </tbody>
                 </table>
+                <button onClick={() => document.getElementById('my_modal_5').showModal()}
+                    className="btn bg-primary my-10">Add Medicine</button>
             </div>
+            <AddMedicine />
         </div>
     );
 };
