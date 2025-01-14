@@ -4,9 +4,13 @@ import useAuth from "../../Hooks/UseAuth";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { MdInsertPhoto } from "react-icons/md";
+import moment from "moment";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic()
     const { createUserwithEmail, updateUserProfile } = useAuth()
     const navigate = useNavigate()
     const {
@@ -14,21 +18,42 @@ const SignUp = () => {
         handleSubmit,
 
     } = useForm()
-    const onsubmit = async(data) => {
+    const onsubmit = async (data) => {
+
         console.log(data);
         const imgFile = { image: data.image[0] }
-        const imglink = await axios.post(img_hosting_api,imgFile,{
-            headers:{
-                "content-type":"multipart/form-data"
+        const imglink = await axios.post(img_hosting_api, imgFile, {
+            headers: {
+                "content-type": "multipart/form-data"
             }
         })
+        const image = imglink.data.data.display_url
+
         createUserwithEmail(data.email, data.password)
             .then(res => {
                 console.log(res.data);
-                updateUserProfile(data.userName, imglink.data.data.display_url)
+                updateUserProfile(data.userName, image)
                     .then(res => {
-                        navigate('/')
-                        
+                        const userInfo = {
+                            name: data.userName,
+                            image: image,
+                            email: data.email,
+                            role: data.role,
+                            time: moment().format('LLL')
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                console.log(res.data);
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "You have been Sign Up succefully",
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                });
+                                navigate('/')
+                            })
+
                     })
             })
     }
@@ -51,7 +76,7 @@ const SignUp = () => {
                         <input {...register("userName")} type="text" className=" focus:outline-none" placeholder="User Name" />
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
-                        <MdInsertPhoto/>
+                        <MdInsertPhoto />
                         <input {...register("image")} type="file" className=" focus:outline-none" placeholder="image" />
 
                     </label>
@@ -82,9 +107,9 @@ const SignUp = () => {
                         <input {...register("password")} type="password" className=" focus:outline-none" placeholder="password" />
                     </label>
                     <label className="flex items-center gap-2 mb-4">
-                        <input {...register('role')} type="radio" name="role" value="User" /> 
+                        <input {...register('role')} type="radio" name="role" value="user" />
                         <span>User</span>
-                        <input  {...register('role')}  type="radio" name="role" value="seller"  />
+                        <input  {...register('role')} type="radio" name="role" value="seller" />
                         <span>Seller</span>
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
