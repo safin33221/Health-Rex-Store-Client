@@ -6,6 +6,7 @@ import SignIn from "../Pages/Auth/SignIn";
 import Dashboard from "../Layout/Dashboard";
 import ManageMedicines from "../Pages/Sellers/ManageMedicines";
 import SellerHome from "../Pages/Sellers/SellerHome";
+import ManageUsers from "../Pages/Admin/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,15 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard />,
         children: [
-            
+            //Manage Admin
+            {
+                path:'manageUsers',
+                element:<ManageUsers/>
+            },
+
+
+
+            //manage seller
             {
                 path: 'sellerHome',
                 element: <SellerHome />
