@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 
-import useAuth from "../../Hooks/UseAuth";
+
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { MdInsertPhoto } from "react-icons/md";
 import moment from "moment";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const SignUp = () => {
@@ -42,7 +43,7 @@ const SignUp = () => {
                             time: moment().format('LLL')
                         }
                         axiosPublic.post('/users', userInfo)
-                            .then(res => {
+                            .then(res => {  
                                 console.log(res.data);
                                 Swal.fire({
                                     position: "top-end",

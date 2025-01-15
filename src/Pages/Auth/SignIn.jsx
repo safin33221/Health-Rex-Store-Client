@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../../Hooks/UseAuth';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
+import useAuth from '../../Hooks/useAuth';
 
 const SignIn = () => {
     const { signInuser, siginUserWithGoogle } = useAuth()
