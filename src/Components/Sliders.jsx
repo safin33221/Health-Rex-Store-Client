@@ -1,38 +1,34 @@
 import React, { useRef, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Slide1 from '../assets/sliders/1.png'
-import Slide2 from '../assets/sliders/2.png'
-import Slide3 from '../assets/sliders/3.png'
-import Slide4 from '../assets/sliders/4.png'
-import Slide5 from '../assets/sliders/5.png'
-import Slide6 from '../assets/sliders/6.png'
-import Slide7 from '../assets/sliders/7.png'
-import Slide8 from '../assets/sliders/8.png'
-import Slide9 from '../assets/sliders/9.png'
 
 
 
 // import required modules
 import { Navigation } from 'swiper/modules';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
+    const axiosPublic = useAxiosPublic()
+    const { data: slides } = useQuery({
+        queryKey: ['slides'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('http://localhost:8080/addvertise/success')
+            return res.data
+        }
+    })
+
     return (
-        <div className=''>
-            <Swiper navigation={true} modules={[Navigation]} className="  ">
-                <SwiperSlide><img src={Slide1} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide2} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide3} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide4} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide5} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide6} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide7} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide8} alt="" /></SwiperSlide>
-                <SwiperSlide><img src={Slide9} alt="" /></SwiperSlide>
+        <div className='w-full'>
+            <Swiper navigation={true} modules={[Navigation]} className=" w-full ">
+                {
+                    slides?.map(slide => <SwiperSlide><img src={slide?.image} className='w-full' alt="" /></SwiperSlide>)
+                }
             </Swiper>
         </div>
     );

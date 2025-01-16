@@ -51,6 +51,7 @@ const ManageAdvertise = () => {
                                             <div className="bg-cover h-24 w-24">
                                                 <img
                                                     src={add?.image}
+                                                    className=" bg-contain"
                                                     alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
