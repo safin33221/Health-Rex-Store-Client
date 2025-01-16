@@ -3,9 +3,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaTrashAlt } from "react-icons/fa";
 import { GrUpdate } from "react-icons/gr";
 import AddCategory from "./AddCategory";
+import UpdateCategoryModal from "./UpdateCategoryModal";
+import { useState } from "react";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
+    const [category, setCategory] = useState({})
     const { data: categoris, refetch } = useQuery({
         queryKey: ['categoris'],
         queryFn: async () => {
@@ -20,6 +23,10 @@ const ManageCategory = () => {
                 console.log(res.data)
                 refetch()
             })
+    }
+    const handleupdate = category => {
+        setCategory(category)
+        document.getElementById('updateCategory').showModal()
     }
     return (
         <div className="w-10/12 mx-auto">
@@ -40,8 +47,9 @@ const ManageCategory = () => {
                                 <th>{index + 1}</th>
                                 <td>{category?.name}</td>
                                 <td className="flex gap-4">
-                                    <button onClick={()=>handleDelete(category._id)}><FaTrashAlt /></button>
-                                    <button><GrUpdate /></button>
+                                    <button onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
+                                    <button onClick={() => handleupdate(category)}><GrUpdate /></button>
+
                                 </td>
 
                             </tr>)
@@ -51,9 +59,11 @@ const ManageCategory = () => {
                     </tbody>
                 </table>
             </div>
-            <button onClick={() => document.getElementById('addCategory').showModal()}
+            <button onClick={() => document.getElementById('updateCategory').showModal()}
                 className="btn my-10 bg-primary">Add Category</button>
+
             <AddCategory refetch={refetch} />
+            <UpdateCategoryModal category={category} refetch={refetch} />
         </div>
     );
 };
