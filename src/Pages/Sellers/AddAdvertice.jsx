@@ -5,8 +5,8 @@ import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
-const AddAdvertice = () => {
-    const {user}= useAuth()
+const AddAdvertice = ({ refetch }) => {
+    const { user } = useAuth()
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
     const onsubmit = async (data) => {
@@ -16,21 +16,22 @@ const AddAdvertice = () => {
             headers: {
                 "content-type": "multipart/form-data"
             }
-        })  
+        })
         const image = imglink.data.data.display_url
-        const adInfo ={
-            name:data?.name,
-            image:image,
-            description:data.shortDescription,
-            status:'pending',
-            email:user?.email
+        const adInfo = {
+            name: data?.name,
+            image: image,
+            description: data.shortDescription,
+            status: 'pending',
+            email: user?.email
         }
-       axiosPublic.post('/askAddverticement',adInfo)
-       .then(res=>{
-        console.log(res.data);
-        document.getElementById('addAdvertice').close()
-       })
-        
+        axiosPublic.post('/askAddverticement', adInfo)
+            .then(res => {
+                console.log(res.data);
+                refetch()
+                document.getElementById('addAdvertice').close()
+            })
+
     }
     return (
         <dialog id="addAdvertice" className="modal modal-bottom sm:modal-middle w-full mx-auto">
@@ -51,7 +52,7 @@ const AddAdvertice = () => {
                         <label className="  flex flex-col gap-2 my-4">
 
                             <span>Description</span>
-                            <textarea {...register("shortDescription")}required type="text" className="textarea textarea-bordered textarea-md w-full focus:outline-none focus:border-accent" placeholder="Short Description" />
+                            <textarea {...register("shortDescription")} required type="text" className="textarea textarea-bordered textarea-md w-full focus:outline-none focus:border-accent" placeholder="Short Description" />
                         </label>
                         <label className="my-2">
                             <span>Banner Image:</span>

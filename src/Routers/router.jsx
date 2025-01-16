@@ -9,6 +9,7 @@ import SellerHome from "../Pages/Sellers/SellerHome";
 import ManageUsers from "../Pages/Admin/ManageUsers";
 import AskForAd from "../Pages/Sellers/AskForAd";
 import ManageAdvertise from "../Pages/Admin/ManageAdvertise";
+import ManageCategory from "../Pages/Admin/ManageCategory";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path:'manageAdvertise',
                 element:<ManageAdvertise/>
+            },
+            {
+                path:'manageCategory',
+                element:<ManageCategory/>
             },
 
 

@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddMedicine = ({ refetch }) => {
@@ -46,6 +47,15 @@ const AddMedicine = ({ refetch }) => {
             })
 
     }
+
+    //get Category
+    const { data: categoris } = useQuery({
+        queryKey: ['categoris'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/category')
+            return res.data
+        }
+    })
     return (
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle max-w-[500px] mx-auto">
             <div className="modal-box">
@@ -75,16 +85,10 @@ const AddMedicine = ({ refetch }) => {
                         </label>
                         <label className="   flex items-center gap-2 my-4">
                             <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent focus:border-accent'>
-                                <option value="Pain Relief">Pain Relief</option>
-                                <option value="Antibiotics">Antibiotics</option>
-                                <option value="Allergy">Allergy</option>
-                                <option value="Diabetes">Diabetes</option>
-                                <option value="Cholesterol">Cholesterol</option>
-                                <option value="Digestive Health">Digestive Health</option>
-                                <option value="Respiratory">Respiratory</option>
-                                <option value="Vitamins & Supplements">Vitamins & Supplements</option>
-                                <option value="Skin Care">Skin Care</option>
-                                <option value="Heart Health">Heart Health</option>
+                                {
+                                    categoris?.map(category=><option key={category._id} value={category.name}>{category.name}</option>)
+                                }
+                                
                             </select>
 
                         </label>
