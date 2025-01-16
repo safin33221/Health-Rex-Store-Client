@@ -4,7 +4,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
-const AddCategory = () => {
+const AddCategory = ({refetch}) => {
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
     const onsubmit = async (data) => {
@@ -22,6 +22,8 @@ const AddCategory = () => {
         axiosPublic.post('/category', categoryInfo)
             .then(res => {
                 console.log(res.data);
+                refetch()
+                document.getElementById('addCategory').close()
             })
     }
     return (

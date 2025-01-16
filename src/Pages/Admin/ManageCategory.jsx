@@ -6,13 +6,21 @@ import AddCategory from "./AddCategory";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: categoris } = useQuery({
+    const { data: categoris, refetch } = useQuery({
         queryKey: ['categoris'],
         queryFn: async () => {
             const res = await axiosPublic.get('/category')
             return res.data
         }
     })
+    const handleDelete = id => {
+        console.log(id);
+        axiosPublic.delete(`/category/${id}`)
+            .then(res => {
+                console.log(res.data)
+                refetch()
+            })
+    }
     return (
         <div className="w-10/12 mx-auto">
             <div className="overflow-x-auto">
@@ -32,20 +40,20 @@ const ManageCategory = () => {
                                 <th>{index + 1}</th>
                                 <td>{category?.name}</td>
                                 <td className="flex gap-4">
-                                        <button><FaTrashAlt/></button>
-                                        <button><GrUpdate/></button>
+                                    <button onClick={()=>handleDelete(category._id)}><FaTrashAlt /></button>
+                                    <button><GrUpdate /></button>
                                 </td>
 
                             </tr>)
                         }
-                        
+
 
                     </tbody>
                 </table>
             </div>
             <button onClick={() => document.getElementById('addCategory').showModal()}
-             className="btn my-10 bg-primary">Add Category</button>
-             <AddCategory/>
+                className="btn my-10 bg-primary">Add Category</button>
+            <AddCategory refetch={refetch} />
         </div>
     );
 };
