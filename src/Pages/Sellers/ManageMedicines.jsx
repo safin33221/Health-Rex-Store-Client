@@ -5,7 +5,7 @@ import AddMedicine from "./AddMedicine";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: medicines } = useQuery({
+    const { data: medicines,refetch } = useQuery({
         queryKey: ['medicines'],
         queryFn: async () => {
             const res = await axiosPublic.get(`http://localhost:8080/medicines`)
@@ -45,7 +45,7 @@ const ManageMedicines = () => {
                 <button onClick={() => document.getElementById('my_modal_5').showModal()}
                     className="btn bg-primary my-10">Add Medicine</button>
             </div>
-            <AddMedicine />
+            <AddMedicine refetch={refetch} />
         </div>
     );
 };

@@ -12,8 +12,8 @@ const Navbar = () => {
         <li><NavLink to='/shop'>Shop</NavLink></li>
         <li>
             <select name="language" className="select    w-full min-w-28 focus:outline-none bg-transparent">
-                <option value='' disabled selected>Language</option>
-                <option value="english"> English</option>
+                
+                <option defaultValue value="english"> English</option>
                 <option value="bangla">Bangla</option>
 
             </select>

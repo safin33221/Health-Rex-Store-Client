@@ -7,6 +7,8 @@ import Dashboard from "../Layout/Dashboard";
 import ManageMedicines from "../Pages/Sellers/ManageMedicines";
 import SellerHome from "../Pages/Sellers/SellerHome";
 import ManageUsers from "../Pages/Admin/ManageUsers";
+import AskForAd from "../Pages/Sellers/AskForAd";
+import ManageAdvertise from "../Pages/Admin/ManageAdvertise";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +38,10 @@ const router = createBrowserRouter([
                 path:'manageUsers',
                 element:<ManageUsers/>
             },
+            {
+                path:'manageAdvertise',
+                element:<ManageAdvertise/>
+            },
 
 
 
@@ -47,7 +53,11 @@ const router = createBrowserRouter([
             {
                 path:'manageMedicines',
                 element:<ManageMedicines/>
-            }
+            },
+            {
+                path:'askForAd',
+                element:<AskForAd/>
+            },
         ]
     }
 ])

@@ -1,13 +1,13 @@
 import moment from 'moment';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useAuth from '../../Hooks/UseAuth';
+import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
-const AddMedicine = () => {
+const AddMedicine = ({ refetch }) => {
     const { user } = useAuth()
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
@@ -41,6 +41,7 @@ const AddMedicine = () => {
             .then(res => {
                 console.log(res.data);
                 document.getElementById('my_modal_5').close()
+                refetch()
 
             })
 

@@ -2,10 +2,11 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 import useRole from '../Hooks/useRole';
+import { FaHome } from 'react-icons/fa';
 
 const Dashboard = () => {
-    const [role] =useRole()
-    
+    const [role] = useRole()
+
     return (
         <div className='flex '>
             <div className='w-64 min-h-screen bg-primary fixed '>
@@ -27,9 +28,17 @@ const Dashboard = () => {
                         <li><NavLink to='/dashboard/sellerHome'>Home </NavLink></li>
                         <li><NavLink to='/dashboard/manageMedicines'>Manage Medicines</NavLink></li>
                         <li><NavLink to='/dashboard/paymentsHistory'>Payments History</NavLink></li>
-                        <li><NavLink to='/dashboard/advertisement'>Ask For Advertisement</NavLink></li>
+                        <li><NavLink to='/dashboard/askForAd'>Ask For Advertisement</NavLink></li>
                     </ul>
                 }
+
+                <div className="divider"></div>
+
+                <ul className='menu'>
+                    
+                    <li><NavLink to='/'><FaHome/>Home </NavLink></li>
+                    
+                </ul>
             </div>
             <div className='flex-1 ml-48'>
                 <Outlet />

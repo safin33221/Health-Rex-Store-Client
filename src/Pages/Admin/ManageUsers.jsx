@@ -16,8 +16,8 @@ const ManageUsers = () => {
         console.log(e.target.value, user);
         const data = { role: e.target.value }
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title:user?.email,
+            text: `Are You sure to make this user form ${user?.role} to ${data?.role}`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
