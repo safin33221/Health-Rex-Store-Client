@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaTrashAlt } from "react-icons/fa";
 import { GrUpdate } from "react-icons/gr";
+import AddCategory from "./AddCategory";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
@@ -42,7 +43,9 @@ const ManageCategory = () => {
                     </tbody>
                 </table>
             </div>
-            <button className="btn my-10 bg-primary">Add Category</button>
+            <button onClick={() => document.getElementById('addCategory').showModal()}
+             className="btn my-10 bg-primary">Add Category</button>
+             <AddCategory/>
         </div>
     );
 };
