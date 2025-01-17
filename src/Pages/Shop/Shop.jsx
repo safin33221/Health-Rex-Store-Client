@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaEye } from "react-icons/fa";
+import MedicineDetails from "./MedicineDetails";
+import { useState } from "react";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
+    const [medicineDetails, setMedicineDetails] = useState(null)
     const { data: medicines } = useQuery({
         queryKey: ['medicines'],
         queryFn: async () => {
@@ -11,6 +14,10 @@ const Shop = () => {
             return res.data
         }
     })
+    const handleDetails = medicine => {
+        setMedicineDetails(medicine);
+        document.getElementById('medicinesDetails').showModal()
+    }
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
             <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
@@ -31,13 +38,13 @@ const Shop = () => {
                         {
                             medicines?.map((medicine, index) => <tr className="bg-base-200">
                                 <th>{index + 1}</th>
-                                <td>{medicine?.itemName	}</td>
+                                <td>{medicine?.itemName}</td>
                                 <td>{medicine?.category}</td>
                                 <td>{medicine?.company}</td>
                                 <td></td>
                                 <td>
                                     <button className="btn">Select</button>
-                                    <button className="btn ml-4"><FaEye/></button>
+                                    <button onClick={() => handleDetails(medicine)} className="btn ml-4"><FaEye /></button>
                                 </td>
                             </tr>)
                         }
@@ -46,7 +53,7 @@ const Shop = () => {
                     </tbody>
                 </table>
             </div>
-
+            <MedicineDetails medicineDetails={medicineDetails} />
         </div>
     );
 };
