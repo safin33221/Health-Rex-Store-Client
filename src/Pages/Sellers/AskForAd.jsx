@@ -13,7 +13,7 @@ const AskForAd = () => {
             return res.data
         }
     })
-    console.log(advertise);
+
     return (
         <div className="w-10/12 mx-auto">
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
