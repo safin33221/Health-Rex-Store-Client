@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
@@ -40,46 +41,70 @@ const Cart = () => {
                 });
             })
     }
+    const handleClearAll = email => {
+        axiosPublic.delete(`/deletedAll/${email}`)
+            .then(res => {
+                console.log(res.data)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "All item has been Deleted",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                refetch()
+            })
+    }
     return (
         <div>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Per Unit Price</th>
-                            <th>Quantity</th>
-                            <th>Clear All</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            carts?.map((cart, index) => <tr>
-                                <th>{index + 1}</th>
-                                <td>{cart?.itemName}</td>
-                                <td>{cart?.company}</td>
-                                <td>{cart?.pricePerUnit * cart?.quantity} tk</td>
-                                <td>
-                                    <button disabled={cart?.quantity === 1} onClick={() => handleQuantity(cart, 'decrese')} className="btn-sm btn mx-2">-</button>
-                                    {cart?.quantity}
-                                    <button onClick={() => handleQuantity(cart, 'increse')} className="btn-sm btn mx-2">+</button>
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDeleted(cart._id)}
-                                        className=" btn-sm hover:text-red-500 duration-300">
-                                        <FaTrash />
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
+            {
+                carts?.length <= 0 ? <>
+                    <h1 className="text-center text-3xl font-bold mt-64">No Item added Yet...!</h1></> :
+                    <div className="overflow-x-auto">
+                        <table className="table table-zebra">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Company</th>
+                                    <th>Per Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>
+                                        <button onClick={() => handleClearAll(user?.email)}
+                                            className="btn btn-sm bg-primary">Clear All</button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    carts?.map((cart, index) => <tr>
+                                        <th>{index + 1}</th>
+                                        <td>{cart?.itemName}</td>
+                                        <td>{cart?.company}</td>
+                                        <td>{cart?.pricePerUnit * cart?.quantity} tk</td>
+                                        <td>
+                                            <button disabled={cart?.quantity === 1} onClick={() => handleQuantity(cart, 'decrese')} className="btn-sm btn mx-2">-</button>
+                                            {cart?.quantity}
+                                            <button onClick={() => handleQuantity(cart, 'increse')} className="btn-sm btn mx-2">+</button>
+                                        </td>
+                                        <td>
+                                            <button onClick={() => handleDeleted(cart._id)}
+                                                className=" btn-sm hover:text-red-500 duration-300">
+                                                <FaTrash />
+                                            </button>
+                                        </td>
+                                    </tr>)
+                                }
 
 
-                    </tbody>
-                </table>
-            </div>
+                            </tbody>
+                        </table>
+                        <Link to='/checkOut'>
+                            <button className="btn bg-primary my-5">Check Out</button>
+                        </Link>
+                    </div>
+            }
         </div>
     );
 };
