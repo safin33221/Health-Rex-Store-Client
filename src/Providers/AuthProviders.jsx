@@ -6,6 +6,7 @@ export const authContext = createContext(null)
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [carts,setCart] = useState([])
     const googleProvider = new GoogleAuthProvider()
     //crete user with email and pass
     const createUserwithEmail = (email, password) => {
@@ -36,6 +37,8 @@ const AuthProviders = ({ children }) => {
     }
     const authValue = {
         user,
+        carts,
+        setCart,
         createUserwithEmail,
         updateUserProfile,
         signInuser,

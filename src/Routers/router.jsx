@@ -11,6 +11,7 @@ import AskForAd from "../Pages/Sellers/AskForAd";
 import ManageAdvertise from "../Pages/Admin/ManageAdvertise";
 import ManageCategory from "../Pages/Admin/ManageCategory";
 import Shop from "../Pages/Shop/Shop";
+import Cart from "../Pages/Cart/Cart";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />
+            },
+            {
+                path: '/cart',
+                element: <Cart />
             },
             {
                 path: 'signUp',

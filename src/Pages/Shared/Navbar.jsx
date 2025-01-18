@@ -5,14 +5,14 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
-    const { user, sigoutUser } = useAuth()
+    const { user, sigoutUser, carts } = useAuth()
     const navigate = useNavigate()
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/shop'>Shop</NavLink></li>
         <li>
             <select name="language" className="select    w-full min-w-28 focus:outline-none bg-transparent">
-                
+
                 <option defaultValue value="english"> English</option>
                 <option value="bangla">Bangla</option>
 
@@ -27,11 +27,12 @@ const Navbar = () => {
                     icon: "success",
                     title: "You have been log out succefully",
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 1000
                 });
                 navigate('/')
             })
     }
+
     return (
         <div className="navbar bg-primary md:px-16 fixed top-0 z-50 ">
             <div className="navbar-start">
@@ -80,7 +81,7 @@ const Navbar = () => {
             }
             {
                 user && <div className="flex-none navbar-end">
-                    <div className="dropdown dropdown-end">
+                    <Link to='/cart' className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <svg
@@ -95,21 +96,11 @@ const Navbar = () => {
                                         strokeWidth="2"
                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
-                                <span className="badge badge-sm indicator-item">8</span>
+                                <span className="badge badge-sm indicator-item">{carts?.length}</span>
                             </div>
                         </div>
-                        <div
-                            tabIndex={0}
-                            className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-                            <div className="card-body">
-                                <span className="text-lg font-bold">8 Items</span>
-                                <span className="text-info">Subtotal: $999</span>
-                                <div className="card-actions">
-                                    <button className="btn btn-primary btn-block">View cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    </Link>
 
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

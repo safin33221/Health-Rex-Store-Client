@@ -86,7 +86,7 @@ const AddMedicine = ({ refetch }) => {
                         <label className="   flex items-center gap-2 my-4">
                             <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent focus:border-accent'>
                                 {
-                                    categoris?.map(category=><option key={category._id} value={category.name}>{category.name}</option>)
+                                    categoris?.map(category=><option key={category._id  } value={category.name}>{category.name}</option>)
                                 }
                                 
                             </select>

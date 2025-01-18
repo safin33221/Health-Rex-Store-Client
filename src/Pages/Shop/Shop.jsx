@@ -3,9 +3,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaEye } from "react-icons/fa";
 import MedicineDetails from "./MedicineDetails";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import moment from "moment";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
+    const { user } = useAuth()
     const [medicineDetails, setMedicineDetails] = useState(null)
     const { data: medicines } = useQuery({
         queryKey: ['medicines'],
@@ -17,6 +20,23 @@ const Shop = () => {
     const handleDetails = medicine => {
         setMedicineDetails(medicine);
         document.getElementById('medicinesDetails').showModal()
+    }
+    const handleAddToCart = data => {
+        const cartInfo = {
+            medicineId: data._id,
+            itemName: data.itemName,
+            company: data.company,
+            pricePerUnit: data.pricePerUnit,
+            discountPercentage: data.discountPercentage,
+            time: moment().format('LLL'),
+            email: user?.email,
+            quantity: 1
+
+        }
+        axiosPublic.post('/carts', cartInfo)
+            .then(res => {
+                console.log(res.data);
+            })
     }
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
@@ -43,7 +63,7 @@ const Shop = () => {
                                 <td>{medicine?.company}</td>
                                 <td></td>
                                 <td>
-                                    <button className="btn">Select</button>
+                                    <button onClick={() => handleAddToCart(medicine)} className="btn">Select</button>
                                     <button onClick={() => handleDetails(medicine)} className="btn ml-4"><FaEye /></button>
                                 </td>
                             </tr>)
