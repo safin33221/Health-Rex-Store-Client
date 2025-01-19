@@ -4,6 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import moment from 'moment/moment';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CheckOutForm = () => {
     const { user, carts, setPaymentsDetails } = useAuth()
@@ -70,7 +71,7 @@ const CheckOutForm = () => {
                     medicineId: carts.map(item => item.medicineId),
                     status: 'pending',
                     totalPrice: totalPrice,
-                    
+
 
 
 
@@ -79,6 +80,12 @@ const CheckOutForm = () => {
                     .then(res => {
                         console.log(res.data)
                         setPaymentsDetails(payment)
+                        toast.success('Thank You for Your Payment!', {
+                            position: "top-center",
+                            autoClose: 1500,
+
+
+                        });
                         navigate('/invoice')
                     })
 
@@ -97,7 +104,8 @@ const CheckOutForm = () => {
                                 color: "#422470",
                                 '::placeholder': {
                                     color: '#aab7c4'
-                                }
+                                },
+
                             },
                             invalid: {
                                 color: '#9e4146'
@@ -106,7 +114,7 @@ const CheckOutForm = () => {
                     }}
                 ></CardElement>
                 {transtionId && <p>Transtion Id: {transtionId}</p>}
-                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2 text-black bg-blue-500 mt-10 px-5">Pay</button>
+                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2 text-black bg-primary  mt-10 px-10 font-bold hover:bg-green-500">Pay</button>
             </form>
         </div>
     );

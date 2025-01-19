@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify/unstyled';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
@@ -28,6 +29,12 @@ const UpdateCategoryModal = ({ category, refetch }) => {
                 console.log(res.data);
                 refetch()
                 document.getElementById('updateCategory').close()
+                toast.success('Category Updated Successfully!', {
+                    position: "top-right",
+                    autoClose: 1500,
+
+
+                });
             })
     }
     return (

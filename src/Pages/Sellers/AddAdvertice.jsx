@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
+import { toast } from 'react-toastify';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddAdvertice = ({ refetch }) => {
@@ -30,6 +31,12 @@ const AddAdvertice = ({ refetch }) => {
                 console.log(res.data);
                 refetch()
                 document.getElementById('addAdvertice').close()
+                toast.success('New Banner Published!', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    
+
+                });
             })
 
     }

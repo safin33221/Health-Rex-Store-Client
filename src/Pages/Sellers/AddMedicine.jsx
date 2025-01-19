@@ -6,6 +6,7 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify/unstyled';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddMedicine = ({ refetch }) => {
@@ -43,6 +44,12 @@ const AddMedicine = ({ refetch }) => {
                 console.log(res.data);
                 document.getElementById('my_modal_5').close()
                 refetch()
+                toast.success('Your new medicine has been added to the inventory.', {
+                    position: "top-right",
+                    autoClose: 1500,
+
+
+                });
 
             })
 
@@ -86,9 +93,9 @@ const AddMedicine = ({ refetch }) => {
                         <label className="   flex items-center gap-2 my-4">
                             <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent focus:border-accent'>
                                 {
-                                    categoris?.map(category=><option key={category._id  } value={category.name}>{category.name}</option>)
+                                    categoris?.map(category => <option key={category._id} value={category.name}>{category.name}</option>)
                                 }
-                                
+
                             </select>
 
                         </label>

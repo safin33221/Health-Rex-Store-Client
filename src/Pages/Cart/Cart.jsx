@@ -5,6 +5,7 @@ import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 
 const Cart = () => {
@@ -37,12 +38,11 @@ const Cart = () => {
             .then(res => {
                 console.log(res.data);
                 refetch()
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "This item has been Deleted",
-                    showConfirmButton: false,
-                    timer: 1000
+                toast.success('This item has been removed from your cart.', {
+                    position: "top-right",
+                    autoClose: 1500,
+
+
                 });
             })
     }
@@ -50,22 +50,21 @@ const Cart = () => {
         axiosPublic.delete(`/deletedAll/${email}`)
             .then(res => {
                 console.log(res.data)
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "All item has been Deleted",
-                    showConfirmButton: false,
-                    timer: 1000
+                toast.success('Your cart is cleared! Shop for more amazing items.', {
+                    position: "top-right",
+                    autoClose: 1500,
+
+
                 });
                 refetch()
             })
     }
     return (
         <div className="w-10/12 mx-auto">
-            <Helmet title="HRS | CART"/>
+            <Helmet title="HRS | CART" />
             {
                 carts?.length <= 0 ? <>
-                    <h1 className="text-center text-3xl font-bold mt-64">No Item added Yet...!</h1></> :
+                    <h1 className="text-center text-3xl font-bold mt-64">No medicine in your cart yet. Browse and add some!</h1></> :
                     <div className="overflow-x-auto">
                         <table className="table table-zebra">
                             {/* head */}

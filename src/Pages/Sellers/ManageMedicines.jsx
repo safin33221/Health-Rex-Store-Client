@@ -21,7 +21,7 @@ const ManageMedicines = () => {
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-secondary">
                             <th>No.</th>
                             <th>Medicine Name</th>
                             <th>Category</th>

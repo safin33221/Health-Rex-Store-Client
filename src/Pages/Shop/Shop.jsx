@@ -6,6 +6,7 @@ import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import moment from "moment";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
@@ -37,11 +38,17 @@ const Shop = () => {
         axiosPublic.post('/carts', cartInfo)
             .then(res => {
                 console.log(res.data);
+                toast.success('The product has been added to your cart.', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    
+
+                });
             })
     }
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
-            <Helmet title="HRS | SHOP"/>
+            <Helmet title="HRS | SHOP" />
             <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">

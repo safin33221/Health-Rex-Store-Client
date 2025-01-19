@@ -23,7 +23,7 @@ const ManageUsers = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes"
         }).then((result) => {
             if (result.isConfirmed) {
 
@@ -31,11 +31,11 @@ const ManageUsers = () => {
                     .then(res => {
                         console.log(res.data);
                     })
-                // Swal.fire({
-                //     title: "Deleted!",
-                //     text: "Your file has been deleted.",
-                //     icon: "success"
-                // });
+                Swal.fire({
+                    title: "Success!",
+                    text: `${user?.email} role has been successfully updated`,
+                    icon: "success"
+                });
             }
         });
     }
@@ -47,7 +47,7 @@ const ManageUsers = () => {
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-secondary font-bold text-black">
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>

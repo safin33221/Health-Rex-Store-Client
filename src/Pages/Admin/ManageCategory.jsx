@@ -6,6 +6,7 @@ import AddCategory from "./AddCategory";
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
@@ -19,24 +20,43 @@ const ManageCategory = () => {
     })
     const handleDelete = id => {
         console.log(id);
-        axiosPublic.delete(`/category/${id}`)
-            .then(res => {
-                console.log(res.data)
-                refetch()
-            })
+        Swal.fire({
+            
+            text: `Are You sure to deleted this category`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosPublic.delete(`/category/${id}`)
+                    .then(res => {
+                        console.log(res.data)
+                        refetch()
+                    })
+                Swal.fire({
+                    title: "Success!",
+                    text: `This Category has been successfully deleted`,
+                    icon: "success"
+                });
+            }
+        });
+
     }
     const handleupdate = category => {
         setCategory(category)
         document.getElementById('updateCategory').showModal()
     }
     return (
-        <div className="w-10/12 mx-auto">
-            <Helmet title="HRS | MANAGE CATEGORY"/>
+        <div className="w-10/12 mx-auto my-10  ">
+            <Helmet title="HRS | MANAGE CATEGORY" />
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table text-lg">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-secondary">
                             <th></th>
                             <th>Category Name</th>
                             <th>Action</th>
@@ -49,8 +69,8 @@ const ManageCategory = () => {
                                 <th>{index + 1}</th>
                                 <td>{category?.name}</td>
                                 <td className="flex gap-4">
-                                    <button onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
-                                    <button onClick={() => handleupdate(category)}><FaEdit /></button>
+                                    <button className="hover:text-red-500 duration-200" onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
+                                    <button className="hover:text-yellow-500 duration-200" onClick={() => handleupdate(category)}><FaEdit /></button>
 
                                 </td>
 
