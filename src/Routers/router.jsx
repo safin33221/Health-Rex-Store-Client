@@ -14,6 +14,7 @@ import Shop from "../Pages/Shop/Shop";
 import Cart from "../Pages/Cart/Cart";
 import CheackOut from "../Pages/CheckOut/CheackOut";
 import Invoice from "../Pages/CheckOut/Invoice";
+import PaymentManageMent from "../Pages/Admin/PaymentManageMent";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path:'manageCategory',
                 element:<ManageCategory/>
+            },
+            {
+                path:'managePayments',
+                element:<PaymentManageMent/>
             },
 
 
