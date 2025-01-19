@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { GrUpdate } from "react-icons/gr";
 import AddCategory from "./AddCategory";
 import UpdateCategoryModal from "./UpdateCategoryModal";
@@ -48,7 +48,7 @@ const ManageCategory = () => {
                                 <td>{category?.name}</td>
                                 <td className="flex gap-4">
                                     <button onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
-                                    <button onClick={() => handleupdate(category)}><GrUpdate /></button>
+                                    <button onClick={() => handleupdate(category)}><FaEdit /></button>
 
                                 </td>
 

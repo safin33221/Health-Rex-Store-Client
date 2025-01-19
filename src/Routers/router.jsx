@@ -13,6 +13,7 @@ import ManageCategory from "../Pages/Admin/ManageCategory";
 import Shop from "../Pages/Shop/Shop";
 import Cart from "../Pages/Cart/Cart";
 import CheackOut from "../Pages/CheckOut/CheackOut";
+import Invoice from "../Pages/CheckOut/Invoice";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/cheackOut',
                 element: <CheackOut />
+            },
+            {
+                path: '/invoice',
+                element: <Invoice />
             },
             {
                 path: 'signUp',

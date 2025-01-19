@@ -17,13 +17,13 @@ const CheackOut = () => {
         }
 
     })
-    const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit, 0)
+    const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity , 0)
     return (
         <div className='w-11/12 mx-auto'>
             <h1>Total Price :{totalPrice}</h1>
             <div className="max-w-[800px] mx-auto border-2 p-20 ">
                 <Elements stripe={stripePromice}>
-                    <CheckOutForm totalPrice={totalPrice} />
+                    <CheckOutForm  />
                 </Elements>
             </div>
         </div>

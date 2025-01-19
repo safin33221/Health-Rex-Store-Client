@@ -5,7 +5,7 @@ import { auth } from "../Firebase/Firebase.config";
 export const authContext = createContext(null)
 const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [isloading, setLoading] = useState(true)
     const [carts, setCart] = useState([])
     const [paymentDetails, setPaymentsDetails] = useState({})
     const googleProvider = new GoogleAuthProvider()
@@ -40,6 +40,7 @@ const AuthProviders = ({ children }) => {
     const authValue = {
         user,
         carts,
+        paymentDetails,
         setPaymentsDetails,
         setCart,
         createUserwithEmail,
