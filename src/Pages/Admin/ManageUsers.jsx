@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageUsers = () => {
@@ -40,6 +41,7 @@ const ManageUsers = () => {
     }
     return (
         <div className="w-10/12 mx-auto">
+            <Helmet title="HRS | MANAGE USERS"/>
             <h1 className="text-2xl font-bold py-5">Total Users:{users?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

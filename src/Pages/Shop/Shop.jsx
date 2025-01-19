@@ -5,6 +5,7 @@ import MedicineDetails from "./MedicineDetails";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import moment from "moment";
+import { Helmet } from "react-helmet-async";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
@@ -40,6 +41,7 @@ const Shop = () => {
     }
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
+            <Helmet title="HRS | SHOP"/>
             <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">

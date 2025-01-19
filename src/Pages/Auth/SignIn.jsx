@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const SignIn = () => {
     const { signInuser, siginUserWithGoogle } = useAuth()
@@ -42,6 +43,7 @@ const SignIn = () => {
     }
     return (
         <div className="pt-24">
+            <Helmet title="HRS | SIGN IN"/>
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
                     <h1 className="text-3xl font-bold text-center py-5">SignIn Now!</h1>

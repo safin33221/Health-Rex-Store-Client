@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import AddAdvertice from "./AddAdvertice";
+import { Helmet } from "react-helmet-async";
 
 const AskForAd = () => {
     const { user } = useAuth()
@@ -16,9 +17,10 @@ const AskForAd = () => {
 
     return (
         <div className="w-10/12 mx-auto">
+            <Helmet title="HRS | POST ADS"/>
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
             {
-                advertise.length <= 0 ? <h1>no adbertice avaible now</h1> :
+                advertise?.length <= 0 ? <h1>no adbertice avaible now</h1> :
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentManageMent = () => {
     const axiosPublic = useAxiosPublic()
@@ -23,6 +24,7 @@ const PaymentManageMent = () => {
     console.log(payments);
     return (
         <div className='w-10/12 mx-auto'>
+            <Helmet title="HRS | MANAGE PAYMENTS"/>
             <h1 className='text-2xl font-bold py-3'>Manage payments</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

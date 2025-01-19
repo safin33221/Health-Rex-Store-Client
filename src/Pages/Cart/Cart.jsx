@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const Cart = () => {
@@ -61,6 +62,7 @@ const Cart = () => {
     }
     return (
         <div className="w-10/12 mx-auto">
+            <Helmet title="HRS | CART"/>
             {
                 carts?.length <= 0 ? <>
                     <h1 className="text-center text-3xl font-bold mt-64">No Item added Yet...!</h1></> :

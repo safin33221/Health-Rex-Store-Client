@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 import useRole from '../Hooks/useRole';
 import { FaHome } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const Dashboard = () => {
     const [role] = useRole()
@@ -13,6 +14,7 @@ const Dashboard = () => {
 
                 {
                     role === 'admin' && <ul className='menu'>
+                        <Helmet title="HRS | ADMIN DASHBOARD"/>
                         <h1 className='text-center font-bold text-2xl border-b-2 border-black '>Admin</h1>
                         <li><NavLink to='/dashboard/adminHome'>Home</NavLink></li>
                         <li><NavLink to='/dashboard/manageUsers'>Manage Users</NavLink></li>
@@ -24,11 +26,23 @@ const Dashboard = () => {
                 }
                 {
                     role === 'seller' && <ul className='menu'>
+                        <Helmet title="HRS | SELLER DASHBOARD"/>
                         <h1 className='text-center font-bold text-2xl border-b-2 border-black'>Seller</h1>
                         <li><NavLink to='/dashboard/sellerHome'>Home </NavLink></li>
                         <li><NavLink to='/dashboard/manageMedicines'>Manage Medicines</NavLink></li>
                         <li><NavLink to='/dashboard/paymentsHistory'>Payments History</NavLink></li>
                         <li><NavLink to='/dashboard/askForAd'>Ask For Advertisement</NavLink></li>
+                    </ul>
+                }
+                {
+                    role === 'user' && <ul className='menu'>
+                        <Helmet title="HRS | USER DAHSBOARD"/>
+                        <Helmet title="HRS | USER DASHBOARD"/>
+                        <h1 className='text-center font-bold text-2xl border-b-2 border-black'>User</h1>
+                        <li><NavLink to='/dashboard/userHome'>Home </NavLink></li>
+                        
+                        <li><NavLink to='/dashboard/paymentsHistory'>Payments History</NavLink></li>
+                       
                     </ul>
                 }
 

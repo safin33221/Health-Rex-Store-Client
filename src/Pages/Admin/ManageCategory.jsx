@@ -5,6 +5,7 @@ import { GrUpdate } from "react-icons/gr";
 import AddCategory from "./AddCategory";
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
@@ -30,6 +31,7 @@ const ManageCategory = () => {
     }
     return (
         <div className="w-10/12 mx-auto">
+            <Helmet title="HRS | MANAGE CATEGORY"/>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

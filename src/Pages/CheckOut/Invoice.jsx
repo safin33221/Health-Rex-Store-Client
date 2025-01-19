@@ -11,6 +11,7 @@ import {
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import logo from "../../assets/logo.png";
+import { Helmet } from "react-helmet-async";
 
 const Invoice = () => {
     const { paymentDetails } = useAuth();
@@ -71,6 +72,7 @@ const Invoice = () => {
     // PDF Document Component
     const InvoicePDF = (
         <Document>
+            
             <Page style={styles.page}>
                 <View style={styles.container}>
                     {/* Header */}
@@ -140,6 +142,7 @@ const Invoice = () => {
 
     return (
         <div className="w-10/12 mx-auto my-16">
+            <Helmet title="HRS | INVOICE"/>
             <div className="text-right mt-8">
                 <PDFDownloadLink
                     document={InvoicePDF}

@@ -8,6 +8,7 @@ import moment from "moment";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const SignUp = () => {
@@ -60,6 +61,7 @@ const SignUp = () => {
     }
     return (
         <div className="pt-24">
+            <Helmet title="HRS | SIGN UP"/>
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
                     <h1 className="text-3xl font-bold text-center py-5">SignUp Now!</h1>

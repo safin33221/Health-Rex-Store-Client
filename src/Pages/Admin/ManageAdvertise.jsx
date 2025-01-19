@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const ManageAdvertise = () => {
     const axiosPublic = useAxiosPublic()
@@ -23,7 +24,7 @@ const ManageAdvertise = () => {
 
     return (
         <div className="w-10/12 py-10 mx-auto">
-            
+            <Helmet title="HRS | MANAGE ADVERTISE"/>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

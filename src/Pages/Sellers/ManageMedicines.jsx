@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import AddMedicine from "./AddMedicine";
+import { Helmet } from "react-helmet-async";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
@@ -14,6 +15,7 @@ const ManageMedicines = () => {
     })
     return (
         <div className='w-10/12 mx-auto py-10'>
+            <Helmet title="HRS | MANAGE MEDICINES"/>
             <h1 className="text-xl ">Total Medicines :{medicines?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
