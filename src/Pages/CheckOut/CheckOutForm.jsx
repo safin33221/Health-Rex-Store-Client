@@ -2,13 +2,15 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import moment from 'moment/moment';
 
 const CheckOutForm = ({ totalPrice }) => {
-    const { user } = useAuth()
+    const { user, carts, setPaymentsDetails } = useAuth()
     const stripe = useStripe()
     const element = useElements()
     const axiosPublic = useAxiosPublic()
     const [clientSecret, setClientSecret] = useState('')
+    const [transtionId, setTranstionId] = useState('')
 
     useEffect(() => {
         axiosPublic.post('/create-payment-intent', { price: totalPrice })
@@ -45,13 +47,34 @@ const CheckOutForm = ({ totalPrice }) => {
                 billing_details: {
                     email: user?.email || "anonymous",
                     name: user?.displayName || "anonymous",
-                },
+                }
             },
         });
         if (cardError) {
             console.log('confirm error----------->', cardError);
         } else {
             console.log("payment intents ------------->", paymentIntent);
+            if (paymentIntent.status === 'succeeded') {
+                setTranstionId(paymentIntent.id)
+                const payment = {
+                    email: user?.email,
+                    name: user?.displayName,
+                    transtionId: paymentIntent.id,
+                    data: moment().format('LLL'),
+                    cartId: carts.map(cart => cart._id),
+                    medicineId: carts.map(item => item.medicineId),
+                    status: 'pending'
+
+
+
+                }
+                axiosPublic.post('/payment', payment)
+                    .then(res => {
+                        console.log(res.data)
+                        setPaymentsDetails(payment)
+                    })
+                console.log(payment);
+            }
         }
 
     }
@@ -74,7 +97,8 @@ const CheckOutForm = ({ totalPrice }) => {
                         }
                     }}
                 ></CardElement>
-                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-sm py-2 text-black bg-blue-500">Pay</button>
+                {transtionId && <p>Transtion Id: {transtionId}</p>}
+                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2 text-black bg-blue-500 mt-10 px-5">Pay</button>
             </form>
         </div>
     );

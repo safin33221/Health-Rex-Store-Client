@@ -21,7 +21,7 @@ const CheackOut = () => {
     return (
         <div className='w-11/12 mx-auto'>
             <h1>Total Price :{totalPrice}</h1>
-            <div>
+            <div className="max-w-[800px] mx-auto border-2 p-20 ">
                 <Elements stripe={stripePromice}>
                     <CheckOutForm totalPrice={totalPrice} />
                 </Elements>
