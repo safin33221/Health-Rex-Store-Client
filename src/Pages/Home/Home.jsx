@@ -3,7 +3,7 @@ import CategoryCard from "./CategoryCard";
 
 const Home = () => {
     return (
-        <div className="pt-20">
+        <div className="">
             <section>
                 <Sliders/>
             </section>

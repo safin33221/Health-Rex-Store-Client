@@ -18,10 +18,14 @@ const Cart = () => {
         }
 
     })
+    console.log(carts);
 
     const handleQuantity = (cart, status) => {
-
-        axiosPublic.patch(`/cart/quantity/${cart?._id}`, { status })
+        const updateInfo = {
+            status,
+            price: cart?.pricePerUnit
+        }
+        axiosPublic.patch(`/cart/quantity/${cart?._id}`, updateInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()
@@ -56,7 +60,7 @@ const Cart = () => {
             })
     }
     return (
-        <div>
+        <div className="w-10/12 mx-auto">
             {
                 carts?.length <= 0 ? <>
                     <h1 className="text-center text-3xl font-bold mt-64">No Item added Yet...!</h1></> :
@@ -82,7 +86,7 @@ const Cart = () => {
                                         <th>{index + 1}</th>
                                         <td>{cart?.itemName}</td>
                                         <td>{cart?.company}</td>
-                                        <td>{cart?.pricePerUnit * cart?.quantity} tk</td>
+                                        <td>{cart?.pricePerUnit} tk</td>
                                         <td>
                                             <button disabled={cart?.quantity === 1} onClick={() => handleQuantity(cart, 'decrese')} className="btn-sm btn mx-2">-</button>
                                             {cart?.quantity}
@@ -100,7 +104,7 @@ const Cart = () => {
 
                             </tbody>
                         </table>
-                        <Link to='/checkOut'>
+                        <Link to='/cheackOut'>
                             <button className="btn bg-primary my-5">Check Out</button>
                         </Link>
                     </div>

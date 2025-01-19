@@ -12,6 +12,7 @@ import ManageAdvertise from "../Pages/Admin/ManageAdvertise";
 import ManageCategory from "../Pages/Admin/ManageCategory";
 import Shop from "../Pages/Shop/Shop";
 import Cart from "../Pages/Cart/Cart";
+import CheackOut from "../Pages/CheckOut/CheackOut";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: '/cart',
                 element: <Cart />
+            },
+            {
+                path: '/cheackOut',
+                element: <CheackOut />
             },
             {
                 path: 'signUp',
