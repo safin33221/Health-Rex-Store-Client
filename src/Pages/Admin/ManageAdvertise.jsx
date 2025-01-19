@@ -22,8 +22,8 @@ const ManageAdvertise = () => {
     }
 
     return (
-        <div className="w-10/12 mx-auto">
-            <h1>Total --{advertise?.length}</h1>
+        <div className="w-10/12 py-10 mx-auto">
+            
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
