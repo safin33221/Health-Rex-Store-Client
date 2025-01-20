@@ -11,7 +11,7 @@ const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddMedicine = ({ refetch }) => {
     const { user } = useAuth()
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const onsubmit = async (data) => {
@@ -36,20 +36,22 @@ const AddMedicine = ({ refetch }) => {
             time: moment().format('LLL'),
             email: user?.email,
             name: user?.displayName
+            
 
 
         };
         axiosPublic.post('/medicines', medicineInfo)
             .then(res => {
                 console.log(res.data);
-                document.getElementById('my_modal_5').close()
                 refetch()
                 toast.success('Your new medicine has been added to the inventory.', {
                     position: "top-right",
                     autoClose: 1500,
-
-
+                    
+                    
                 });
+                reset()
+                document.getElementById('my_modal_5').close()
 
             })
 

@@ -3,19 +3,21 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import AddMedicine from "./AddMedicine";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: medicines,refetch } = useQuery({
-        queryKey: ['medicines'],
+    const { user } = useAuth()
+    const { data: medicines, refetch } = useQuery({
+        queryKey: ['medicines', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`http://localhost:8080/medicines`)
+            const res = await axiosPublic.get(`/seller/medicine/${user?.email}`)
             return res.data
         }
     })
     return (
         <div className='w-10/12 mx-auto py-10'>
-            <Helmet title="HRS | MANAGE MEDICINES"/>
+            <Helmet title="HRS | MANAGE MEDICINES" />
             <h1 className="text-xl ">Total Medicines :{medicines?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
@@ -26,7 +28,7 @@ const ManageMedicines = () => {
                             <th>Medicine Name</th>
                             <th>Category</th>
                             <th>Mass Unit</th>
-                            <th>Price</th>
+                            <th>Price Per Unite</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +38,7 @@ const ManageMedicines = () => {
                                 <td>{medicine.itemName}</td>
                                 <td>{medicine.category}</td>
                                 <td>{medicine.massUnit}</td>
-                                <td>{medicine.pricePerUnit}</td>
+                                <td>{medicine.pricePerUnit} BTD</td>
 
                             </tr>)
                         }

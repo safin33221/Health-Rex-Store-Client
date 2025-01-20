@@ -15,6 +15,7 @@ import Cart from "../Pages/Cart/Cart";
 import CheackOut from "../Pages/CheckOut/CheackOut";
 import Invoice from "../Pages/CheckOut/Invoice";
 import PaymentManageMent from "../Pages/Admin/PaymentManageMent";
+import SalesReports from "../Pages/Admin/SalesReports";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path:'managePayments',
                 element:<PaymentManageMent/>
+            },
+            {
+                path:'salesReport',
+                element:<SalesReports/>
             },
 
 
