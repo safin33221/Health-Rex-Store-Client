@@ -36,8 +36,8 @@ const SignIn = () => {
             .then(res => {
                 console.log(res.user);
                 const userInfo = {
-                    name: res.user?.email,
-                    email: res.user?.displayName,
+                    name: res.user?.displayName,
+                    email: res.user?.email,
                     image:res.user?.photoURL,
                     role:'user',
                     time: moment().format('LLL')

@@ -19,7 +19,7 @@ const SalesReports = () => {
                 <h1>Total Sales Reports: {sales?.length}</h1>
                 <DownloadTableExcel
                     filename="sales_reports"
-                    sheet="users"
+                    sheet="sales"
                     currentTableRef={tableRef.current}
                 >
 

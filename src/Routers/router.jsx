@@ -16,6 +16,7 @@ import CheackOut from "../Pages/CheckOut/CheackOut";
 import Invoice from "../Pages/CheckOut/Invoice";
 import PaymentManageMent from "../Pages/Admin/PaymentManageMent";
 import SalesReports from "../Pages/Admin/SalesReports";
+import PaymentsHistory from "../Pages/Sellers/PaymentsHistory";
 
 const router = createBrowserRouter([
     {
@@ -58,24 +59,24 @@ const router = createBrowserRouter([
         children: [
             //Manage Admin
             {
-                path:'manageUsers',
-                element:<ManageUsers/>
+                path: 'manageUsers',
+                element: <ManageUsers />
             },
             {
-                path:'manageAdvertise',
-                element:<ManageAdvertise/>
+                path: 'manageAdvertise',
+                element: <ManageAdvertise />
             },
             {
-                path:'manageCategory',
-                element:<ManageCategory/>
+                path: 'manageCategory',
+                element: <ManageCategory />
             },
             {
-                path:'managePayments',
-                element:<PaymentManageMent/>
+                path: 'managePayments',
+                element: <PaymentManageMent />
             },
             {
-                path:'salesReport',
-                element:<SalesReports/>
+                path: 'salesReport',
+                element: <SalesReports />
             },
 
 
@@ -86,12 +87,16 @@ const router = createBrowserRouter([
                 element: <SellerHome />
             },
             {
-                path:'manageMedicines',
-                element:<ManageMedicines/>
+                path: 'manageMedicines',
+                element: <ManageMedicines />
             },
             {
-                path:'askForAd',
-                element:<AskForAd/>
+                path: 'askForAd',
+                element: <AskForAd />
+            },
+            {
+                path: 'paymentsHistory',
+                element: <PaymentsHistory />
             },
         ]
     }
