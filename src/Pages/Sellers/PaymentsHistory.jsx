@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 
 const PaymentsHistory = () => {
@@ -16,6 +17,7 @@ const PaymentsHistory = () => {
     console.log(paymentsHistory);
     return (
         <div className="w-10/12 mx-auto py-10">
+            <Helmet title="HRS | PAYMENT HISTORY"/>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
