@@ -76,11 +76,11 @@ const SignUp = () => {
                             <path
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                         </svg>
-                        <input {...register("userName")} type="text" className=" focus:outline-none" placeholder="User Name" />
+                        <input {...register("userName")} required type="text" className=" focus:outline-none" placeholder="User Name" />
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
                         <MdInsertPhoto />
-                        <input {...register("image")} type="file" className=" focus:outline-none" placeholder="image" />
+                        <input {...register("image")} required type="file" className=" focus:outline-none" placeholder="image" />
 
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
@@ -94,7 +94,7 @@ const SignUp = () => {
                             <path
                                 d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                         </svg>
-                        <input {...register("email")} type="email" className=" focus::outline-none" placeholder="Email" />
+                        <input {...register("email")} required type="email" className=" focus::outline-none" placeholder="Email" />
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
                         <svg
@@ -107,17 +107,17 @@ const SignUp = () => {
                                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                                 clipRule="evenodd" />
                         </svg>
-                        <input {...register("password")} type="password" className=" focus:outline-none" placeholder="password" />
+                        <input {...register("password")} required type="password" className=" focus:outline-none" placeholder="password" />
                     </label>
                     <label className="flex items-center gap-2 mb-4">
-                        <input {...register('role')} type="radio" name="role" value="user" />
+                        <input {...register('role')} required type="radio" name="role" value="user" />
                         <span>User</span>
-                        <input  {...register('role')} type="radio" name="role" value="seller" />
+                        <input  {...register('role')} required type="radio" name="role" value="seller" />
                         <span>Seller</span>
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outline mx-auto w-full">Sign Up</button>
+                        <button className="btn btn-outlin bg-secondary hover:bg-accent hover:text-black font-bold mx-auto w-full">Sign Up</button>
                     </label>
                     <p>Already have an Account? <Link to='/signIn'>Sign In Now</Link></p>
                 </div>

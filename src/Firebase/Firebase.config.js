@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyB11_5siJlAMRX3OkukjdQNoxpiJ1_rQfM",
-    authDomain: "healthrexstore.firebaseapp.com",
-    projectId: "healthrexstore",
-    storageBucket: "healthrexstore.firebasestorage.app",
-    messagingSenderId: "500512538037",
-    appId: "1:500512538037:web:8582660a533eeda4fbedfc"
+    apiKey: import.meta.env.VITE_apiKey,
+    authDomain: import.meta.env.VITE_authDomain,
+    projectId: import.meta.env.VITE_projectId,
+    storageBucket: import.meta.env.VITE_storageBucket,
+    messagingSenderId: import.meta.env.VITE_messagingSenderId,
+    appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

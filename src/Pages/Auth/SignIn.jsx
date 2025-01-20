@@ -5,9 +5,12 @@ import Swal from 'sweetalert2';
 import { FaGoogle } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import moment from 'moment';
 
 const SignIn = () => {
     const { signInuser, siginUserWithGoogle } = useAuth()
+    const axiosPublic =useAxiosPublic()
     const navigate = useNavigate()
     const {
         register,
@@ -31,21 +34,33 @@ const SignIn = () => {
     const hanldeGoogleSignIn = () => {
         siginUserWithGoogle()
             .then(res => {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "You have been login  succefully",
-                    showConfirmButton: false,
-                    timer: 1000
-                });
+                console.log(res.user);
+                const userInfo = {
+                    name: res.user?.email,
+                    email: res.user?.displayName,
+                    image:res.user?.photoURL,
+                    role:'user',
+                    time: moment().format('LLL')
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "You have been login  succefully",
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    })
                 navigate('/')
             })
     }
     return (
-        <div className="pt-24">
-            <Helmet title="HRS | SIGN IN"/>
+        <div className="pt-24 ">
+            <Helmet title="HRS | SIGN IN" />
             <form onSubmit={handleSubmit(onsubmit)} >
-                <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
+                <div className="max-w-xl mx-auto border-2 rounded-lg p-4 border-secondary">
                     <h1 className="text-3xl font-bold text-center py-5">SignIn Now!</h1>
 
 
@@ -78,12 +93,12 @@ const SignIn = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outline mx-auto w-full">Sign Up</button>
+                        <button className="btn bg-secondary hover:text-black font-bold hover:bg-accent btn-outline mx-auto w-full">Sign In</button>
                     </label>
                     <p>New in this site? <Link to='/signUp'>Sign Up Now</Link></p>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button onClick={hanldeGoogleSignIn} type='button' className="btn btn-outline mx-auto w-full"> <FaGoogle />Google</button>
+                        <button onClick={hanldeGoogleSignIn} type='button' className="btn bg-secondary hover:bg-accent hover:text-black font-bold btn-outline mx-auto w-full"> <FaGoogle />Google</button>
                     </label>
                 </div>
             </form>
