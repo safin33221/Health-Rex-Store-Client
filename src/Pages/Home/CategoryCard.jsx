@@ -12,8 +12,8 @@ const CategoryCard = () => {
         }
     })
     return (
-        <div className="w-10/12 mx-auto">
-            <h1>{categoris?.length}</h1>
+        <div className="w-10/12 mx-auto mt-14">
+          
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {
                     categoris?.slice(0,8).map(category => <div key={category._id} className="card bg-base-100  shadow-xl">

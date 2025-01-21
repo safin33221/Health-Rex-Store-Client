@@ -5,12 +5,14 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import moment from 'moment/moment';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const CheckOutForm = () => {
     const { user, carts, setPaymentsDetails } = useAuth()
     const stripe = useStripe()
     const element = useElements()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const [clientSecret, setClientSecret] = useState('')
     const [transtionId, setTranstionId] = useState('')
@@ -18,7 +20,7 @@ const CheckOutForm = () => {
 
     useEffect(() => {
         if (totalPrice) {
-            axiosPublic.post('/create-payment-intent', { price: totalPrice })
+            axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(res => {
                     console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret)
@@ -76,7 +78,7 @@ const CheckOutForm = () => {
 
 
                 }
-                axiosPublic.post('/payment', payment)
+                axiosSecure.post('/payment', payment)
                     .then(res => {
                         console.log(res.data)
                         setPaymentsDetails(payment)

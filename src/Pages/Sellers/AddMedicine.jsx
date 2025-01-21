@@ -7,12 +7,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify/unstyled';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddMedicine = ({ refetch }) => {
     const { user } = useAuth()
-    const { register, handleSubmit,reset } = useForm()
+    const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
     const onsubmit = async (data) => {
         const imgFile = { image: data.image[0] }
@@ -36,19 +38,19 @@ const AddMedicine = ({ refetch }) => {
             time: moment().format('LLL'),
             email: user?.email,
             name: user?.displayName
-            
+
 
 
         };
-        axiosPublic.post('/medicines', medicineInfo)
+        axiosSecure.post('/medicines', medicineInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()
                 toast.success('Your new medicine has been added to the inventory.', {
                     position: "top-right",
                     autoClose: 1500,
-                    
-                    
+
+
                 });
                 reset()
                 document.getElementById('my_modal_5').close()

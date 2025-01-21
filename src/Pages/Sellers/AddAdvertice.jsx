@@ -1,15 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddAdvertice = ({ refetch }) => {
     const { user } = useAuth()
     const { register, handleSubmit } = useForm()
-    const axiosPublic = useAxiosPublic()
+    
+    const axiosSecure = useAxiosSecure()
     const onsubmit = async (data) => {
         console.log(data);
         const imgFile = { image: data.image[0] }
@@ -26,7 +27,7 @@ const AddAdvertice = ({ refetch }) => {
             status: 'pending',
             email: user?.email
         }
-        axiosPublic.post('/askAddverticement', adInfo)
+        axiosSecure.post('/askAddverticement', adInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()

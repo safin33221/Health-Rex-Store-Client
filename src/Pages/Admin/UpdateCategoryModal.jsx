@@ -4,12 +4,14 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify/unstyled';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 const UpdateCategoryModal = ({ category, refetch }) => {
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     console.log(category);
 
     const onsubmit = async (data) => {
@@ -24,7 +26,7 @@ const UpdateCategoryModal = ({ category, refetch }) => {
             name: data.name,
             image: image
         }
-        axiosPublic.patch(`/category/${category?._id}`, categoryInfo)
+        axiosSecure.patch(`/category/${category?._id}`, categoryInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()

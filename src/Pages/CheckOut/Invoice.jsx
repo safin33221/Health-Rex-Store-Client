@@ -12,17 +12,19 @@ import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import logo from "../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Invoice = () => {
     const { paymentDetails } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const [medicines, setMedicines] = useState([]);
     const medicineIds = paymentDetails?.medicineId || [];
 
     // Fetch medicines data
     useEffect(() => {
         if (medicineIds.length > 0) {
-            axiosPublic.post("/invoice/medicine", medicineIds)
+            axiosSecure.post("/invoice/medicine", medicineIds)
                 .then((res) => setMedicines(res.data));
         }
     }, [medicineIds]);
@@ -72,7 +74,7 @@ const Invoice = () => {
     // PDF Document Component
     const InvoicePDF = (
         <Document>
-            
+
             <Page style={styles.page}>
                 <View style={styles.container}>
                     {/* Header */}
@@ -142,7 +144,7 @@ const Invoice = () => {
 
     return (
         <div className="w-10/12 mx-auto my-16">
-            <Helmet title="HRS | INVOICE"/>
+            <Helmet title="HRS | INVOICE" />
             <div className="text-right mt-8">
                 <PDFDownloadLink
                     document={InvoicePDF}

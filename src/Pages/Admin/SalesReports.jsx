@@ -2,14 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useRef } from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { DownloadTableExcel } from 'react-export-table-to-excel';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const SalesReports = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const tableRef = useRef(null);
     const { data: sales = [] } = useQuery({
         queryKey: ['sales'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/sales-reports')
+            const res = await axiosSecure.get('/sales-reports')
             return res.data
         }
     })

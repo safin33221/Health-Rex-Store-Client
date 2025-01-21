@@ -1,17 +1,19 @@
 
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import AddMedicine from "./AddMedicine";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const { data: medicines, refetch } = useQuery({
         queryKey: ['medicines', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/seller/medicine/${user?.email}`)
+            const res = await axiosSecure.get(`/seller/medicine/${user?.email}`)
             return res.data
         }
     })

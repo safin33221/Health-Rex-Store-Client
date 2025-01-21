@@ -22,7 +22,7 @@ const Sliders = () => {
             return res.data
         }
     })
-
+    console.log(slides);
     return (
         <div className='w-full'>
             <Swiper navigation={true} modules={[Navigation]} className=" w-full ">

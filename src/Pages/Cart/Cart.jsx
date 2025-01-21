@@ -6,11 +6,13 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const Cart = () => {
     const { user, setCart } = useAuth()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: carts, refetch } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
@@ -27,14 +29,14 @@ const Cart = () => {
             status,
             price: cart?.pricePerUnit
         }
-        axiosPublic.patch(`/cart/quantity/${cart?._id}`, updateInfo)
+        axiosSecure.patch(`/cart/quantity/${cart?._id}`, updateInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()
             })
     }
     const handleDeleted = id => {
-        axiosPublic.delete(`/cart/${id}`)
+        axiosSecure.delete(`/cart/${id}`)
             .then(res => {
                 console.log(res.data);
                 refetch()
@@ -47,7 +49,7 @@ const Cart = () => {
             })
     }
     const handleClearAll = email => {
-        axiosPublic.delete(`/deletedAll/${email}`)
+        axiosSecure.delete(`/deletedAll/${email}`)
             .then(res => {
                 console.log(res.data)
                 toast.success('Your cart is cleared! Shop for more amazing items.', {

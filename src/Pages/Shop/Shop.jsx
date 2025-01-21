@@ -7,9 +7,11 @@ import useAuth from "../../Hooks/useAuth";
 import moment from "moment";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [medicineDetails, setMedicineDetails] = useState(null)
     const { data: medicines } = useQuery({
@@ -35,7 +37,7 @@ const Shop = () => {
             quantity: 1
 
         }
-        axiosPublic.post('/carts', cartInfo)
+        axiosSecure.post('/carts', cartInfo)
             .then(res => {
                 console.log(res.data);
                 toast.success('The product has been added to your cart.', {
@@ -54,7 +56,7 @@ const Shop = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className=" bg-secondary">
                             <th></th>
                             <th>Medicine Name</th>
                             <th>Category</th>

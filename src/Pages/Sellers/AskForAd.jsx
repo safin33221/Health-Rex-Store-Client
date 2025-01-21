@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import AddAdvertice from "./AddAdvertice";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const AskForAd = () => {
     const { user } = useAuth()
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: advertise,refetch } = useQuery({
         queryKey: ['advertise', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/seller/adds/${user?.email}`)
+            const res = await axiosSecure.get(`/seller/adds/${user?.email}`)
             return res.data
         }
     })

@@ -7,9 +7,11 @@ import UpdateCategoryModal from "./UpdateCategoryModal";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const [category, setCategory] = useState({})
     const { data: categoris, refetch } = useQuery({
         queryKey: ['categoris'],
@@ -31,7 +33,7 @@ const ManageCategory = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosPublic.delete(`/category/${id}`)
+                axiosSecure.delete(`/category/${id}`)
                     .then(res => {
                         console.log(res.data)
                         refetch()

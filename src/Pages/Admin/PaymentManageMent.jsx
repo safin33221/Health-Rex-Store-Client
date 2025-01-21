@@ -3,19 +3,21 @@ import React from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const PaymentManageMent = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const { data: payments, refetch } = useQuery({
         queryKey: ['payments', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/manage-payments`)
+            const res = await axiosSecure.get(`/manage-payments`)
             return res.data
         }
     })
     const handleAccept = id => {
-        axiosPublic.patch(`/payment/${id}`)
+        axiosSecure.patch(`/payment/${id}`)
             .then(res => {
                 console.log(res.data);
                 refetch()

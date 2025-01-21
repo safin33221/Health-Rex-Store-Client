@@ -1,21 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 
 const ManageAdvertise = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: advertise,refetch } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/addvertisements')
+            const res = await axiosSecure.get('/addvertisements')
             return res.data;
         }
     })
 
     const handleStatus = (data, status) => {
         console.log(data, status);
-        axiosPublic.patch(`/askAddverticement/status`, { data, status })
+        axiosSecure.patch(`/askAddverticement/status`, { data, status })
             .then(res => {
                 console.log(res.data);
                 refetch()

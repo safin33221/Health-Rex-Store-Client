@@ -2,11 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import axios from 'axios';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
-const AddCategory = ({refetch}) => {
+const AddCategory = ({ refetch }) => {
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const onsubmit = async (data) => {
         const imgFile = { image: data.image[0] }
         const imglink = await axios.post(img_hosting_api, imgFile, {
@@ -19,7 +21,7 @@ const AddCategory = ({refetch}) => {
             name: data.name,
             image: image
         }
-        axiosPublic.post('/category', categoryInfo)
+        axiosSecure.post('/category', categoryInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()

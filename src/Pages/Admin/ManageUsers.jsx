@@ -6,7 +6,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const ManageUsers = () => {
-    const axiosPublic = useAxiosPublic()
+ 
     const axiosSecure = useAxiosSecure()
     const { data: users } = useQuery({
         queryKey: ['users'],
@@ -29,7 +29,7 @@ const ManageUsers = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosPublic.patch(`/user/role/${user?.email}`, data)
+                axiosSecure.patch(`/user/role/${user?.email}`, data)
                     .then(res => {
                         console.log(res.data);
                     })
