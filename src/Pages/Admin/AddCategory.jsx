@@ -53,7 +53,7 @@ const AddCategory = ({refetch}) => {
 
                         <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Post</button>
+                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Add</button>
                         </label>
 
                     </div>

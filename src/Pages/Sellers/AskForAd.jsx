@@ -20,7 +20,7 @@ const AskForAd = () => {
             <Helmet title="HRS | POST ADS"/>
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
             {
-                advertise?.length <= 0 ? <h1>no adbertice avaible now</h1> :
+                advertise?.length <= 0 ? <h1 className="text-2xl font-bold text-center mt-20">No Advertise available now</h1> :
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}

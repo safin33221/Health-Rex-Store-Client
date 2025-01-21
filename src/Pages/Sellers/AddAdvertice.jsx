@@ -43,7 +43,7 @@ const AddAdvertice = ({ refetch }) => {
     return (
         <dialog id="addAdvertice" className="modal modal-bottom sm:modal-middle w-full mx-auto">
             <div className="modal-box">
-                <h2 className='text-bold text-xl text-center'>Add Medicine</h2>
+                
                 <form onSubmit={handleSubmit(onsubmit)} >
                     <div className=" mx-auto  rounded-lg p-5 w-full ">
 

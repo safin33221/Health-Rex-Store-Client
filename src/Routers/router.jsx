@@ -17,6 +17,7 @@ import Invoice from "../Pages/CheckOut/Invoice";
 import PaymentManageMent from "../Pages/Admin/PaymentManageMent";
 import SalesReports from "../Pages/Admin/SalesReports";
 import PaymentsHistory from "../Pages/Sellers/PaymentsHistory";
+import AdminHome from "../Pages/Admin/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
             //Manage Admin
+            {
+                path: 'adminHome',
+                element: <AdminHome />
+            },
             {
                 path: 'manageUsers',
                 element: <ManageUsers />

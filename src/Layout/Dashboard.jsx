@@ -15,7 +15,7 @@ const Dashboard = () => {
                 {
                     role === 'admin' && <ul className='menu'>
                         <Helmet title="HRS | ADMIN DASHBOARD"/>
-                        <h1 className='text-center font-bold text-2xl border-b-2 border-black '>Admin</h1>
+                        <h1 className='text-center font-bold text-2xl border-b-2 border-black my-5 '>Admin</h1>
                         <li><NavLink to='/dashboard/adminHome'>Home</NavLink></li>
                         <li><NavLink to='/dashboard/manageUsers'>Manage Users</NavLink></li>
                         <li><NavLink to='/dashboard/manageCategory'>Manage Category</NavLink></li>
