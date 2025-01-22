@@ -5,13 +5,13 @@ const MedicineDetails = ({ medicineDetails }) => {
     console.log(medicineDetails);
 
     return (
-        <dialog id="medicinesDetails" className="modal modal-top     mx-auto">
-            <div className="modal-box relative  h-2/3 ">
-                <div className="md:flex gap-4 ">
-                    <div className="w-1/2">
+        <dialog id="medicinesDetails" className="modal modal-middle     mx-auto">
+            <div className="modal-box p-0  h-2/3 ">
+                <div className="  ">
+                    <div className="">
                         <img className="w-full h-[250px]  p-0 m-0 rounded-lg" src={medicineDetails?.image}  alt="no image" />
                     </div>
-                    <div>
+                    <div className="m-5">
                         <h1 className="text-xl ">Name: <span className="font-bold">{medicineDetails?.itemName}</span></h1>
                         <h1 className="">Generic Name	: <span className="font-medium">{medicineDetails?.genericName}</span></h1>
                         <h1 className="">Category: <span className="font-medium">{medicineDetails?.category}</span></h1>
@@ -23,7 +23,7 @@ const MedicineDetails = ({ medicineDetails }) => {
                     </div>
                 </div>
 
-                <div className="modal-action absolute bottom-10 right-10 ">
+                <div className="modal-action  m-4">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
                         <button  className="btn btn-outline btn-xl bg-primary">Close</button>

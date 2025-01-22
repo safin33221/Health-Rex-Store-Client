@@ -74,7 +74,7 @@ const ManageMedicines = () => {
                                 <td>{medicine.pricePerUnit} BTD</td>
                                 <td>
                                     <button onClick={() => handleDelete(medicine._id)} className="btn-sm"><FaTrashAlt /></button>
-                                    <button onClick={() => handleUpdate(medicine._id)} className="btn-sm"><FaEdit /></button>
+                                    
                                 </td>
 
                             </tr>)

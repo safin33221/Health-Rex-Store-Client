@@ -18,6 +18,7 @@ import PaymentManageMent from "../Pages/Admin/PaymentManageMent";
 import SalesReports from "../Pages/Admin/SalesReports";
 import PaymentsHistory from "../Pages/Sellers/PaymentsHistory";
 import AdminHome from "../Pages/Admin/AdminHome";
+import CategoryDetails from "../Pages/Category/CategoryDetails";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />
+            },
+            {
+                path: '/categoryDetails/:category',
+                element: <CategoryDetails />
             },
             {
                 path: '/cart',

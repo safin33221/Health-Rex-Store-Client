@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 
 const CategoryCard = () => {
@@ -12,29 +13,32 @@ const CategoryCard = () => {
         }
     })
     return (
-        <div className="w-10/12 mx-auto mt-14">
+        <div className="w-10/12 mx-auto my-14">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                    categoris?.slice(0, 6).map((category, idx) => <div key={idx} className="card bg-base-100  shadow-xl">
-                        <figure>
-                            <img
-                                className="h-44"
-                                src={category?.image}
-                                alt="Shoes" />
+                    categoris?.slice(0, 6).map((category, idx) =>
+                        <Link to={`/categoryDetails/${category.category}`}>
+                            <div key={idx} className="card bg-base-100  shadow-xl">
+                                <figure>
+                                    <img
+                                        className="h-44"
+                                        src={category?.image}
+                                        alt="Shoes" />
 
-                        </figure>
-                        <div className="card-body">
-                            <h2 className="card-title">
-                                {category?.category}
-                                <div className="badge badge-outline">{category.count}</div>
-                            </h2>
+                                </figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">
+                                        {category?.category}
+                                        <div className="badge badge-outline">{category.count}</div>
+                                    </h2>
 
-                            <div className="card-actions justify-start">
-                                
+                                    <div className="card-actions justify-start">
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>)
+                        </Link>)
                 }
             </div>
         </div>
