@@ -5,6 +5,8 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import AddMedicine from "./AddMedicine";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
@@ -17,6 +19,34 @@ const ManageMedicines = () => {
             return res.data
         }
     })
+    const handleDelete = id => {
+        console.log(id);
+        Swal.fire({
+
+            text: `Are You sure to deleted this medicene`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                axiosSecure.delete(`/medicine/delete/${id}`)
+                    .then(res => {
+                        console.log(res.data);
+                        refetch()
+                        Swal.fire({
+                            title: "Success!",
+                            text: ` Medicine has been successfully Deleted`,
+                            icon: "success"
+                        })
+                    })
+                    ;
+            }
+        });
+
+    }
     return (
         <div className='w-10/12 mx-auto py-10'>
             <Helmet title="HRS | MANAGE MEDICINES" />
@@ -31,6 +61,7 @@ const ManageMedicines = () => {
                             <th>Category</th>
                             <th>Mass Unit</th>
                             <th>Price Per Unite</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +72,10 @@ const ManageMedicines = () => {
                                 <td>{medicine.category}</td>
                                 <td>{medicine.massUnit}</td>
                                 <td>{medicine.pricePerUnit} BTD</td>
+                                <td>
+                                    <button onClick={() => handleDelete(medicine._id)} className="btn-sm"><FaTrashAlt /></button>
+                                    <button onClick={() => handleUpdate(medicine._id)} className="btn-sm"><FaEdit /></button>
+                                </td>
 
                             </tr>)
                         }

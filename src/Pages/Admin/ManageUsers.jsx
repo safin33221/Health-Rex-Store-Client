@@ -16,7 +16,7 @@ const ManageUsers = () => {
         }
     })
     const haldleChangeRole = (e, user) => {
-        console.log(e.target.value, user);
+        
         const data = { role: e.target.value }
         Swal.fire({
             title:user?.email,
