@@ -31,7 +31,7 @@ const ManageAdvertise = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="bg-secondary">
                             <th>
 
                             </th>

@@ -83,7 +83,7 @@ const ManageCategory = () => {
                     </tbody>
                 </table>
             </div>
-            <button onClick={() => document.getElementById('updateCategory').showModal()}
+            <button onClick={() => document.getElementById('addCategory').showModal()}
                 className="btn my-10 bg-primary">Add Category</button>
 
             <AddCategory refetch={refetch} />

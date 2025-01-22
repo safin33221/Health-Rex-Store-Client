@@ -18,7 +18,7 @@ const SalesReports = () => {
     return (
         <div className='w-10/12 mx-auto'>
             <div className='flex justify-around py-10 items-center'>
-                <h1>Total Sales Reports: {sales?.length}</h1>
+                <h1 className='text-xl font-bold'>Total Sales : {sales?.length}</h1>
                 <DownloadTableExcel
                     filename="sales_reports"
                     sheet="sales"
@@ -32,7 +32,7 @@ const SalesReports = () => {
             <div className="overflow-x-auto">
                 <table ref={tableRef} className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='bg-secondary'>
                         <tr>
                             <th></th>
                             <th>Name</th>

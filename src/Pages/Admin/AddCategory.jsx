@@ -6,7 +6,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddCategory = ({ refetch }) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const onsubmit = async (data) => {
@@ -21,10 +21,12 @@ const AddCategory = ({ refetch }) => {
             name: data.name,
             image: image
         }
+        console.log(categoryInfo);
         axiosSecure.post('/category', categoryInfo)
             .then(res => {
                 console.log(res.data);
                 refetch()
+                reset()
                 document.getElementById('addCategory').close()
             })
     }
