@@ -24,7 +24,7 @@ const AskForAd = () => {
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
-                            <thead>
+                            <thead className="bg-secondary">
                                 <tr>
                                     <th>
 

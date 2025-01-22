@@ -19,6 +19,7 @@ import SalesReports from "../Pages/Admin/SalesReports";
 import PaymentsHistory from "../Pages/Sellers/PaymentsHistory";
 import AdminHome from "../Pages/Admin/AdminHome";
 import CategoryDetails from "../Pages/Category/CategoryDetails";
+import UserPayments from "../Pages/Users/UserPayments";
 
 const router = createBrowserRouter([
     {
@@ -107,6 +108,12 @@ const router = createBrowserRouter([
             {
                 path: 'paymentsHistory',
                 element: <PaymentsHistory />
+            },
+
+            //-------manage Users
+            {
+                path: 'userPayments',
+                element: <UserPayments />
             },
         ]
     }

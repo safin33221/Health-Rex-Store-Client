@@ -3,13 +3,17 @@ import logo from '../../assets/logo.png'
 
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import { FaHome } from "react-icons/fa";
+import { FaShop } from "react-icons/fa6";
+import useRole from "../../Hooks/useRole";
 
 const Navbar = () => {
     const { user, sigoutUser, carts } = useAuth()
     const navigate = useNavigate()
+    const [role] = useRole()
     const links = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/shop'>Shop</NavLink></li>
+        <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
+        <li><NavLink to='/shop'><FaShop />Shop</NavLink></li>
         <li>
             <select name="language" className="select    w-full min-w-28 focus:outline-none bg-transparent">
 
@@ -116,10 +120,19 @@ const Navbar = () => {
                             <li>
                                 <a className="justify-between">
                                     Update Profile
-                                    
+
                                 </a>
                             </li>
-                            <li><NavLink to='/dashboard'>Dashboard </NavLink></li>
+                            {
+                                role === 'admin' && <li><NavLink to='/dashboard/adminHome'>Dashboard </NavLink></li>
+                            }
+                            {
+                                role === 'seller' && <li><NavLink to='/dashboard/sellerHome'>Dashboard </NavLink></li>
+                            }
+                            {
+                                role === 'user' && <li><NavLink to='/dashboard/userPayments'>Dashboard </NavLink></li>
+                            }
+
                             <li><button onClick={handleLogout}>Logout</button></li>
                         </ul>
                     </div>

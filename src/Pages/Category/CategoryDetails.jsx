@@ -57,8 +57,12 @@ const CategoryDetails = () => {
                     <thead>
                         <tr className=" bg-secondary">
                             <th></th>
+                            <th></th>
+                            <th></th>
                             <th>Medicine Name</th>
+                            <th></th>
                             <th>Category</th>
+                            <th></th>
                             <th>Company</th>
                             <th></th>
                             <th>Action</th>
@@ -67,9 +71,13 @@ const CategoryDetails = () => {
                     <tbody>
                         {
                             medicines?.map((medicine, index) => <tr className="bg-base-200">
+                                <td></td>
                                 <th>{index + 1}</th>
+                                <td></td>
                                 <td>{medicine?.itemName}</td>
+                                <td></td>
                                 <td>{medicine?.category}</td>
+                                <td></td>
                                 <td>{medicine?.company}</td>
                                 <td></td>
                                 <td>
