@@ -22,7 +22,7 @@ const Cart = () => {
         }
 
     })
-    console.log(carts);
+
 
     const handleQuantity = (cart, status) => {
         const updateInfo = {
@@ -31,14 +31,14 @@ const Cart = () => {
         }
         axiosSecure.patch(`/cart/quantity/${cart?._id}`, updateInfo)
             .then(res => {
-                console.log(res.data);
+                
                 refetch()
             })
     }
     const handleDeleted = id => {
         axiosSecure.delete(`/cart/${id}`)
             .then(res => {
-                console.log(res.data);
+            
                 refetch()
                 toast.success('This item has been removed from your cart.', {
                     position: "top-right",
@@ -87,7 +87,7 @@ const Cart = () => {
                             </thead>
                             <tbody>
                                 {
-                                    carts?.map((cart, index) => <tr>
+                                    carts?.map((cart, index) => <tr key={index}>
                                         <th>{index + 1}</th>
                                         <td>{cart?.itemName}</td>
                                         <td>{cart?.company}</td>

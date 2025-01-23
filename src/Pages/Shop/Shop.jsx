@@ -41,16 +41,16 @@ const Shop = () => {
             .then(res => {
                 if (res.data.insertedId) {
 
-                    toast.success('The product has been added to your cart.', {
+                    toast.success(`${cartInfo.itemName} has been added to your cart.`, {
                         position: "top-right",
-                        autoClose: 1500,
+                        autoClose: 1000,
 
 
                     });
                 } else {
                     toast.error(res.data.message, {
                         position: "top-right",
-                        autoClose: 1500,
+                        autoClose: 1000,
 
 
                     });
