@@ -14,11 +14,11 @@ const AdminHome = () => {
             return res.data
         }
     })
-    console.log(states);
+   
     return (
         <div className='lg:w-10/12 mx-auto'>
             <Helmet title="HRS | ADMIN HOME" />
-            <h1 className='font-bold text-xl'>Welcome '{user?.displayName}'</h1>
+            <h1 className='font-bold text-xl pt-10'>Welcome '{user?.displayName}'</h1>
 
             <div className="stats border shadow-2xl mt-10 mx-auto flex flex-col  ">
                 {

@@ -7,7 +7,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const AskForAd = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
-    const { data: advertise,refetch } = useQuery({
+    const { data: advertise, refetch } = useQuery({
         queryKey: ['advertise', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/seller/adds/${user?.email}`)
@@ -17,10 +17,18 @@ const AskForAd = () => {
 
     return (
         <div className="w-10/12 mx-auto">
-            <Helmet title="HRS | POST ADS"/>
+            <Helmet title="HRS | POST ADS" />
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
             {
-                advertise?.length <= 0 ? <h1 className="text-2xl font-bold text-center mt-20">No Advertise available now</h1> :
+                advertise?.length <= 0 ? 
+                <div className=" flex flex-col items-center justify-center mt-20 ">
+                    <h1 className="text-2xl font-bold text-gray-800 mb-2">
+                        No Advertisements Found!
+                    </h1>
+                    <p className="text-gray-600 text-center max-w-md">
+                        You haven’t posted any advertisements yet. Start promoting your products or services to reach a wider audience and boost your sales!
+                    </p>
+                </div> :
                     <div className="overflow-x-auto">
                         <table className="table">
                             {/* head */}
@@ -79,7 +87,7 @@ const AskForAd = () => {
                     </div>
             }
             <button onClick={() => document.getElementById('addAdvertice').showModal()}
-                className="btn bg-primary my-10 font-bold">Add Advertice</button>
+                className="btn bg-primary my-10 font-bold">Add Advertise</button>
 
             <AddAdvertice refetch={refetch} />
 

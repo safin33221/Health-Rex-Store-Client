@@ -12,7 +12,7 @@ const UpdateCategoryModal = ({ category, refetch }) => {
     const { register, handleSubmit } = useForm()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
-    console.log(category);
+
 
     const onsubmit = async (data) => {
         const imgFile = { image: data.image[0] }

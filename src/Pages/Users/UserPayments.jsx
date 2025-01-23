@@ -8,10 +8,12 @@ const UserPayments = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
     const { data: paymentsHistory } = useQuery({
-        queryKey: ['payments'],
+        queryKey: ['paymentsHistory', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments/${user?.email}`)
-            return res.data
+            if (user?.email) {
+                const res = await axiosSecure.get(`/payments/${user?.email}`)
+                return res.data
+            }
         }
     })
 
@@ -24,7 +26,7 @@ const UserPayments = () => {
                     <thead className="bg-secondary">
                         <tr>
                             <th></th>
-                       
+
                             <th>Transtion Id</th>
                             <th>Status</th>
                         </tr>
@@ -34,7 +36,7 @@ const UserPayments = () => {
                             paymentsHistory?.map((item, idx) => <tr key={idx}>
                                 <th>{idx + 1}</th>
 
-                                
+
                                 <td>{item?.transtionId}</td>
                                 <td>{item?.status}</td>
 

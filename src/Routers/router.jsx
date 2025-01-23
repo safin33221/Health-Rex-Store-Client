@@ -20,6 +20,7 @@ import PaymentsHistory from "../Pages/Sellers/PaymentsHistory";
 import AdminHome from "../Pages/Admin/AdminHome";
 import CategoryDetails from "../Pages/Category/CategoryDetails";
 import UserPayments from "../Pages/Users/UserPayments";
+import PrivetRoutes from "./PrivetRoutes";
 
 const router = createBrowserRouter([
     {
@@ -40,15 +41,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/cart',
-                element: <Cart />
+                element: <PrivetRoutes><Cart /></PrivetRoutes>
             },
             {
                 path: '/cheackOut',
-                element: <CheackOut />
+                element: <PrivetRoutes><CheackOut /></PrivetRoutes>
             },
             {
                 path: '/invoice',
-                element: <Invoice />
+                element: <PrivetRoutes><Invoice /></PrivetRoutes>
             },
             {
                 path: 'signUp',
@@ -110,7 +111,11 @@ const router = createBrowserRouter([
                 element: <PaymentsHistory />
             },
 
-            //-------manage Users
+
+
+            
+
+            //-------manage Users-----------
             {
                 path: 'userPayments',
                 element: <UserPayments />

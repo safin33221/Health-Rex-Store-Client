@@ -22,7 +22,7 @@ const CheckOutForm = () => {
         if (totalPrice) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(res => {
-                    console.log(res.data.clientSecret);
+                    
                     setClientSecret(res.data.clientSecret)
                 })
         }
@@ -42,10 +42,15 @@ const CheckOutForm = () => {
             card
         })
         if (error) {
-            console.log('error --------->', error);
+            toast.success(error.message, {
+                position: "top-right",
+                autoClose: 1000,
+
+
+            });
         }
         else {
-            console.log('payment methode -------------->', paymentMethod);
+            
         }
 
 
@@ -59,9 +64,14 @@ const CheckOutForm = () => {
             },
         });
         if (cardError) {
-            console.log('confirm error----------->', cardError);
+            toast.success(cardError.message, {
+                position: "top-right",
+                autoClose: 1000,
+
+
+            });
         } else {
-            console.log("payment intents ------------->", paymentIntent);
+            
             if (paymentIntent.status === 'succeeded') {
                 setTranstionId(paymentIntent.id)
                 const payment = {

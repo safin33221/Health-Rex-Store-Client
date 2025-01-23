@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 
 
 const MedicineDetails = ({ medicineDetails }) => {
-    console.log(medicineDetails);
+    
 
     return (
         <dialog id="medicinesDetails" className="modal modal-middle     mx-auto">

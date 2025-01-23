@@ -76,7 +76,7 @@ const Shop = () => {
                     </thead>
                     <tbody>
                         {
-                            medicines?.map((medicine, index) => <tr className="bg-base-200">
+                            medicines?.map((medicine, index) => <tr key={index} className="bg-base-200">
                                 <th>{index + 1}</th>
                                 <td>{medicine?.itemName}</td>
                                 <td>{medicine?.category}</td>

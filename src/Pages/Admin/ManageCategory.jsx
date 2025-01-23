@@ -13,7 +13,7 @@ const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const [category, setCategory] = useState({})
-    const { data: categoris, refetch } = useQuery({
+    const { data: categoris =[], refetch } = useQuery({
         queryKey: ['categoris'],
         queryFn: async () => {
             const res = await axiosPublic.get('/category')

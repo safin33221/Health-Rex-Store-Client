@@ -31,6 +31,7 @@ const Sliders = () => {
                 loop={Infinity}
                 autoplay={{
                     delay: 10,
+                    pauseOnMouseEnter:true
                     
 
 
