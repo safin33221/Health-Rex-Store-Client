@@ -22,6 +22,7 @@ import CategoryDetails from "../Pages/Category/CategoryDetails";
 import UserPayments from "../Pages/Users/UserPayments";
 import PrivetRoutes from "./PrivetRoutes";
 import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 const router = createBrowserRouter([
     {
@@ -97,19 +98,19 @@ const router = createBrowserRouter([
             //manage seller
             {
                 path: 'sellerHome',
-                element: <SellerHome />
+                element: <SellerRoute><SellerHome /></SellerRoute>
             },
             {
                 path: 'manageMedicines',
-                element: <ManageMedicines />
+                element: <SellerRoute> <ManageMedicines /></SellerRoute>
             },
             {
                 path: 'askForAd',
-                element: <AskForAd />
+                element: <SellerRoute><AskForAd /></SellerRoute>
             },
             {
                 path: 'paymentsHistory',
-                element: <PaymentsHistory />
+                element: <SellerRoute><PaymentsHistory /></SellerRoute>
             },
 
 
