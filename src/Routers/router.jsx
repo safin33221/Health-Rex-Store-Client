@@ -21,6 +21,7 @@ import AdminHome from "../Pages/Admin/AdminHome";
 import CategoryDetails from "../Pages/Category/CategoryDetails";
 import UserPayments from "../Pages/Users/UserPayments";
 import PrivetRoutes from "./PrivetRoutes";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -68,27 +69,27 @@ const router = createBrowserRouter([
             //Manage Admin
             {
                 path: 'adminHome',
-                element: <AdminHome />
+                element: <AdminRoute><AdminHome /></AdminRoute>
             },
             {
                 path: 'manageUsers',
-                element: <ManageUsers />
+                element: <AdminRoute><ManageUsers /></AdminRoute>
             },
             {
                 path: 'manageAdvertise',
-                element: <ManageAdvertise />
+                element: <AdminRoute><ManageAdvertise /></AdminRoute>
             },
             {
                 path: 'manageCategory',
-                element: <ManageCategory />
+                element: <AdminRoute><ManageCategory /></AdminRoute>
             },
             {
                 path: 'managePayments',
-                element: <PaymentManageMent />
+                element: <AdminRoute><PaymentManageMent /></AdminRoute>
             },
             {
                 path: 'salesReport',
-                element: <SalesReports />
+                element: <AdminRoute><SalesReports /></AdminRoute>
             },
 
 
@@ -113,7 +114,7 @@ const router = createBrowserRouter([
 
 
 
-            
+
 
             //-------manage Users-----------
             {
