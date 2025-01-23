@@ -40,17 +40,29 @@ const CategoryDetails = () => {
         }
         axiosSecure.post('/carts', cartInfo)
             .then(res => {
-                console.log(res.data);
-                toast.success('The product has been added to your cart.', {
-                    position: "top-right",
-                    autoClose: 1500,
+                if (res.data.insertedId) {
+
+                    toast.success('The product has been added to your cart.', {
+                        position: "top-right",
+                        autoClose: 1500,
 
 
-                });
+                    });
+                } else {
+                    toast.error(res.data.message, {
+                        position: "top-right",
+                        autoClose: 1500,
+
+
+                    });
+                };
             })
     }
     return (
-        <div className=' w-11/12 mx-auto'>
+        <div className=' w-11/12 mx-auto py-5'>
+            <h1 className="text-2xl md:text-4xl py-3 font-bold text-gray-800">
+               Category: {category} 
+            </h1>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">
                     {/* head */}

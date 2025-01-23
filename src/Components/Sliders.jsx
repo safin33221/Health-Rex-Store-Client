@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
@@ -25,7 +25,19 @@ const Sliders = () => {
 
     return (
         <div className='w-full'>
-            <Swiper navigation={true} modules={[Navigation]} className=" w-full ">
+            <Swiper 
+            navigation={true} modules={[Navigation,Autoplay]}
+                speed={5000}
+                loop={Infinity}
+                autoplay={{
+                    delay: 10,
+                    
+
+
+
+                }}
+               
+                className=" w-full ">
                 {
                     slides?.map(slide => <SwiperSlide><img src={slide?.image} className='w-full' alt="" /></SwiperSlide>)
                 }

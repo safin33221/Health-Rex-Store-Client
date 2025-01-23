@@ -129,7 +129,7 @@ const AddMedicine = ({ refetch }) => {
                         </label>
                         <label className="  flex items-center gap-2 mb-4">
 
-                            <input {...register("discountPercentage")} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="Discount Percentage	" />
+                            <input {...register("discountPercentage")} defaultValue={0} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="Discount Percentage	" />
 
                         </label>
 

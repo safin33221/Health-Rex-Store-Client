@@ -51,7 +51,8 @@ const Cart = () => {
     const handleClearAll = email => {
         axiosSecure.delete(`/deletedAll/${email}`)
             .then(res => {
-                console.log(res.data)
+
+
                 toast.success('Your cart is cleared! Shop for more amazing items.', {
                     position: "top-right",
                     autoClose: 1500,
@@ -59,6 +60,7 @@ const Cart = () => {
 
                 });
                 refetch()
+ 
             })
     }
     return (

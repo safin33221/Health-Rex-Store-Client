@@ -1,16 +1,20 @@
 import { Helmet } from "react-helmet-async";
 import Sliders from "../../Components/Sliders";
 import CategoryCard from "./CategoryCard";
+import DiscountsProducts from "./DiscountsProducts";
 
 const Home = () => {
     return (
         <div className="">
-            <Helmet title="HRS | HOME"/>
+            <Helmet title="HRS | HOME" />
             <section>
-                <Sliders/>
+                <Sliders />
             </section>
             <section>
-                <CategoryCard/>
+                <CategoryCard />
+            </section>
+            <section>
+                <DiscountsProducts />
             </section>
         </div>
     );
