@@ -25,7 +25,7 @@ const ManageAdvertise = () => {
     }
 
     return (
-        <div className="w-10/12 py-10 mx-auto">
+        <div className="lg:w-10/12 py-20 mx-auto">
             <Helmet title="HRS | MANAGE ADVERTISE"/>
             <div className="overflow-x-auto">
                 <table className="table">

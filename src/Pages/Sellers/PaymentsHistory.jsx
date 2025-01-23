@@ -16,7 +16,7 @@ const PaymentsHistory = () => {
     })
     console.log(paymentsHistory);
     return (
-        <div className="w-10/12 mx-auto py-10">
+        <div className="w-10/12 mx-auto py-20">
             <Helmet title="HRS | PAYMENT HISTORY"/>
             <div className="overflow-x-auto">
                 <table className="table">

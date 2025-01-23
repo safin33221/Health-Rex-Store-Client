@@ -16,13 +16,14 @@ const AdminHome = () => {
     })
     console.log(states);
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='lg:w-10/12 mx-auto'>
             <Helmet title="HRS | ADMIN HOME" />
             <h1 className='font-bold text-xl'>Welcome '{user?.displayName}'</h1>
 
-            <div className="stats shadow mt-10 mx-auto ">
+            <div className="stats border shadow-2xl mt-10 mx-auto flex flex-col  ">
                 {
-                    states?.map((state, idx) => <div key={idx} className="stat">
+                    states?.map((state, idx) => 
+                    <div key={idx} className="stat  ">
 
                         <div className="stat-title">{state._id}</div>
                         <div className="stat-value">{state.revenue} BTD</div>

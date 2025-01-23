@@ -25,7 +25,7 @@ const PaymentManageMent = () => {
     }
     console.log(payments);
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='lg:w-10/12 mt-14 mx-auto overflow-x-hidden'>
             <Helmet title="HRS | MANAGE PAYMENTS"/>
             <h1 className='text-2xl font-bold py-3'>Manage payments</h1>
             <div className="overflow-x-auto">
