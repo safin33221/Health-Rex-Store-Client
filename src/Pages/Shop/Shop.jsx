@@ -68,7 +68,6 @@ const Shop = () => {
                 <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div>
                     <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
-                        
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
