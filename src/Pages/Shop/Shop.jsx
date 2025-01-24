@@ -14,14 +14,16 @@ const Shop = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [search, setSearch] = useState('')
+    const [sort, setSort] = useState('')
     const [medicineDetails, setMedicineDetails] = useState(null)
     const { data: medicines } = useQuery({
-        queryKey: ['medicines',search],
+        queryKey: ['medicines', search, sort],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/medicines?search=${search}`)
+            const res = await axiosPublic.get(`/medicines?search=${search}&&sort=${sort}`)
             return res.data
         }
     })
+
     const handleDetails = medicine => {
         setMedicineDetails(medicine);
         document.getElementById('medicinesDetails').showModal()
@@ -58,13 +60,20 @@ const Shop = () => {
                 }
             })
     }
-    console.log(search);
+    console.log(sort);
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
             <Helmet title="HRS | SHOP" />
             <div className="flex justify-between items-center py-5">
                 <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
-                <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine" type="text" className="input focus:outline-none input-bordered" />
+                <div>
+                    <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
+                        
+                        <option value="ascending">Ascending</option>
+                        <option value="dscending">Dscending</option>
+                    </select>
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary" />
+                </div>
             </div>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">
@@ -76,7 +85,7 @@ const Shop = () => {
                             <th>Generic Name</th>
                             <th>Category</th>
                             <th>Company</th>
-                            <th></th>
+                            <th>Price Per Unite</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -88,7 +97,7 @@ const Shop = () => {
                                 <td>{medicine?.genericName}</td>
                                 <td>{medicine?.category}</td>
                                 <td>{medicine?.company}</td>
-                                <td></td>
+                                <td>{medicine.pricePerUnit} BTD</td>
                                 <td>
                                     <button onClick={() => handleAddToCart(medicine)} className="btn">Select</button>
                                     <button onClick={() => handleDetails(medicine)} className="btn ml-4"><FaEye /></button>
