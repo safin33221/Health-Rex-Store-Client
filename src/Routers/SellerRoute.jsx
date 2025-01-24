@@ -5,7 +5,7 @@ import Loader from "../Components/Loader";
 
 
 const SellerRoute = ({ children }) => {
-    const { user, isloading } = useAuth()
+    const { user, isloading, sigoutUser } = useAuth()
     const [role, isPending] = useRole()
     const navigate = useNavigate()
     const isSeller = role === 'seller'
@@ -15,7 +15,10 @@ const SellerRoute = ({ children }) => {
     if (user && isSeller) {
         return children
     }
-    return navigate('/signIn')
+    else {
+        sigoutUser()
+        return navigate('/signIn')
+    }
 };
 
 export default SellerRoute;

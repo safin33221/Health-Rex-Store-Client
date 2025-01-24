@@ -9,7 +9,7 @@ const stripePromice = loadStripe(import.meta.env.VITE_Payment_gayway_pk)
 const CheackOut = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
-    const { data: carts, refetch } = useQuery({
+    const { data: carts =[], refetch } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/carts/${user?.email}`)
@@ -18,6 +18,7 @@ const CheackOut = () => {
         }
 
     })
+    console.log(carts);
     const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity , 0)
     return (
         <div className='w-11/12 mx-auto'>

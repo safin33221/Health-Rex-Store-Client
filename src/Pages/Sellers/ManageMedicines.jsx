@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useState } from "react";
+
 
 const ManageMedicines = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
+    const [search, setSearch] = useState('')
     const { data: medicines, refetch } = useQuery({
-        queryKey: ['medicines', user?.email],
+        queryKey: ['medicines', user?.email, search],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/seller/medicine/${user?.email}`)
+            const res = await axiosSecure.get(`/seller/medicine/${user?.email}?search=${search}`)
             return res.data
         }
     })
@@ -50,7 +53,10 @@ const ManageMedicines = () => {
     return (
         <div className='w-10/12 mx-auto py-10'>
             <Helmet title="HRS | MANAGE MEDICINES" />
-            <h1 className="text-xl ">Total Medicines :{medicines?.length}</h1>
+            <div className="flex justify-between items-center py-5">
+                <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
+                <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine" type="text" className="input focus:outline-none input-bordered" />
+            </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
@@ -58,6 +64,7 @@ const ManageMedicines = () => {
                         <tr className="bg-secondary">
                             <th>No.</th>
                             <th>Medicine Name</th>
+                            <th>Generic Name</th>
                             <th>Category</th>
                             <th>Mass Unit</th>
                             <th>Price Per Unite</th>
@@ -69,12 +76,13 @@ const ManageMedicines = () => {
                             medicines?.map((medicine, idx) => <tr key={medicine._id}>
                                 <th>{idx + 1}</th>
                                 <td>{medicine.itemName}</td>
+                                <td>{medicine?.genericName}</td>
                                 <td>{medicine.category}</td>
                                 <td>{medicine.massUnit}</td>
                                 <td>{medicine.pricePerUnit} BTD</td>
                                 <td>
-                                    <button onClick={() => handleDelete(medicine._id)} className="btn-sm"><FaTrashAlt /></button>
-                                    
+                                    <button onClick={() => handleDelete(medicine._id)} className="btn-sm hover:text-red-500 duration-300"><FaTrashAlt /></button>
+
                                 </td>
 
                             </tr>)

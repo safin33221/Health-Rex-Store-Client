@@ -13,11 +13,12 @@ const Shop = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
+    const [search, setSearch] = useState('')
     const [medicineDetails, setMedicineDetails] = useState(null)
     const { data: medicines } = useQuery({
-        queryKey: ['medicines'],
+        queryKey: ['medicines',search],
         queryFn: async () => {
-            const res = await axiosPublic.get('/medicines')
+            const res = await axiosPublic.get(`/medicines?search=${search}`)
             return res.data
         }
     })
@@ -37,7 +38,7 @@ const Shop = () => {
             quantity: 1
 
         }
-        axiosSecure.post('/carts', cartInfo)
+        axiosSecure.post(`/carts`, cartInfo)
             .then(res => {
                 if (res.data.insertedId) {
 
@@ -57,10 +58,14 @@ const Shop = () => {
                 }
             })
     }
+    console.log(search);
     return (
         <div className="w-11/12 mx-auto mt-24 py-5">
             <Helmet title="HRS | SHOP" />
-            <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
+            <div className="flex justify-between items-center py-5">
+                <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
+                <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine" type="text" className="input focus:outline-none input-bordered" />
+            </div>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">
                     {/* head */}
@@ -68,6 +73,7 @@ const Shop = () => {
                         <tr className=" bg-secondary">
                             <th></th>
                             <th>Medicine Name</th>
+                            <th>Generic Name</th>
                             <th>Category</th>
                             <th>Company</th>
                             <th></th>
@@ -79,6 +85,7 @@ const Shop = () => {
                             medicines?.map((medicine, index) => <tr key={index} className="bg-base-200">
                                 <th>{index + 1}</th>
                                 <td>{medicine?.itemName}</td>
+                                <td>{medicine?.genericName}</td>
                                 <td>{medicine?.category}</td>
                                 <td>{medicine?.company}</td>
                                 <td></td>

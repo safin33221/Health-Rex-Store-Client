@@ -5,7 +5,7 @@ import useRole from "../Hooks/useRole";
 
 
 const AdminRoute = ({ children }) => {
-    const { user, isloading } = useAuth()
+    const { user, isloading, sigoutUser } = useAuth()
     const [role, isPending] = useRole()
     const navigate = useNavigate()
     const isAdmin = role === 'admin'
@@ -15,7 +15,10 @@ const AdminRoute = ({ children }) => {
     if (user && isAdmin) {
         return children
     }
-    return navigate('/signIn')
+    else {
+        sigoutUser()
+        return navigate('/signIn')
+    }
 
 
 };

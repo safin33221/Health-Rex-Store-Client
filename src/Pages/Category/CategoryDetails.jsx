@@ -15,13 +15,15 @@ const CategoryDetails = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const [medicineDetails, setMedicineDetails] = useState(null)
+    const [search, setSearch] = useState('')
     const { data: medicines } = useQuery({
-        queryKey: ['categories', category],
+        queryKey: ['categories', category, search],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/categories/${category}`)
+            const res = await axiosPublic.get(`/categories/${category}?search=${search}`)
             return res.data
         }
     })
+    console.log(search);
     const handleDetails = medicine => {
         setMedicineDetails(medicine);
         document.getElementById('medicinesDetails').showModal()
@@ -60,9 +62,13 @@ const CategoryDetails = () => {
     }
     return (
         <div className=' w-11/12 mx-auto py-5'>
-            <h1 className="text-2xl md:text-4xl py-3 font-bold text-gray-800">
-               Category: {category} 
-            </h1>
+
+            <div className="flex justify-between items-center py-5">
+                <h1 className="text-2xl md:text-3xl py-3 font-bold text-gray-800">
+                    Category: {category}
+                </h1>
+                <input onChange={(e) => setSearch(e.target.value)} placeholder="sarch medicine" type="text" className="input focus:outline-none input-bordered" />
+            </div>
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">
                     {/* head */}
@@ -72,6 +78,8 @@ const CategoryDetails = () => {
                             <th></th>
                             <th></th>
                             <th>Medicine Name</th>
+                            <th></th>
+                            <th>Generic Name </th>
                             <th></th>
                             <th>Category</th>
                             <th></th>
@@ -87,6 +95,8 @@ const CategoryDetails = () => {
                                 <th>{index + 1}</th>
                                 <td></td>
                                 <td>{medicine?.itemName}</td>
+                                <td></td>
+                                <td>{medicine?.genericName}</td>
                                 <td></td>
                                 <td>{medicine?.category}</td>
                                 <td></td>

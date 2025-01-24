@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay,Pagination } from 'swiper/modules';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
@@ -26,7 +26,7 @@ const Sliders = () => {
     return (
         <div className='w-full'>
             <Swiper 
-            navigation={true} modules={[Navigation,Autoplay]}
+            navigation={true} modules={[Navigation,Autoplay,Pagination]}
                 speed={5000}
                 loop={Infinity}
                 autoplay={{

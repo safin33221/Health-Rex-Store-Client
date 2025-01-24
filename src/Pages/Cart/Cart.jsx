@@ -7,16 +7,18 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 
 const Cart = () => {
     const { user, setCart } = useAuth()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
-    const { data: carts, refetch } = useQuery({
-        queryKey: ['carts', user?.email],
+    const [search, setSearch] = useState('')
+    const { data: carts =[], refetch } = useQuery({
+        queryKey: ['carts', user?.email, search],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/carts/${user?.email}`)
+            const res = await axiosSecure.get(`/carts/${user?.email}?search=${search}`)
             setCart(res.data)
             return res.data
         }
@@ -31,14 +33,14 @@ const Cart = () => {
         }
         axiosSecure.patch(`/cart/quantity/${cart?._id}`, updateInfo)
             .then(res => {
-                
+
                 refetch()
             })
     }
     const handleDeleted = id => {
         axiosSecure.delete(`/cart/${id}`)
             .then(res => {
-            
+
                 refetch()
                 toast.success('This item has been removed from your cart.', {
                     position: "top-right",
@@ -60,22 +62,31 @@ const Cart = () => {
 
                 });
                 refetch()
- 
+
             })
     }
+    console.log(carts);
     return (
         <div className="w-10/12 mx-auto">
             <Helmet title="HRS | CART" />
+
             {
-                carts?.length <= 0 ? <>
+                carts?.length < 0 ? <>
                     <h1 className="text-center text-3xl font-bold mt-64">No medicine in your cart yet. Browse and add some!</h1></> :
                     <div className="overflow-x-auto">
+                        <div className="flex justify-between items-center py-5">
+                            <h1 className="text-xl md:text-2xl py-3 font-bold text-gray-800">
+                                Total: {carts?.length}
+                            </h1>
+                            <input onChange={(e) => setSearch(e.target.value)} placeholder="sarch medicine" type="text" className="input focus:outline-none input-bordered" />
+                        </div>
                         <table className="table table-zebra">
                             {/* head */}
                             <thead>
                                 <tr>
                                     <th></th>
                                     <th>Name</th>
+                                   
                                     <th>Company</th>
                                     <th>Per Unit Price</th>
                                     <th>Quantity</th>
@@ -90,6 +101,7 @@ const Cart = () => {
                                     carts?.map((cart, index) => <tr key={index}>
                                         <th>{index + 1}</th>
                                         <td>{cart?.itemName}</td>
+                                 
                                         <td>{cart?.company}</td>
                                         <td>{cart?.pricePerUnit} tk</td>
                                         <td>
@@ -109,9 +121,9 @@ const Cart = () => {
 
                             </tbody>
                         </table>
-                        <Link to='/cheackOut'>
-                            <button className="btn bg-primary my-5">Check Out</button>
-                        </Link>
+                        
+                            <button disabled={carts.length === 0} className="btn bg-primary my-5"><Link to='/cheackOut'>Check Out</Link></button>
+               
                     </div>
             }
         </div>
