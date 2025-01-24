@@ -15,10 +15,11 @@ const ManageMedicines = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [search, setSearch] = useState('')
+    const [sort, setSort] = useState('')
     const { data: medicines, refetch } = useQuery({
-        queryKey: ['medicines', user?.email, search],
+        queryKey: ['medicines', user?.email, search, sort],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/seller/medicine/${user?.email}?search=${search}`)
+            const res = await axiosSecure.get(`/seller/medicine/${user?.email}?search=${search}&&sort=${sort}`)
             return res.data
         }
     })
@@ -55,7 +56,13 @@ const ManageMedicines = () => {
             <Helmet title="HRS | MANAGE MEDICINES" />
             <div className="flex justify-between items-center py-5">
                 <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
-                <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine" type="text" className="input focus:outline-none input-bordered" />
+                <div>
+                    <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
+                        <option value="ascending">Ascending</option>
+                        <option value="dscending">Dscending</option>
+                    </select>
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary" />
+                </div>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

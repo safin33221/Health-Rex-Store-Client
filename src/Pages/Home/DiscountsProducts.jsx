@@ -100,11 +100,11 @@ const DiscountsProducts = () => {
                         slidesPerView: 4, // 3 slides on larger screens
                     },
                 }}
-                className="mySwiper my-10 "
+                className="mySwiper my-10 py-10 "
             >
                 {
                     products.map(product => <SwiperSlide key={product._id}>
-                        <div className="bg-white h-full shadow-lg rounded-lg overflow-hidden border border-secondary">
+                        <div className="bg-white h-full shadow-lg rounded-lg overflow-hidden border border-secondary hover:shadow-2xl  transition-all duration-300">
                             <div className="relative">
                                 <img src={product.image} alt={product.itemName} className="w-full h-40 object-cover" />
                                 <span className="absolute top-3 left-3 bg-red-500 text-white text-sm font-semibold px-2 py-1 rounded-lg">
