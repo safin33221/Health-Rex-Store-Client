@@ -10,12 +10,12 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { Navigation, Autoplay,Pagination } from 'swiper/modules';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: slides } = useQuery({
+    const { data: slides=[] } = useQuery({
         queryKey: ['slides'],
         queryFn: async () => {
             const res = await axiosPublic.get('/addvertise/success')
@@ -25,19 +25,26 @@ const Sliders = () => {
 
     return (
         <div className='w-full'>
-            <Swiper 
-            navigation={true} modules={[Navigation,Autoplay,Pagination]}
-                speed={5000}
+            <Swiper
+                speed={7000}
                 loop={Infinity}
                 autoplay={{
                     delay: 10,
-                    pauseOnMouseEnter:true
+                    pauseOnMouseEnter: true
                     
-
-
-
+                    
+                    
+                    
                 }}
-               
+                pagination={{
+                    clickable: true,
+                }}
+                navigation={{
+                    clickable:true
+                }} 
+                modules={[Navigation, Autoplay, Pagination]}
+                
+
                 className=" w-full ">
                 {
                     slides?.map(slide => <SwiperSlide key={slide._id}><img src={slide?.image} className='w-full' alt="" /></SwiperSlide>)

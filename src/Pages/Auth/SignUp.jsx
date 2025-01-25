@@ -9,10 +9,13 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const SignUp = () => {
     const axiosPublic = useAxiosPublic()
+    const [showPass, setShowPass] = useState(false)
     const { createUserwithEmail, updateUserProfile } = useAuth()
     const navigate = useNavigate()
     const {
@@ -42,8 +45,8 @@ const SignUp = () => {
                             time: moment().format('LLL')
                         }
                         axiosPublic.post('/users', userInfo)
-                            .then(res => {  
-                               
+                            .then(res => {
+
                                 Swal.fire({
                                     position: "top-end",
                                     icon: "success",
@@ -59,7 +62,7 @@ const SignUp = () => {
     }
     return (
         <div className="pt-24">
-            <Helmet title="HRS | SIGN UP"/>
+            <Helmet title="HRS | SIGN UP" />
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
                     <h1 className="text-3xl font-bold text-center py-5">SignUp Now!</h1>
@@ -94,7 +97,7 @@ const SignUp = () => {
                         </svg>
                         <input {...register("email")} required type="email" className=" focus::outline-none" placeholder="Email" />
                     </label>
-                    <label className="input input-bordered flex items-center gap-2 mb-4">
+                    <label className="input input-bordered flex items-center gap-2 mb-4 relative">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"
@@ -105,7 +108,8 @@ const SignUp = () => {
                                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                                 clipRule="evenodd" />
                         </svg>
-                        <input {...register("password")} required type="password" className=" focus:outline-none" placeholder="password" />
+                        <input {...register("password")} type={showPass ? 'text' : 'password'} className=" focus:outline-none" placeholder="password " />
+                        <button type='button' className='absolute right-3 top-4' onClick={() => setShowPass(!showPass)}>{showPass ? <FaEye /> : <FaEyeSlash />}</button>
                     </label>
                     <label className="flex items-center gap-2 mb-4">
                         <input {...register('role')} required type="radio" name="role" value="user" />

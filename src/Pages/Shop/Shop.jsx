@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaEye } from "react-icons/fa";
 import MedicineDetails from "./MedicineDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import moment from "moment";
 import { Helmet } from "react-helmet-async";
@@ -16,13 +16,32 @@ const Shop = () => {
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('')
     const [medicineDetails, setMedicineDetails] = useState(null)
+    const [currentPage, setCurrentPage] = useState(0)
+    const [count, setCount] = useState(0)
+    const itemPerPages = 10
     const { data: medicines } = useQuery({
-        queryKey: ['medicines', search, sort],
+        queryKey: ['medicines', search, sort, currentPage, itemPerPages],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/medicines?search=${search}&&sort=${sort}`)
+            const res = await axiosPublic.get(`/medicines?search=${search}&sort=${sort}&page=${currentPage}&size=${itemPerPages}`)
             return res.data
         }
     })
+
+    useEffect(() => {
+        axiosPublic.get('/medicineCounts')
+            .then(res => {
+                setCount(res.data)
+            })
+    }, [])
+
+
+
+
+    const numberOfPages = Math.ceil(count.count / itemPerPages)
+    const pages = [...Array(Number(numberOfPages) || 0).keys()];
+
+
+
 
     const handleDetails = medicine => {
         setMedicineDetails(medicine);
@@ -60,7 +79,7 @@ const Shop = () => {
                 }
             })
     }
-
+    console.log(currentPage);
     return (
         <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />
@@ -106,10 +125,28 @@ const Shop = () => {
 
 
                     </tbody>
+
                 </table>
+                <div className="m-5">
+                    <button
+                        onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : currentPage)}
+                        className="btn">Prev</button>
+                    {
+                        pages?.map((page, idx) => <div key={idx} className=" join">
+                            <button
+                                className={`join-item btn mx-2 ${currentPage === page && 'bg-secondary'}`}
+                                onClick={() => setCurrentPage(page)}
+                            >{page}</button>
+
+                        </div>)
+                    }
+                    <button
+                        onClick={() => setCurrentPage(currentPage < pages.length-1 ? currentPage  + 1 : currentPage)}
+                        className="btn">Prev</button>
+                </div>
             </div>
             <MedicineDetails medicineDetails={medicineDetails} />
-        </div>
+        </div >
     );
 };
 
