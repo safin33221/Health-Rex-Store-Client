@@ -3,6 +3,7 @@ import Sliders from "../../Components/Sliders";
 import CategoryCard from "./CategoryCard";
 import DiscountsProducts from "./DiscountsProducts";
 import Testimonials from "./Testimonials";
+import Fqa from "./Fqa";
 
 const Home = () => {
     return (
@@ -19,6 +20,9 @@ const Home = () => {
             </section>
             <section>
                 <Testimonials />
+            </section>
+            <section>
+                <Fqa />
             </section>
         </div>
     );

@@ -150,7 +150,7 @@ const Invoice = () => {
     );
 
     return (
-        <div className="w-10/12 mx-auto ">
+        <div className="w-10/12 mx-auto mt-24 ">
             <Helmet title="HRS | INVOICE" />
             <div className="text-right my-10">
                 <PDFDownloadLink
