@@ -24,11 +24,13 @@ import PrivetRoutes from "./PrivetRoutes";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import Profile from "../Pages/Shared/Profile";
+import ErrorPage from "../Pages/Shared/ErrorPage ";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement:<ErrorPage/>,
         children: [
             {
                 path: '/',
