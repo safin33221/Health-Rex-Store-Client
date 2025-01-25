@@ -8,8 +8,8 @@ HealthRex Store is a cutting-edge medicine e-commerce website offering a wide ra
 ---
 
 ## 🛠️ Admin Credentials
-- **Username:** admin@gmail.com  
-- **Password:** admin@password
+- **Username:** admin@gmail.com
+- **Password:** admin@gmail.com
 
 ---
 
@@ -24,7 +24,7 @@ HealthRex Store is a cutting-edge medicine e-commerce website offering a wide ra
 7. **Order Tracking**: Users can track the status of their orders in real time.
 8. **Responsive Design**: Optimized for both desktop and mobile devices.
 9. **Discounts & Offers**: Highlighted sections for promotional deals and discounts on medicines.
-10. **24/7 Customer Support**: Easy access to customer support for queries and assistance.
+10. **offers and discounts**: Special offers and discounts showcased prominently for users.
 
 ---
 

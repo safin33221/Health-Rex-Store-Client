@@ -16,7 +16,7 @@ const CheckOutForm = () => {
     const navigate = useNavigate()
     const [clientSecret, setClientSecret] = useState('')
     const [transtionId, setTranstionId] = useState('')
-    const totalPrice = carts?.reduce((total, item) => total + parseInt(item.pricePerUnit * item.quantity), 0)
+    const totalPrice = carts?.reduce((total, item) => total + parseInt(item.pricePerUnit * item.quantityk), 0)
 
 
     useEffect(() => {
