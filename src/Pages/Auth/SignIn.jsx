@@ -18,7 +18,6 @@ const SignIn = () => {
 
     } = useForm()
     const onsubmit = async (data) => {
-        console.log(data);
         signInuser(data.email, data.password)
             .then(res => {
                 Swal.fire({
@@ -34,7 +33,7 @@ const SignIn = () => {
     const hanldeGoogleSignIn = () => {
         siginUserWithGoogle()
             .then(res => {
-                console.log(res.user);
+        
                 const userInfo = {
                     name: res.user?.displayName,
                     email: res.user?.email,
@@ -44,7 +43,7 @@ const SignIn = () => {
                 }
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
-                        console.log(res.data);
+                      
                         Swal.fire({
                             position: "top-end",
                             icon: "success",

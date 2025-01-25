@@ -21,7 +21,7 @@ const ManageCategory = () => {
         }
     })
     const handleDelete = id => {
-        console.log(id);
+   
         Swal.fire({
             
             text: `Are You sure to deleted this category`,
@@ -35,7 +35,7 @@ const ManageCategory = () => {
 
                 axiosSecure.delete(`/category/${id}`)
                     .then(res => {
-                        console.log(res.data)
+                   
                         refetch()
                     })
                 Swal.fire({

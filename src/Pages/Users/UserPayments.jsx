@@ -18,9 +18,10 @@ const UserPayments = () => {
     })
 
     return (
-        <div className='w-10/12 mx-auto py-10'>
+        <div className='md:w-10/12 mx-auto py-9'>
             <Helmet title="HRS | PAYMENT HISTORY" />
-            <div className="overflow-x-auto">
+            <h1 className="text-2xl font-bold ml-20">Payments History</h1>
+            <div className="overflow-x-auto min-w-96 mt-10">
                 <table className="table">
                     {/* head */}
                     <thead className="bg-secondary">

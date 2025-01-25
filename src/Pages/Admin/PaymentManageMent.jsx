@@ -19,7 +19,7 @@ const PaymentManageMent = () => {
     const handleAccept = id => {
         axiosSecure.patch(`/payment/${id}`)
             .then(res => {
-                console.log(res.data);
+       
                 refetch()
             })
     }

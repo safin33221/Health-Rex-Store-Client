@@ -26,7 +26,7 @@ const Testimonials = () => {
             return res.data
         }
     })
-    console.log(testimonials);
+   
     return (
         <div className='w-11/12 mx-auto pb-10 '>
             <div className="text-center mb-10">

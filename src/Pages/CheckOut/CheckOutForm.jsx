@@ -17,7 +17,7 @@ const CheckOutForm = () => {
     const [clientSecret, setClientSecret] = useState('')
     const [transtionId, setTranstionId] = useState('')
     const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0)
-    console.log(totalPrice);
+   
 
     useEffect(() => {
         if (totalPrice) {
@@ -91,7 +91,7 @@ const CheckOutForm = () => {
                 }
                 axiosSecure.post('/payment', payment)
                     .then(res => {
-                        console.log(res.data)
+                   
                         setPaymentsDetails(payment)
                         toast.success('Thank You for Your Payment!', {
                             position: "top-center",

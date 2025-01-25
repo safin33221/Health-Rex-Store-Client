@@ -65,9 +65,9 @@ const Cart = () => {
 
             })
     }
-    console.log(carts);
+
     return (
-        <div className="w-10/12 mx-auto">
+        <div className="md:w-10/12 mx-auto">
             <Helmet title="HRS | CART" />
 
             {
@@ -82,8 +82,8 @@ const Cart = () => {
                         </div>
                         <table className="table table-zebra">
                             {/* head */}
-                            <thead>
-                                <tr>
+                            <thead className="bg-secondary rounded-lg" >
+                                <tr >
                                     <th></th>
                                     <th>Name</th>
                                    

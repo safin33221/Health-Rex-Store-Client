@@ -24,7 +24,6 @@ const ManageMedicines = () => {
         }
     })
     const handleDelete = id => {
-        console.log(id);
         Swal.fire({
 
             text: `Are You sure to deleted this medicene`,
@@ -38,7 +37,6 @@ const ManageMedicines = () => {
 
                 axiosSecure.delete(`/medicine/delete/${id}`)
                     .then(res => {
-                        console.log(res.data);
                         refetch()
                         Swal.fire({
                             title: "Success!",

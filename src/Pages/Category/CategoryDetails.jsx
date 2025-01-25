@@ -18,13 +18,13 @@ const CategoryDetails = () => {
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('')
     const { data: medicines } = useQuery({
-        queryKey: ['categories', category, search,sort],
+        queryKey: ['categories', category, search, sort],
         queryFn: async () => {
             const res = await axiosPublic.get(`/categories/${category}?search=${search}&&sort=${sort}`)
             return res.data
         }
     })
-    console.log(search);
+
     const handleDetails = medicine => {
         setMedicineDetails(medicine);
         document.getElementById('medicinesDetails').showModal()
@@ -64,16 +64,14 @@ const CategoryDetails = () => {
     return (
         <div className=' w-11/12 mx-auto py-5'>
 
-            <div className="flex justify-between items-center py-5">
-                <h1 className="text-2xl md:text-3xl py-3 font-bold text-gray-800">
-                    Category: {category}
-                </h1>
-                <div>
-                    <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
+            <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
+                <h1 className="text-lg md:text-2xl font-bold">Category: {category}</h1>
+                <div className="felx gap-x-10" >
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl focus:outline-none border-secondary select-sm md:select-lg" name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
-                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary" />
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
                 </div>
             </div>
             <div className="overflow-x-auto rounded-lg">
@@ -83,7 +81,7 @@ const CategoryDetails = () => {
                         <tr className=" bg-secondary">
                             <th></th>
                             <th>Medicine Name</th>
-                           
+
                             <th>Generic Name </th>
                             <th>Category</th>
                             <th>Company</th>

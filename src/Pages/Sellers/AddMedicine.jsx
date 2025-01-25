@@ -44,7 +44,6 @@ const AddMedicine = ({ refetch }) => {
         };
         axiosSecure.post('/medicines', medicineInfo)
             .then(res => {
-                console.log(res.data);
                 refetch()
                 toast.success('Your new medicine has been added to the inventory.', {
                     position: "top-right",

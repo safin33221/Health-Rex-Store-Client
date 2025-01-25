@@ -28,7 +28,6 @@ const UpdateCategoryModal = ({ category, refetch }) => {
         }
         axiosSecure.patch(`/category/${category?._id}`, categoryInfo)
             .then(res => {
-                console.log(res.data);
                 refetch()
                 document.getElementById('updateCategory').close()
                 toast.success('Category Updated Successfully!', {

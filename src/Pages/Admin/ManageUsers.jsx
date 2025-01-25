@@ -31,7 +31,7 @@ const ManageUsers = () => {
 
                 axiosSecure.patch(`/user/role/${user?.email}`, data)
                     .then(res => {
-                        console.log(res.data);
+       
                     })
                 Swal.fire({
                     title: "Success!",

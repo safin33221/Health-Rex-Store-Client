@@ -12,7 +12,6 @@ const AddAdvertice = ({ refetch }) => {
     
     const axiosSecure = useAxiosSecure()
     const onsubmit = async (data) => {
-        console.log(data);
         const imgFile = { image: data.image[0] }
         const imglink = await axios.post(img_hosting_api, imgFile, {
             headers: {
@@ -29,7 +28,6 @@ const AddAdvertice = ({ refetch }) => {
         }
         axiosSecure.post('/askAddverticement', adInfo)
             .then(res => {
-                console.log(res.data);
                 refetch()
                 document.getElementById('addAdvertice').close()
                 toast.success('New Banner Published!', {

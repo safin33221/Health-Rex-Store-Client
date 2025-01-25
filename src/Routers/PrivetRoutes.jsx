@@ -4,7 +4,7 @@ import useAuth from '../Hooks/useAuth'
 
 const PrivetRoutes = ({ children }) => {
     const { user, isloading } = useAuth()
-    console.log(isloading);
+
     const navigate = useNavigate()
     if (isloading) {
         return <Loader />

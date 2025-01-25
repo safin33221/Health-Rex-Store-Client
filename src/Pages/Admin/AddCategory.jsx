@@ -21,10 +21,10 @@ const AddCategory = ({ refetch }) => {
             name: data.name,
             image: image
         }
-        console.log(categoryInfo);
+    
         axiosSecure.post('/category', categoryInfo)
             .then(res => {
-                console.log(res.data);
+   
                 refetch()
                 reset()
                 document.getElementById('addCategory').close()

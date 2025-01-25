@@ -60,7 +60,7 @@ const Shop = () => {
                 }
             })
     }
-    console.log(sort);
+
     return (
         <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />

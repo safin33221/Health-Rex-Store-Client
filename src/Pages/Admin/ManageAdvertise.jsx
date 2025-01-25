@@ -16,10 +16,10 @@ const ManageAdvertise = () => {
     })
 
     const handleStatus = (data, status) => {
-        console.log(data, status);
+
         axiosSecure.patch(`/askAddverticement/status`, { data, status })
             .then(res => {
-                console.log(res.data);
+              
                 refetch()
             })
     }

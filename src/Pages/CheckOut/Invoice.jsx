@@ -18,7 +18,6 @@ import { useQuery } from "@tanstack/react-query";
 
 const Invoice = () => {
     const { transtionId } = useParams()
-    console.log(transtionId);
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
@@ -33,9 +32,7 @@ const Invoice = () => {
             return res.data
         }
     })
-    console.log(payments);
     const totalPrice = payments?.reduce((total, item) => total + parseInt(item.cartDetails.pricePerUnit), 0)
-    console.log(totalPrice);
 
     // PDF Styles
     const styles = StyleSheet.create({

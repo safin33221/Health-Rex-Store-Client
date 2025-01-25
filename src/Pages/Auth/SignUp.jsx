@@ -22,7 +22,6 @@ const SignUp = () => {
     } = useForm()
     const onsubmit = async (data) => {
 
-        console.log(data);
         const imgFile = { image: data.image[0] }
         const imglink = await axios.post(img_hosting_api, imgFile, {
             headers: {
@@ -33,7 +32,6 @@ const SignUp = () => {
 
         createUserwithEmail(data.email, data.password)
             .then(res => {
-                console.log(res.data);
                 updateUserProfile(data.userName, image)
                     .then(res => {
                         const userInfo = {
@@ -45,7 +43,7 @@ const SignUp = () => {
                         }
                         axiosPublic.post('/users', userInfo)
                             .then(res => {  
-                                console.log(res.data);
+                               
                                 Swal.fire({
                                     position: "top-end",
                                     icon: "success",
