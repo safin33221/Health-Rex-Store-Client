@@ -45,7 +45,7 @@ const ManageUsers = () => {
         <div className="lg:w-10/12 mt-9 mx-auto">
             <Helmet title="HRS | MANAGE USERS"/>
             <h1 className="text-2xl font-bold ml-20">Total Users:{users?.length}</h1>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-hidden">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>

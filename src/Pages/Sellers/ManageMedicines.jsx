@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const ManageMedicines = () => {
@@ -16,13 +16,26 @@ const ManageMedicines = () => {
     const { user } = useAuth()
     const [search, setSearch] = useState('')
     const [sort, setSort] = useState('')
+    const [currentPage, setCurrentPage] = useState(0)
+    const [count, setCount] = useState(0)
+    const itemPerPages = 5
     const { data: medicines, refetch } = useQuery({
-        queryKey: ['medicines', user?.email, search, sort],
+        queryKey: ['medicines', user?.email, search, sort,currentPage,itemPerPages],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/seller/medicine/${user?.email}?search=${search}&&sort=${sort}`)
+            const res = await axiosSecure.get(`/seller/medicine/${user?.email}?search=${search}&sort=${sort}&page=${currentPage}&size=${itemPerPages}`)
             return res.data
         }
     })
+    useEffect(() => {
+        axiosPublic.get(`/sellers/medicine-counts/${user?.email}`)
+            .then(res => {
+                setCount(res.data)
+            })
+    }, [user?.email])
+
+    const numberOfPages = Math.ceil(count.count / itemPerPages)
+    const pages = [...Array(Number(numberOfPages) || 0).keys()];
+
     const handleDelete = id => {
         Swal.fire({
 
@@ -62,7 +75,7 @@ const ManageMedicines = () => {
                     <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
                 </div>
             </div>
-            
+
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
@@ -99,6 +112,24 @@ const ManageMedicines = () => {
                 </table>
                 <button onClick={() => document.getElementById('my_modal_5').showModal()}
                     className="btn bg-primary my-10">Add Medicine</button>
+
+                <div className="m-5">
+                    <button
+                        onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : currentPage)}
+                        className="btn">Prev</button>
+                    {
+                        pages?.map((page, idx) => <div key={idx} className=" join">
+                            <button
+                                className={`join-item btn mx-2 ${currentPage === page && 'bg-secondary'}`}
+                                onClick={() => setCurrentPage(page)}
+                            >{page}</button>
+
+                        </div>)
+                    }
+                    <button
+                        onClick={() => setCurrentPage(currentPage < pages.length - 1 ? currentPage + 1 : currentPage)}
+                        className="btn">Prev</button>
+                </div>
             </div>
             <AddMedicine refetch={refetch} />
         </div>
