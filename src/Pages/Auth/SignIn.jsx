@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
+    const [showPass, setShowPass] = useState(false)
     const { signInuser, siginUserWithGoogle } = useAuth()
-    const axiosPublic =useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
     const {
         register,
@@ -20,6 +22,7 @@ const SignIn = () => {
     const onsubmit = async (data) => {
         signInuser(data.email, data.password)
             .then(res => {
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -29,21 +32,32 @@ const SignIn = () => {
                 });
                 navigate('/')
             })
+            .catch(error => {
+                if (error.code === "auth/invalid-credential") {
+                    return toast.error('Oops! The email or password you entered is incorrect.', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+
+
+                    })
+                }
+            })
     }
     const hanldeGoogleSignIn = () => {
         siginUserWithGoogle()
             .then(res => {
-        
+
                 const userInfo = {
                     name: res.user?.displayName,
                     email: res.user?.email,
-                    image:res.user?.photoURL,
-                    role:'user',
+                    image: res.user?.photoURL,
+                    role: 'user',
                     time: moment().format('LLL')
                 }
                 axiosPublic.post('/users', userInfo)
                     .then(res => {
-                      
+
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -77,7 +91,7 @@ const SignIn = () => {
                         </svg>
                         <input {...register("email")} type="email" className=" focus::outline-none" placeholder="Email" />
                     </label>
-                    <label className="input input-bordered flex items-center gap-2 mb-4">
+                    <label className="input input-bordered flex items-center relative gap-2 mb-4">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"
@@ -88,7 +102,8 @@ const SignIn = () => {
                                 d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                                 clipRule="evenodd" />
                         </svg>
-                        <input {...register("password")} type="password" className=" focus:outline-none" placeholder="password" />
+                        <input {...register("password")} type={showPass ? 'text' : 'password'} className=" focus:outline-none" placeholder="password" />
+                        <button type='button' className='absolute right-3 top-4' onClick={() => setShowPass(!showPass)}>{showPass ? <FaEye /> : <FaEyeSlash></FaEyeSlash>}</button>
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
