@@ -41,7 +41,7 @@ const Dashboard = () => {
                         {
                             role === 'seller' && <ul className='menu'>
                                 <Helmet title="HRS | SELLER DASHBOARD" />
-                                <h1 className='text-center font-bold text-2xl border-b-2 border-black'>Seller</h1>
+                                <h1 className='text-center font-bold text-2xl border-b-2 border-black mb-4'>Seller</h1>
                                 <li><NavLink to='/dashboard/sellerHome'>Home </NavLink></li>
                                 <li><NavLink to='/dashboard/manageMedicines'>Manage Medicines</NavLink></li>
                                 <li><NavLink to='/dashboard/paymentsHistory'>Payments History</NavLink></li>

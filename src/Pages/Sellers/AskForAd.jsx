@@ -16,7 +16,7 @@ const AskForAd = () => {
     })
 
     return (
-        <div className="w-10/12 mx-auto">
+        <div className="md:w-10/12 mx-auto mt-10">
             <Helmet title="HRS | POST ADS" />
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
             {
@@ -30,6 +30,7 @@ const AskForAd = () => {
                     </p>
                 </div> :
                     <div className="overflow-x-auto">
+                        <h1 className="text-lg md:text-2xl font-bold ml-20 mb-6">Ads Histroy</h1>
                         <table className="table">
                             {/* head */}
                             <thead className="bg-secondary">

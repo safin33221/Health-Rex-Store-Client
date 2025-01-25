@@ -52,18 +52,19 @@ const ManageMedicines = () => {
 
     }
     return (
-        <div className='w-10/12 mx-auto py-10'>
+        <div className='md:w-10/12 mx-auto py-5'>
             <Helmet title="HRS | MANAGE MEDICINES" />
-            <div className="flex justify-between items-center py-5">
-                <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
-                <div>
-                    <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
+            <div className="flex flex-col md:flex-row justify-between md:items-center py-5 ml-16">
+                <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
+                <div className="felx gap-x-10" >
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl focus:outline-none border-secondary select-sm md:select-lg" name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
-                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary" />
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
                 </div>
             </div>
+            
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}

@@ -16,11 +16,12 @@ const PaymentsHistory = () => {
     })
  
     return (
-        <div className="w-10/12 mx-auto py-20">
+        <div className="md:w-10/12 mx-auto py-10">
             <Helmet title="HRS | PAYMENT HISTORY" />
             {
                 paymentsHistory.length === 0 ? <h1 className="text-3xl font-bold text-center mt-44">Payment History is Empty!</h1> :
                     <div className="overflow-x-auto">
+                        <h1 className="text-lg md:text-2xl font-bold ml-20">Payment History</h1>
                         <table className="table">
                             {/* head */}
                             <thead className="bg-secondary">

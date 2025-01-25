@@ -6,32 +6,33 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const SellerHome = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
-    const { data: states =[]} = useQuery({
+    const { data: states = [] } = useQuery({
         queryKey: ['states', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/seller/sales-states/${user?.email}`)
             return res.data;
         }
     })
-   
+
     return (
-        <div className="w-10/12 mx-auto">
-            <Helmet title="HRS | SELLER HOME" />
-            {
-                states.length != 0 ? <div className="stats shadow mt-10 mx-auto ">
-                    {
-                        states?.map((state, idx) => <div key={idx} className="stat">
+        <div className='lg:w-10/12 mx-auto'>
+            <Helmet title="HRS | SELLER HOME" />    
+            <h1 className='font-bold text-xl pt-10 ml-20'>Welcome '{user?.displayName}'</h1>
 
-                            <div className="stat-title">{state._id}</div>
-                            <div className="stat-value">{state.revenue} BTD</div>
-                            <div className="stat-desc">Total sales: {state.quantity}</div>
+            <div className=" flex flex-col md:flex-row gap-5 min-w-[350px] mx-auto">
+                {
+                    states?.map((state, idx) =>
+                        <div key={idx} className=" w-full border-secondary border-2 transition-all duration-200 ease-in-out  text-center p-4 rounded-lg hover:shadow-2xl  ">
+                            <h1 className='text-xl font-bold'>{state._id}</h1>
+                            <h1 className="text-2xl font-bold">{Number(state?.revenue)?.toFixed(2)} BTD</h1>
+
+                            <p className="text-gray-500">Total sales: {state.quantity}</p>
+
                         </div>)
-                    }
+                }
 
 
-                </div> :
-                    <h1 className="text-3xl font-bold text-center mt-44">No Sales Data Yet!</h1>
-            }
+            </div>
         </div>
     );
 };
