@@ -8,7 +8,7 @@ const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddAdvertice = ({ refetch }) => {
     const { user } = useAuth()
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
     
     const axiosSecure = useAxiosSecure()
     const onsubmit = async (data) => {
@@ -29,6 +29,7 @@ const AddAdvertice = ({ refetch }) => {
         axiosSecure.post('/askAddverticement', adInfo)
             .then(res => {
                 refetch()
+                reset()
                 document.getElementById('addAdvertice').close()
                 toast.success('New Banner Published!', {
                     position: "top-right",

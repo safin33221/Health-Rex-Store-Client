@@ -1,12 +1,14 @@
 import React from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { FaCamera, FaEdit } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 
 const Profile = () => {
     const { user } = useAuth()
     return (
         <div>
+            <Helmet title='HRS | PROFILE'/>
             <div className="max-w-xl relative mx-auto p-4 bg-base-300 border rounded-lg shadow-lg border-secondary flex items-center justify-center mt-44">
                 <div className="flex flex-col items-center">
                     <div className=''>

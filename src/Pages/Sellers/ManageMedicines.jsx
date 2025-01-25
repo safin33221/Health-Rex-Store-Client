@@ -128,7 +128,7 @@ const ManageMedicines = () => {
                     }
                     <button
                         onClick={() => setCurrentPage(currentPage < pages.length - 1 ? currentPage + 1 : currentPage)}
-                        className="btn">Prev</button>
+                        className="btn">Next</button>
                 </div>
             </div>
             <AddMedicine refetch={refetch} />
