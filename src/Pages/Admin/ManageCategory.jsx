@@ -52,10 +52,10 @@ const ManageCategory = () => {
         document.getElementById('updateCategory').showModal()
     }
     return (
-        <div className="lg:w-10/12 mx-auto my-10  ">
+        <div className="lg:w-10/12 mx-auto my-20 w-full  ">
             <Helmet title="HRS | MANAGE CATEGORY" />
             <div className="overflow-x-auto w-full mx-auto">
-                <table className="table tablelg mx-auto text-lg w-full">
+                <table className="table table-lg mx-auto text-lg min-w-[400px]">
                     {/* head */}
                     <thead>
                         <tr className="bg-secondary">

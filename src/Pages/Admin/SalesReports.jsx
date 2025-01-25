@@ -17,7 +17,7 @@ const SalesReports = () => {
     })
     return (
         <div className='lg:w-10/12 mx-auto'>
-            <div className='flex justify-around py-10 items-center'>
+            <div className='flex justify-around mt-7 mb-5 items-center'>
                 <h1 className='text-xl font-bold'>Total Sales : {sales?.length}</h1>
                 <DownloadTableExcel
                     filename="sales_reports"

@@ -62,16 +62,16 @@ const Shop = () => {
     }
     console.log(sort);
     return (
-        <div className="w-11/12 mx-auto mt-24 py-5">
+        <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />
-            <div className="flex justify-between items-center py-5">
-                <h1 className="text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
-                <div>
-                    <select onChange={(e) => setSort(e.target.value)} className="border p-3 rounded-xl focus:outline-none border-secondary mx-5" name="" id="">
+            <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
+                <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
+                <div className="felx gap-x-10" >
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl focus:outline-none border-secondary select-sm md:select-lg" name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
-                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary" />
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
                 </div>
             </div>
             <div className="overflow-x-auto rounded-lg">
@@ -98,8 +98,8 @@ const Shop = () => {
                                 <td>{medicine?.company}</td>
                                 <td>{medicine.pricePerUnit} BTD</td>
                                 <td>
-                                    <button onClick={() => handleAddToCart(medicine)} className="btn">Select</button>
-                                    <button onClick={() => handleDetails(medicine)} className="btn ml-4"><FaEye /></button>
+                                    <button onClick={() => handleAddToCart(medicine)} className="btn btn-xs">Select</button>
+                                    <button onClick={() => handleDetails(medicine)} className="btn ml-4 btn-sm"><FaEye /></button>
                                 </td>
                             </tr>)
                         }

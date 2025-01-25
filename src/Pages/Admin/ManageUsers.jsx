@@ -42,9 +42,9 @@ const ManageUsers = () => {
         });
     }
     return (
-        <div className="lg:w-10/12 mt-14 mx-auto">
+        <div className="lg:w-10/12 mt-9 mx-auto">
             <Helmet title="HRS | MANAGE USERS"/>
-            <h1 className="text-2xl font-bold py-5">Total Users:{users?.length}</h1>
+            <h1 className="text-2xl font-bold ml-20">Total Users:{users?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
