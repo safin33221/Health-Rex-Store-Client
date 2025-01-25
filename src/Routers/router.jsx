@@ -23,6 +23,7 @@ import UserPayments from "../Pages/Users/UserPayments";
 import PrivetRoutes from "./PrivetRoutes";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
+import Profile from "../Pages/Shared/Profile";
 
 const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             {
                 path: 'signIn',
                 element: <SignIn />
+            },
+            {
+                path: '/profile',
+                element: <PrivetRoutes><Profile /></PrivetRoutes>
             },
         ]
     },

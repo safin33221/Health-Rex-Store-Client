@@ -18,7 +18,7 @@ const Sliders = () => {
     const { data: slides } = useQuery({
         queryKey: ['slides'],
         queryFn: async () => {
-            const res = await axiosPublic.get('https://medicing-selling-server-side.vercel.app/addvertise/success')
+            const res = await axiosPublic.get('/addvertise/success')
             return res.data
         }
     })
