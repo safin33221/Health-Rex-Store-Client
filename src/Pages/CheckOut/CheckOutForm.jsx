@@ -17,12 +17,13 @@ const CheckOutForm = () => {
     const [clientSecret, setClientSecret] = useState('')
     const [transtionId, setTranstionId] = useState('')
     const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity, 0)
+    console.log(totalPrice);
 
     useEffect(() => {
         if (totalPrice) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(res => {
-                    
+
                     setClientSecret(res.data.clientSecret)
                 })
         }
@@ -50,7 +51,7 @@ const CheckOutForm = () => {
             });
         }
         else {
-            
+
         }
 
 
@@ -71,7 +72,7 @@ const CheckOutForm = () => {
 
             });
         } else {
-            
+
             if (paymentIntent.status === 'succeeded') {
                 setTranstionId(paymentIntent.id)
                 const payment = {
@@ -98,9 +99,8 @@ const CheckOutForm = () => {
 
 
                         });
-                        navigate('/invoice')
+                        navigate(`/invoice/${paymentIntent.id}`)
                     })
-
             }
         }
 

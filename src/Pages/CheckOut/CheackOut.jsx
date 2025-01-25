@@ -5,14 +5,16 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const stripePromice = loadStripe(import.meta.env.VITE_Payment_gayway_pk)
 const CheackOut = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: carts =[], refetch } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/carts/${user?.email}`)
+            const res = await axiosSecure.get(`/carts/${user?.email}`)
            
             return res.data
         }
@@ -20,6 +22,7 @@ const CheackOut = () => {
     })
     console.log(carts);
     const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity , 0)
+    console.log(carts);
     return (
         <div className='w-11/12 mx-auto'>
             <Helmet title="HRS | CHEACK OUT"/>

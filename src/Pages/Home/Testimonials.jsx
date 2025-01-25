@@ -28,7 +28,7 @@ const Testimonials = () => {
     })
     console.log(testimonials);
     return (
-        <div className='w-11/12 mx-auto pb-10'>
+        <div className='w-11/12 mx-auto pb-10 '>
             <div className="text-center mb-10">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
                     What Our Customers Say__
@@ -80,7 +80,7 @@ const Testimonials = () => {
                     testimonials.map((review) => (
                         <SwiperSlide>
                             <figure
-                                className='relative w-64 cursor-pointer h-full  rounded-xl border p-4 bg-base-200 border-secondary hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden '
+                                className='relative w-64 cursor-pointer h-full mx-auto  rounded-xl border p-4 bg-base-200 border-secondary hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden '
                             >
                                 <div className="flex flex-row items-center gap-2">
 

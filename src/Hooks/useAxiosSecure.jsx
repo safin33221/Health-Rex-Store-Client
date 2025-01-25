@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuth from "../Hooks/useAuth"
 import { useNavigate } from "react-router-dom";
 const axiosSecure = axios.create({
-    baseURL: 'https://medicing-selling-server-side.vercel.app'
+    baseURL: 'http://localhost:8080'
 })
 const useAxiosSecure = () => {
     const { sigoutUser } = useAuth()

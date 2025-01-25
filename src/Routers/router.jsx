@@ -51,7 +51,7 @@ const router = createBrowserRouter([
                 element: <PrivetRoutes><CheackOut /></PrivetRoutes>
             },
             {
-                path: '/invoice',
+                path: '/invoice/:transtionId',
                 element: <PrivetRoutes><Invoice /></PrivetRoutes>
             },
             {

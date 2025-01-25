@@ -13,21 +13,29 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import logo from "../../assets/logo.png";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const Invoice = () => {
-    const { paymentDetails } = useAuth();
+    const { transtionId } = useParams()
+    console.log(transtionId);
+    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure()
     const [medicines, setMedicines] = useState([]);
-    const medicineIds = paymentDetails?.medicineId || [];
 
     // Fetch medicines data
-    useEffect(() => {
-        if (medicineIds.length > 0) {
-            axiosSecure.post("/invoice/medicine", medicineIds)
-                .then((res) => setMedicines(res.data));
+    const { data: payments } = useQuery({
+        queryKey: ['transtionId', transtionId],
+
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/invoice/details/${transtionId}`)
+            return res.data
         }
-    }, [medicineIds]);
+    })
+    console.log(payments);
+    const totalPrice = payments?.reduce((total, item) => total + parseInt(item.cartDetails.pricePerUnit), 0)
+    console.log(totalPrice);
 
     // PDF Styles
     const styles = StyleSheet.create({
@@ -71,6 +79,7 @@ const Invoice = () => {
         footer: { textAlign: "center", fontSize: 10, marginTop: 20, color: "#888" },
     });
 
+
     // PDF Document Component
     const InvoicePDF = (
         <Document>
@@ -88,15 +97,15 @@ const Invoice = () => {
                         </View>
                         <View>
                             <Text>Date: {new Date().toLocaleDateString()}</Text>
-                            <Text>Invoice ID: #123456</Text>
+                            <Text>Invoice ID: #{Math.floor(10000 + Math.random() * 90000)}</Text>
                         </View>
                     </View>
 
                     {/* Customer Details */}
                     <View style={styles.customerDetails}>
                         <Text style={styles.sectionTitle}>Customer Details</Text>
-                        <Text style={styles.text}>Name: {paymentDetails?.name}</Text>
-                        <Text style={styles.text}>Email: {paymentDetails?.email}</Text>
+                        <Text style={styles.text}>Name: {user?.displayName}</Text>
+                        <Text style={styles.text}>Email: {user?.email}</Text>
                     </View>
 
                     {/* Order Summary */}
@@ -107,20 +116,18 @@ const Invoice = () => {
                             <View style={[styles.tableRow, styles.tableHeader]}>
                                 <Text style={styles.tableCell}>#</Text>
                                 <Text style={styles.tableCell}>Item Name</Text>
-                                <Text style={styles.tableCell}>Quantity</Text>
-                                <Text style={styles.tableCell}>Price</Text>
-                                <Text style={styles.tableCell}>Total</Text>
+
+                                <Text style={styles.tableCell}>Price Per Unit</Text>
+
                             </View>
                             {/* Table Rows */}
-                            {medicines?.map((item, index) => (
+                            {payments?.map((item, index) => (
                                 <View key={index} style={styles.tableRow}>
                                     <Text style={styles.tableCell}>{index + 1}</Text>
-                                    <Text style={styles.tableCell}>{item.itemName}</Text>
-                                    <Text style={styles.tableCell}>{item.quantity}</Text>
-                                    <Text style={styles.tableCell}>${item.price}</Text>
-                                    <Text style={styles.tableCell}>
-                                        {item.quantity * item.price} tk
-                                    </Text>
+                                    <Text style={styles.tableCell}>{item.cartDetails.itemName}</Text>
+
+                                    <Text style={styles.tableCell}>{item.cartDetails.pricePerUnit}</Text>
+
                                 </View>
                             ))}
                         </View>
@@ -130,7 +137,7 @@ const Invoice = () => {
                     <View style={styles.total}>
                         <Text>Tax: 00 tk</Text>
                         <Text>Discount: 00 tk</Text>
-                        <Text>Total: {paymentDetails?.totalPrice} tk</Text>
+                        <Text>Total: {totalPrice} tk</Text>
                     </View>
 
                     {/* Footer */}
@@ -143,13 +150,13 @@ const Invoice = () => {
     );
 
     return (
-        <div className="w-10/12 mx-auto my-16">
+        <div className="w-10/12 mx-auto ">
             <Helmet title="HRS | INVOICE" />
-            <div className="text-right mt-8">
+            <div className="text-right my-10">
                 <PDFDownloadLink
                     document={InvoicePDF}
                     fileName="invoice.pdf"
-                    className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-green-600"
+                    className="px-4 py-2 bg-primary mt-5 text-white rounded shadow hover:bg-green-600"
                 >
                     {({ loading }) => (loading ? "Generating PDF..." : "Download Invoice")}
                 </PDFDownloadLink>
@@ -167,10 +174,10 @@ const Invoice = () => {
                             </div>
                         </div>
                         <div>
-                            <p className="text-sm >
+                            <p className="text-sm" >
                                 {/* <strong>Date:</strong> {date} */}
                             </p>
-                            <p className="text-sm >
+                            <p className="text-sm ">
                                 {/* <strong>Invoice ID:</strong> {invoiceId} */}
                             </p>
                         </div>
@@ -180,10 +187,10 @@ const Invoice = () => {
                     <div className="mt-4">
                         <h2 className="text-lg font-semibold ">Customer Details</h2>
                         <p className="">
-                            <strong>Name:</strong>  {paymentDetails?.name}
+                            <strong>Name:</strong>  {user?.displayName}
                         </p>
                         <p className="">
-                            <strong>Email:</strong>  {paymentDetails?.email}
+                            <strong>Email:</strong>  {user?.email}
                         </p>
 
                     </div>
@@ -196,23 +203,22 @@ const Invoice = () => {
                                 <tr>
                                     <th className="border  p-2 text-left">#</th>
                                     <th className="border  p-2 text-left">Item Name</th>
-                                    <th className="border  p-2 text-left">Quantity</th>
-                                    <th className="border  p-2 text-left">Price</th>
-                                    <th className="border  p-2 text-left">Total</th>
+                                    {/* <th className="border  p-2 text-left">Quantity</th> */}
+                                    <th className="border  p-2 text-left">Price per Unit</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                {medicines?.map((item, index) => (
-                                    <tr key={item.id} className="">
-                                        <td className="border  p-2">{index + 1}</td>
-                                        <td className="border  p-2">{item.itemName}</td>
-                                        <td className="border  p-2">{item.quantity}</td>
-                                        <td className="border  p-2">${item.price}</td>
-                                        <td className="border  p-2">
-                                            {item.quantity * item.price} tk
-                                        </td>
-                                    </tr>
-                                ))}
+                                {
+                                    payments?.map((item, index) => (
+                                        <tr key={item.id} className="">
+                                            <td className="border  p-2">{index + 1}</td>
+                                            <td className="border  p-2">{item?.cartDetails?.itemName}</td>
+                                            {/* <td className="border  p-2">{item.quantity}</td> */}
+                                            <td className="border  p-2">{item.cartDetails.pricePerUnit} BTD</td>
+
+                                        </tr>
+                                    ))}
                             </tbody>
                         </table>
                     </div>
@@ -230,7 +236,7 @@ const Invoice = () => {
                                 <span>tk</span>
                             </div>
                             <div className="flex justify-between p-2 border-t border-b ">
-                                <span className="text-lg font-bold ">Total: {paymentDetails?.totalPrice}</span>
+                                <span className="text-lg font-bold ">Total: {totalPrice}</span>
                                 <span className="text-lg font-bold text-black">tk</span>
                             </div>
                         </div>
