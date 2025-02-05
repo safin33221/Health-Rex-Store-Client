@@ -79,7 +79,7 @@ HealthRex Store is a modern e-commerce platform for purchasing medicines and hea
    ```
 2. Navigate to the project directory:
    ```sh
-   cd healthrexstore
+   cd Health-Rex-Store-Client
    ```
 3. Install dependencies:
    ```sh
