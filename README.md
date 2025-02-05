@@ -1,51 +1,99 @@
 # HealthRex Store
 
-HealthRex Store is a cutting-edge medicine e-commerce website offering a wide range of pharmaceutical products and health-related services. This platform ensures a seamless online shopping experience for customers looking for trusted and affordable healthcare solutions.
+## Project Overview
 
-## 🌐 Live Site
-[Visit HealthRex Store](https://healthrexstore.web.app/)
+HealthRex Store is a modern e-commerce platform for purchasing medicines and healthcare products online. It provides a seamless shopping experience with features like secure payments, order tracking, and user authentication.
 
----
+## image
+<br clear="both">
 
-## 🛠️ Admin Credentials
-- **Username:** admin@gmail.com
-- **Password:** admin@gmail.com
+<div align="center">
+  <img height="300" src="https://i.ibb.co.com/Kx7TxXD4/healthrexstore-web-app-2.png"  />
+  <img height="300" src="https://i.ibb.co.com/201w1QXs/healthrexstore-web-app-4.png"  />
+  <img height="300" src="https://i.ibb.co.com/3mN5dzm0/healthrexstore-web-app-sign-Up.png"  />
+</div>
 
----
+###
 
-## 🚀 Features
 
-1. **User-Friendly Interface**: An intuitive and clean design that makes it easy for users to navigate and shop for medicines.
-2. **Admin Dashboard**: A powerful dashboard for managing products, orders, and customers.
-3. **Secure Authentication**: Login and registration are secured with Firebase Authentication.
-4. **Advanced Search and Filter**: Quickly find medicines by category, brand, or price range.
-5. **Medicine Details Page**: Detailed descriptions of medicines, including dosage, benefits, and side effects.
-6. **Shopping Cart & Checkout**: A smooth and secure process for adding items to the cart and completing orders.
-7. **Order Tracking**: Users can track the status of their orders in real time.
-8. **Responsive Design**: Optimized for both desktop and mobile devices.
-9. **Discounts & Offers**: Highlighted sections for promotional deals and discounts on medicines.
-10. **offers and discounts**: Special offers and discounts showcased prominently for users.
+## Technologies Used
 
----
+- React.js
+- Firebase
+- Tailwind CSS
+- Stripe for payment processing
+- React Query for data fetching
+- Vite for development
 
-## 🧰 Technologies Used
+## Core Features
 
-- **Frontend**: React.js, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: Firebase
-- **Hosting**: Firebase Hosting
+- User authentication with Firebase
+- Secure payment processing via Stripe
+- Advanced filtering and sorting options
+- Real-time order tracking
+- PDF invoice generation
+- Responsive and mobile-friendly design
 
----
+## Dependencies
 
-## 📋 How to Use
+```json
+"dependencies": {
+    "@react-pdf/renderer": "^4.1.6",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.5.0",
+    "@tanstack/query-persist-client-core": "^5.64.1",
+    "@tanstack/react-query": "^5.64.1",
+    "axios": "^1.7.9",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "firebase": "^11.1.0",
+    "html2canvas": "^1.4.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^8.0.0",
+    "moment": "^2.30.1",
+    "react": "^18.3.1",
+    "react-datepicker": "^7.6.0",
+    "react-dom": "^18.3.1",
+    "react-export-table-to-excel": "^1.0.6",
+    "react-fast-marquee": "^1.6.5",
+    "react-helmet-async": "^2.0.5",
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.1",
+    "react-to-pdf": "^1.0.1",
+    "react-toastify": "^11.0.3",
+    "recharts": "^2.15.0",
+    "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.10",
+    "swiper": "^11.2.1",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  }
+```
 
-1. Visit the [live site](https://healthrexstore.web.app).
-2. Login using the provided admin credentials or register as a new user.
-3. Browse the catalog of medicines or search for specific products.
-4. Add items to the cart and proceed to checkout.
-5. Manage your orders or access the admin dashboard for advanced functionality.
+## How to Run the Project Locally
 
----
+1. Clone the repository:
+   ```sh
+   https://github.com/safin33221/Health-Rex-Store-Client.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd healthrexstore
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+5. Open the project in your browser at `http://localhost:5173`
 
-Feel free to reach out with any questions or suggestions to improve the platform! 😊
+## Live Project & Resources
+
+- **Live Website:** [HealthRex Store](https://healthrexstore.web.app)
+- **Backend Repo:** [HealthRex Store Backend](https://github.com/safin33221/Health_Rex-Store-Server-side)
+
+
