@@ -45,9 +45,9 @@ const Sliders = () => {
                 modules={[Navigation, Autoplay, Pagination]}
                 
 
-                className=" w-full ">
+                className=" ">
                 {
-                    slides?.map(slide => <SwiperSlide key={slide._id}><img src={slide?.image} className='w-full' alt="" /></SwiperSlide>)
+                    slides?.map(slide => <SwiperSlide key={slide._id}><img src={slide?.image} className=' w-full object-contain bg-contain h-[400px]' alt="" /></SwiperSlide>)
                 }
             </Swiper>
         </div>
