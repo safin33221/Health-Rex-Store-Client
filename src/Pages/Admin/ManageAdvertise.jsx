@@ -30,12 +30,12 @@ const ManageAdvertise = () => {
             <Helmet title="HRS | MANAGE ADVERTISE"/>
             <h1 className='text-xl font-bold ml-20'>Manage Advertise</h1>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr className="bg-secondary">
+                        <tr className="text-lg">
                             <th>
-
+                                No.
                             </th>
                             <th>Image</th>
                             <th>Name</th>
@@ -52,12 +52,12 @@ const ManageAdvertise = () => {
                                 </th>
                                 <td>
                                     <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="bg-cover h-24 w-24">
+                                        <div className="">
+                                            <div className="bg-cover h-24 w-36">
                                                 <img
                                                     src={add?.image}
-                                                    className=" bg-contain"
-                                                    alt="Avatar Tailwind CSS Component" />
+                                                    className=" object-contain bg-contain"
+                                                    alt="loading" />
                                             </div>
                                         </div>
 

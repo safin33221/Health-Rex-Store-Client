@@ -12,6 +12,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import moment from 'moment';
 import useAuth from '../../Hooks/useAuth';
+import { FaCartArrowDown } from 'react-icons/fa';
 
 
 const DiscountsProducts = () => {
@@ -61,10 +62,10 @@ const DiscountsProducts = () => {
     return (
         <div className='px-12 mx-auto'>
             <div className="text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+                <h1 className="text-3xl md:text-4xl font-bold">
                     Discounted Products__
                 </h1>
-                <p className="mt-4 text-lg md:text-xl text-gray-600">
+                <p className="mt-4 text-lg md:text-xl ">
                     Grab these amazing deals on your favorite medicines. Limited time offers!
                 </p>
             </div>
@@ -92,33 +93,33 @@ const DiscountsProducts = () => {
                 modules={[Autoplay]}
                 breakpoints={{
                     640: {
-                        slidesPerView: 1, // 1 slide on mobile screens
+                        slidesPerView: 2, // 1 slide on mobile screens
                     },
                     768: {
-                        slidesPerView: 2, // 2 slides on tablets
+                        slidesPerView: 3, // 2 slides on tablets
                     },
                     1024: {
-                        slidesPerView: 4, // 3 slides on larger screens
+                        slidesPerView: 5, // 3 slides on larger screens
                     },
                 }}
-                className="mySwiper my-10 py-10 "
+                className="mySwiper my-10 py-10 h-full "
             >
                 {
                     products.map(product => <SwiperSlide key={product._id}>
-                        <div className="bg-white h-full shadow-lg rounded-lg overflow-hidden border border-secondary hover:shadow-2xl  transition-all duration-300">
+                        <div className=" h-full shadow-lg rounded-lg overflow-hidden border  hover:shadow-2xl  transition-all duration-300">
                             <div className="relative">
-                                <img src={product.image} alt={product.itemName} className="w-full h-40 object-cover" />
+                                <img src={product.image} alt={product.itemName} className="w-full h-40 object-cover bg-contain" />
                                 <span className="absolute top-3 left-3 bg-red-500 text-white text-sm font-semibold px-2 py-1 rounded-lg">
                                     {product.discountPercentage}% OFF
                                 </span>
                             </div>
-                            <div className="p-2 flex gap-5 items-center ">
+                            <div className="p-2 flex gap-2 justify-between items-center ">
                                 <div>
-                                    <h1 className="text-xl font-bold text-gray-800 mb-2">{product.itemName}</h1>
-                                    <p className="text-sm text-gray-600 mb-2">
+                                    <h1 className="text-xl font-bold mb-2">{product.itemName}</h1>
+                                    <p className="text-sm  mb-2">
                                         <span className="font-semibold">Mass Unit:</span> {product.massUnit}
                                     </p>
-                                    <p className="text-sm text-gray-600 mb-2">
+                                    <p className="text-sm  mb-2">
                                         <span className="font-semibold">Price Per Unit:</span> <span className="text-red-500 font-bold">{product.pricePerUnit} tk</span>
                                     </p>
 
@@ -126,8 +127,8 @@ const DiscountsProducts = () => {
 
                                 <div>
                                     <button onClick={() => handleAddToCart(product)}
-                                        className="  bg-primary hover:bg-green-600 text-white text-sm font-semibold py-2 px-4 rounded-lg transition duration-300">
-                                        Add to Cart
+                                        className="btn text-sm font-semibold transition duration-300 border-2">
+                                        <FaCartArrowDown/>
                                     </button>
                                 </div>
                             </div>

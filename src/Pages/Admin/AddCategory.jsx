@@ -44,20 +44,20 @@ const AddCategory = ({ refetch }) => {
                         <label className="  flex flex-col gap-2 my-4">
 
                             <span>Category Name:</span>
-                            <input {...register("name")} required type="text" className="input input-bordered input-md w-full focus:outline-none focus:border-accent" placeholder="Category Name" />
+                            <input {...register("name")} required type="text" className="input input-bordered input-md w-full focus:outline-none " placeholder="Category Name" />
                         </label>
 
                         <label className="my-2">
                             <span>Category  Image:</span>
-                            <input {...register("image")} required type="file" className=" input p-3 w-full  focus:outline-none " placeholder="Category Image" />
+                            <input {...register("image")} required type="file" className="file-input file-input-[#2E8B57] file-input-bordered w-full focus:outline-none my-2" placeholder="Category Image" />
 
                         </label>
 
 
 
-                        <label className="flex items-center gap-2 mb-4 mx-auto">
+                        <label className="flex items-center gap-2 mb-4 mx-auto mt-5">
 
-                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Add</button>
+                            <button className="btn  mx-auto w-full">Add</button>
                         </label>
 
                     </div>

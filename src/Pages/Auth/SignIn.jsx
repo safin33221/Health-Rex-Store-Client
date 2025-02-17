@@ -73,7 +73,7 @@ const SignIn = () => {
         <div className="pt-24 ">
             <Helmet title="HRS | SIGN IN" />
             <form onSubmit={handleSubmit(onsubmit)} >
-                <div className="max-w-xl mx-auto border-2 rounded-lg p-4 border-secondary">
+                <div className="max-w-xl mx-auto border rounded-lg p-4 ">
                     <h1 className="text-3xl font-bold text-center py-5">SignIn Now!</h1>
 
 
@@ -107,12 +107,12 @@ const SignIn = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn bg-secondary hover:text-black font-bold hover:bg-accent btn-outline mx-auto w-full">Sign In</button>
+                        <button className="btn btn-outline mx-auto w-full">Sign In</button>
                     </label>
-                    <p>New in this site? <Link to='/signUp'>Sign Up Now</Link></p>
+                    <p>New in this site? <Link to='/signUp' className='text-blue-800'>Sign Up Now</Link></p>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button onClick={hanldeGoogleSignIn} type='button' className="btn bg-secondary hover:bg-accent hover:text-black font-bold btn-outline mx-auto w-full"> <FaGoogle />Google</button>
+                        <button onClick={hanldeGoogleSignIn} type='button' className="btn   font-bold btn-outline mx-auto w-full"> <FaGoogle />Google</button>
                     </label>
                 </div>
             </form>

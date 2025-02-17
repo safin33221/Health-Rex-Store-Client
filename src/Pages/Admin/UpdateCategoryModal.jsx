@@ -57,7 +57,7 @@ const UpdateCategoryModal = ({ category, refetch }) => {
 
                         <label className="my-2">
                             <span>Category  Image:</span>
-                            <input {...register("image")} type="file" className=" input p-3 w-full  focus:outline-none " placeholder="Category Image" />
+                            <input {...register("image")} type="file" className="file-input file-input-[#2E8B57] file-input-bordered w-full focus:outline-none my-2" placeholder="Category Image" />
 
                         </label>
 
@@ -65,7 +65,7 @@ const UpdateCategoryModal = ({ category, refetch }) => {
 
                         <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Update</button>
+                            <button className="btn  mx-auto w-full">Update</button>
                         </label>
 
                     </div>

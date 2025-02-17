@@ -23,10 +23,10 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <ul className="menu bg-primary z-50 text-base-content min-h-full w-80 p-4">
+                    <ul className="menu  z-50 text-base-content h-full w-80 p-4">
                         {/* Sidebar content here */}
                         {
-                            role === 'admin' && <ul className='menu'>
+                            role === 'admin' && <ul className='menu '>
                                 <Helmet title="HRS | ADMIN DASHBOARD" />
                                 <h1 className='text-center font-bold text-2xl border-b-2 border-black my-5 '>Admin</h1>
                                 <li><NavLink to='/dashboard/adminHome'><FaHome /> Home</NavLink></li>
@@ -71,12 +71,12 @@ const Dashboard = () => {
                     </ul>
                 </div>
             </div>
-            <div className='w-64 min-h-full bg-primary fixed hidden lg:block'>
+            <div className='w-64 min-h-full  fixed hidden lg:block shadow-2xl'>
 
                 {
                     role === 'admin' && <ul className='menu'>
                         <Helmet title="HRS | ADMIN DASHBOARD" />
-                        <h1 className='text-center font-bold text-2xl border-b-2 border-black my-5 '>Admin</h1>
+                        <h1 className='text-center font-bold text-2xl border-b-2  my-5 '>Admin</h1>
                         <li><NavLink to='/dashboard/adminHome'><FaHome /> Home</NavLink></li>
                         <li><NavLink to='/dashboard/manageUsers'><FaUsersCog />
                             Manage Users</NavLink></li>

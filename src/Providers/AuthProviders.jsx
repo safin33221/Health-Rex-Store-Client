@@ -11,6 +11,18 @@ const AuthProviders = ({ children }) => {
     const [paymentDetails, setPaymentsDetails] = useState({})
     const googleProvider = new GoogleAuthProvider()
     const axiosPublic = useAxiosPublic()
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'pastel')
+
+    //theme tollager
+    const toggleTheme = () => {
+        const newtheme = theme === 'pastel' ? 'forest' : 'pastel'
+        setTheme(newtheme)
+        localStorage.setItem('theme',newtheme)
+        
+    }
+    useEffect(()=>{
+        document.documentElement.setAttribute('data-theme', theme)
+    },[theme])
 
     //crete user with email and pass
     const createUserwithEmail = (email, password) => {
@@ -45,13 +57,14 @@ const AuthProviders = ({ children }) => {
         paymentDetails,
         isloading,
         setLoading,
+        toggleTheme,
         setPaymentsDetails,
         setCart,
         createUserwithEmail,
         updateUserProfile,
         signInuser,
         siginUserWithGoogle,
-        sigoutUser
+        sigoutUser,
     }
 
     useEffect(() => {
@@ -62,7 +75,7 @@ const AuthProviders = ({ children }) => {
                 const userInfo = { email: currentUser?.email }
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
-                        
+
                         if (res.data?.token) {
                             localStorage.setItem('token', res.data.token)
                             setLoading(false)

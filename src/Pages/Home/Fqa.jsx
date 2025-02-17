@@ -26,10 +26,10 @@ const Fqa = () => {
                         className="border border-gray-300 rounded-lg shadow-sm"
                     >
                         <button
-                            className="w-full flex justify-between items-center p-4 text-left text-gray-800 font-semibold hover:bg-gray-100 focus:outline-none"
+                            className="w-full flex justify-between items-center p-4 text-left  font-semibold  focus:outline-none"
                             onClick={() => toggleFAQ(index)}
                         >
-                            <span>{faq.question}</span>
+                            <span >{faq.question}</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className={`h-5 w-5 transform ${activeIndex === index ? "rotate-180" : ""
@@ -45,7 +45,7 @@ const Fqa = () => {
                             </svg>
                         </button>
                         {activeIndex === index && (
-                            <div className="p-4 text-gray-600 bg-gray-50">
+                            <div className="p-4 border font-normal">
                                 {faq.answer}
                             </div>
                         )}

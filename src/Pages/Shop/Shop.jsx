@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { FaEye } from "react-icons/fa";
+import { FaCartArrowDown, FaEye } from "react-icons/fa";
 import MedicineDetails from "./MedicineDetails";
 import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Loader from "../../Components/Loader";
+import { CgDetailsMore } from "react-icons/cg";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
@@ -97,9 +98,9 @@ const Shop = () => {
             <div className="overflow-x-auto rounded-lg">
                 <table className="table">
                     {/* head */}
-                    <thead>
-                        <tr className=" bg-secondary">
-                            <th></th>
+                    <thead className="font-bold text-lg">
+                        <tr className=" ">
+                            <th>No.</th>
                             <th>Medicine Name</th>
                             <th>Generic Name</th>
                             <th>Category</th>
@@ -118,8 +119,8 @@ const Shop = () => {
                                 <td>{medicine?.company}</td>
                                 <td>{medicine.pricePerUnit} BTD</td>
                                 <td>
-                                    <button onClick={() => handleAddToCart(medicine)} className="btn btn-xs">Select</button>
-                                    <button onClick={() => handleDetails(medicine)} className="btn ml-4 btn-sm"><FaEye /></button>
+                                    <button onClick={() => handleAddToCart(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><FaCartArrowDown /></button>
+                                    <button onClick={() => handleDetails(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><CgDetailsMore /></button>
                                 </td>
                             </tr>)
                         }
@@ -135,7 +136,7 @@ const Shop = () => {
                     {
                         pages?.map((page, idx) => <div key={idx} className=" join">
                             <button
-                                className={`join-item btn mx-2 ${currentPage === page && 'bg-secondary'}`}
+                                className={`join-item btn mx-2 ${currentPage === page && 'bg-[#307156] text-white'}`}
                                 onClick={() => setCurrentPage(page)}
                             >{page}</button>
 

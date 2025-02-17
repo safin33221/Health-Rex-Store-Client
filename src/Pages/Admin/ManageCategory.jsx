@@ -60,8 +60,8 @@ const ManageCategory = () => {
                 <table className="table table-lg mx-auto text-lg min-w-[400px]">
                     {/* head */}
                     <thead>
-                        <tr className="bg-secondary">
-                            <th></th>
+                        <tr className="text-lg">
+                            <th>No.</th>
                             <th>Category Name</th>
                             <th>Action</th>
 
@@ -73,8 +73,8 @@ const ManageCategory = () => {
                                 <th>{index + 1}</th>
                                 <td>{category?.name}</td>
                                 <td className="flex gap-4">
-                                    <button className="hover:text-red-500 duration-200" onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
-                                    <button className="hover:text-yellow-500 duration-200" onClick={() => handleupdate(category)}><FaEdit /></button>
+                                    <button className="hover:text-red-500 duration-200 btn" onClick={() => handleDelete(category._id)}><FaTrashAlt /></button>
+                                    <button className="hover:text-yellow-500 duration-200 btn" onClick={() => handleupdate(category)}><FaEdit /></button>
 
                                 </td>
 
@@ -86,7 +86,7 @@ const ManageCategory = () => {
                 </table>
             </div>
             <button onClick={() => document.getElementById('addCategory').showModal()}
-                className="btn my-10 bg-primary">Add Category</button>
+                className="btn my-10 ">Add Category</button>
 
             <AddCategory refetch={refetch} />
             <UpdateCategoryModal category={category} refetch={refetch} />

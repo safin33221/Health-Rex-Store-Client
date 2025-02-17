@@ -32,9 +32,9 @@ const PaymentManageMent = () => {
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
-                    <thead className='bg-secondary'>
+                    <thead className='text-lg'>
                         <tr>
-                            <th></th>
+                            <th>No.</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Transtion Id Color</th>

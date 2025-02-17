@@ -23,7 +23,7 @@ const AdminHome = () => {
             <div className=" flex flex-col md:flex-row gap-5 min-w-[350px] mx-auto">
                 {
                     states?.map((state, idx) => 
-                    <div key={idx} className=" w-full border-secondary border-2 transition-all duration-200 ease-in-out  text-center p-4 rounded-lg hover:shadow-2xl  ">
+                    <div key={idx} className=" w-full border transition-all duration-200 ease-in-out  text-center p-4 rounded-lg hover:shadow-2xl  ">
                         <h1 className='text-xl font-bold'>{state._id}</h1>
                         <h1 className="text-2xl font-bold">{Number(state?.revenue)?.toFixed(2)} BTD</h1>
 

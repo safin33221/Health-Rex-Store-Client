@@ -61,7 +61,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="pt-24">
+        <div className="pt-16 pb-7">
             <Helmet title="HRS | SIGN UP" />
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
@@ -79,9 +79,9 @@ const SignUp = () => {
                         </svg>
                         <input {...register("userName")} required type="text" className=" focus:outline-none" placeholder="User Name" />
                     </label>
-                    <label className="input input-bordered flex items-center gap-2 mb-4">
-                        <MdInsertPhoto />
-                        <input {...register("image")} required type="file" className=" focus:outline-none" placeholder="image" />
+                    <label className="  mb-4">
+                        
+                        <input {...register("image")} required type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
@@ -119,9 +119,9 @@ const SignUp = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outlin bg-secondary hover:bg-accent hover:text-black font-bold mx-auto w-full">Sign Up</button>
+                        <button className="btn btn-outlin=font-bold mx-auto w-full">Sign Up</button>
                     </label>
-                    <p>Already have an Account? <Link to='/signIn'>Sign In Now</Link></p>
+                    <p>Already have an Account? <Link to='/signIn' className="text-blue-800">Sign In Now</Link></p>
                 </div>
             </form>
         </div>

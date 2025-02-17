@@ -30,14 +30,14 @@ const Testimonials = () => {
     return (
         <div className='w-11/12 mx-auto pb-10 my-12 '>
             <div className="text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+                <h1 className="text-3xl md:text-4xl font-bold">
                     What Our Customers Say__
                 </h1>
-                <p className="mt-4 text-lg md:text-xl text-gray-600">
+                <p className="mt-4 text-lg md:text-xl ">
                 Real Stories from Real People
                 </p>
             </div>
-            <Swiper className='mySwiper h-44 overflow-hidden z-40'
+            <Swiper className='mySwiper h-52 overflow-hidden z-40'
                 spaceBetween={20}
 
                 speed={2500}
@@ -62,13 +62,13 @@ const Testimonials = () => {
                 modules={[Autoplay]}
                 breakpoints={{
                     640: {
-                        slidesPerView: 1, // 1 slide on mobile screens
+                        slidesPerView: 2, // 1 slide on mobile screens
                     },
                     768: {
-                        slidesPerView: 2, // 2 slides on tablets
+                        slidesPerView: 4, // 2 slides on tablets
                     },
                     1024: {
-                        slidesPerView: 4, // 3 slides on larger screens
+                        slidesPerView: 5, // 3 slides on larger screens
                     },
                 }}
 
@@ -80,7 +80,7 @@ const Testimonials = () => {
                     testimonials.map((review) => (
                         <SwiperSlide>
                             <figure
-                                className='relative w-64 cursor-pointer h-full mx-auto  rounded-xl border p-4 bg-base-200 border-secondary hover:shadow-2xl transition-all duration-300 hover:scale-105 overflow-hidden '
+                                className='relative  cursor-pointer h-full mx-auto  rounded-xl border p-4 bg-base-200  hover:shadow-2xl transition-all duration-300  overflow-hidden '
                             >
                                 <div className="flex flex-row items-center gap-2">
 

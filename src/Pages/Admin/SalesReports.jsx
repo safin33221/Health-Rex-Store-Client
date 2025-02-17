@@ -19,7 +19,7 @@ const SalesReports = () => {
     if(isPending) return <Loader/>
     return (
         <div className='lg:w-10/12 mx-auto'>
-            <div className='flex justify-around mt-7 mb-5 items-center'>
+            <div className='flex justify-between mt-7 mb-5 items-center'>
                 <h1 className='text-xl font-bold'>Total Sales : {sales?.length}</h1>
                 <DownloadTableExcel
                     filename="sales_reports"
@@ -27,16 +27,16 @@ const SalesReports = () => {
                     currentTableRef={tableRef.current}
                 >
 
-                    <button className='btn bg-primary hover:bg-green-600 '> Export excel </button>
+                    <button className='btn '> Export excel </button>
 
                 </DownloadTableExcel>
             </div>
             <div className="overflow-x-auto">
                 <table ref={tableRef} className="table">
                     {/* head */}
-                    <thead className='bg-secondary'>
+                    <thead className='text-lg'>
                         <tr>
-                            <th></th>
+                            <th>No.</th>
                             <th>Name</th>
                             <th>Seller Email</th>
                             <th>Buyer Email</th>
