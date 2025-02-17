@@ -13,7 +13,7 @@ const CategoryCard = () => {
         }
     })
     return (
-        <div className="w-10/12 mx-auto my-14">
+        <div className="w-11/12 mx-auto my-14">
             <div className="text-center my-10">
                 <h1 className="text-2xl md:text-4xl font-bold text-gray-800">
                     Explore Our Wide Range of Medicines__
@@ -25,11 +25,11 @@ const CategoryCard = () => {
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
                 {
                     categoris?.slice(0, 6).map((category, idx) =>
                         <Link to={`/categoryDetails/${category.category}`} key={idx}>
-                            <div key={idx} className="card bg-green-100 hover:border-secondary border duration-100   shadow-xl hover:shadow-2xl ">
+                            <div key={idx} className="card bg-green-100 hover:border-secondary border duration-100   shadow-xl hover:shadow-2xl md:max-w-[250px] mx-auto">
                                 <figure>
                                     <img
                                         className="h-44 w-full"

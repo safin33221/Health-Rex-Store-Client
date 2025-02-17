@@ -3,8 +3,12 @@ import Navbar from "../Pages/Shared/Navbar";
 import Footer from "../Pages/Shared/Footer";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useAuth from "../Hooks/useAuth";
+import Loader from "../Components/Loader";
 
 const MainLayout = () => {
+    const {isloading} = useAuth()
+    if(isloading) return <Loader/>
     return (
         <div>
             <nav>

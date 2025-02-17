@@ -57,7 +57,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu  menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow ">
+                        className="menu  bg-white bg-opacity-70 bg-blend-overlay backdrop-blur-sm  menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow ">
                         {
                             links
                         }
@@ -66,80 +66,85 @@ const Navbar = () => {
                 <img src={logo} className="w-16" alt="" />
                 <a className="btn btn-ghost text-xl">HealthRxStore</a>
             </div>
-            <div className="navbar-center hidden lg:flex items-center justify-center">
-                <ul className="menu  gap-3 menu-horizontal px-1 items-center justify-center">
-                    {links}
-                </ul>
-            </div>
-            {
-                user ? null : <div className="flex-none navbar-end">
-                    <div className="dropdown dropdown-end">
-                        <Link to='/signIn'>
-                            <button className="btn btn-outline font-bold">
-                                Join Us
-                            </button>
+            <div className="navbar-end  ">
+                <div className="hidden lg:flex items-center">
+                    <ul className="menu  gap-3 menu-horizontal px-1 items-center justify-center">
+                        {links}
+                    </ul>
+                    {
+                        user ? null : <div className="flex-none navbar-end">
+                            <div className="dropdown dropdown-end">
+                                <Link to='/signIn'>
+                                    <button className="btn btn-outline font-bold">
+                                        Join Us
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+                {
+                    user && <div className="flex items-center  ">
+                        <Link to='/cart' className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                                <div className="indicator">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-5 w-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                    {/* <span className="badge badge-sm indicator-item">{carts?.length}</span> */}
+                                </div>
+                            </div>
+
                         </Link>
-                    </div>
-                </div>
 
-            }
-            {
-                user && <div className="flex-none navbar-end">
-                    <Link to='/cart' className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                            <div className="indicator">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                {/* <span className="badge badge-sm indicator-item">{carts?.length}</span> */}
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full ">
+                                    <img
+                                        alt="Tailwind CSS Navbar component"
+                                        src={user?.photoURL} />
+                                </div>
                             </div>
+                            <ul
+                                tabIndex={0}
+                                className="menu bg-white bg-opacity-70 bg-blend-overlay backdrop-blur-sm    menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                <NavLink to='/profile'>
+                                    <li>
+                                        <a className="justify-between">
+                                            Update Profile
+
+                                        </a>
+                                    </li>
+                                </NavLink>
+                                {
+                                    role === 'admin' && <li><NavLink to='/dashboard/adminHome'>Dashboard </NavLink></li>
+                                }
+                                {
+                                    role === 'seller' && <li><NavLink to='/dashboard/sellerHome'>Dashboard </NavLink></li>
+                                }
+                                {
+                                    role === 'user' && <li><NavLink to='/dashboard/userPayments'>Dashboard </NavLink></li>
+                                }
+
+                                <li><button onClick={handleLogout}>Logout</button></li>
+                            </ul>
                         </div>
-
-                    </Link>
-
-                    <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img
-                                    alt="Tailwind CSS Navbar component"
-                                    src={user?.photoURL} />
-                            </div>
-                        </div>
-                        <ul
-                            tabIndex={0}
-                            className="menu bg-secondary menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <NavLink to='/profile'>
-                                <li>
-                                    <a className="justify-between">
-                                        Update Profile
-
-                                    </a>
-                                </li>
-                            </NavLink>
-                            {
-                                role === 'admin' && <li><NavLink to='/dashboard/adminHome'>Dashboard </NavLink></li>
-                            }
-                            {
-                                role === 'seller' && <li><NavLink to='/dashboard/sellerHome'>Dashboard </NavLink></li>
-                            }
-                            {
-                                role === 'user' && <li><NavLink to='/dashboard/userPayments'>Dashboard </NavLink></li>
-                            }
-
-                            <li><button onClick={handleLogout}>Logout</button></li>
-                        </ul>
                     </div>
-                </div>
-            }
+                }
+            </div>
+
+
         </div>
     );
 };
