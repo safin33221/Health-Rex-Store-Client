@@ -18,7 +18,7 @@ const DiscountsProducts = () => {
     const {user} = useAuth()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
-    const { data: products = [] } = useQuery({
+    const { data: products = [],isPending } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             const res = await axiosPublic.get('/discount-products')
@@ -57,8 +57,9 @@ const DiscountsProducts = () => {
                 }
             })
     }
+    if(isPending) return
     return (
-        <div>
+        <div className='px-12 mx-auto'>
             <div className="text-center mb-10">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
                     Discounted Products__

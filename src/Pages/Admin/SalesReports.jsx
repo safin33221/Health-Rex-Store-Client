@@ -3,18 +3,20 @@ import React, { useRef } from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { DownloadTableExcel } from 'react-export-table-to-excel';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Loader from '../../Components/Loader';
 
 const SalesReports = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const tableRef = useRef(null);
-    const { data: sales = [] } = useQuery({
+    const { data: sales = [] ,isPending} = useQuery({
         queryKey: ['sales'],
         queryFn: async () => {
             const res = await axiosSecure.get('/sales-reports')
             return res.data
         }
     })
+    if(isPending) return <Loader/>
     return (
         <div className='lg:w-10/12 mx-auto'>
             <div className='flex justify-around mt-7 mb-5 items-center'>

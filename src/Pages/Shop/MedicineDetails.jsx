@@ -26,7 +26,7 @@ const MedicineDetails = ({ medicineDetails }) => {
                 <div className="modal-action  m-4">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
-                        <button  className="btn btn-outline btn-xl bg-primary">Close</button>
+                        <button  className="btn btn-xl bg-secondary ">Close</button>
                     </form>
                 </div>
             </div>

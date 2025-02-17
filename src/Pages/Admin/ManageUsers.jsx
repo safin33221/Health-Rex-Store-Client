@@ -3,12 +3,13 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 
 const ManageUsers = () => {
  
     const axiosSecure = useAxiosSecure()
-    const { data: users } = useQuery({
+    const { data: users,isPending } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users')
@@ -41,6 +42,7 @@ const ManageUsers = () => {
             }
         });
     }
+    if(isPending) return <Loader/>
     return (
         <div className="lg:w-10/12 mt-9 mx-auto">
             <Helmet title="HRS | MANAGE USERS"/>

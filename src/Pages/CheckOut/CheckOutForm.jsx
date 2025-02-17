@@ -16,13 +16,14 @@ const CheckOutForm = () => {
     const navigate = useNavigate()
     const [clientSecret, setClientSecret] = useState('')
     const [transtionId, setTranstionId] = useState('')
-    const totalPrice = carts?.reduce((total, item) => total + parseInt(item.pricePerUnit * item.quantityk), 0)
-
+    const totalPrice = carts?.reduce((total, item) => total + parseInt(item.pricePerUnit * item.quantity), 0)
+    console.log(totalPrice);
 
     useEffect(() => {
         if (totalPrice) {
             axiosSecure.post('/create-payment-intent', { price: totalPrice })
                 .then(res => {
+                    console.log(res);
 
                     setClientSecret(res.data.clientSecret)
                 })
@@ -43,6 +44,7 @@ const CheckOutForm = () => {
             card
         })
         if (error) {
+            console.log(error);
             toast.success(error.message, {
                 position: "top-right",
                 autoClose: 1000,
@@ -65,6 +67,7 @@ const CheckOutForm = () => {
             },
         });
         if (cardError) {
+            console.log(cardError);
             toast.success(cardError.message, {
                 position: "top-right",
                 autoClose: 1000,
@@ -91,6 +94,7 @@ const CheckOutForm = () => {
                 }
                 axiosSecure.post('/payment', payment)
                     .then(res => {
+                        console.log(res);
 
                         setPaymentsDetails(payment)
                         toast.success('Thank You for Your Payment!', {

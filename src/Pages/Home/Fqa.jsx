@@ -5,16 +5,17 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 const Fqa = () => {
     const axiosPublic = useAxiosPublic()
     const [activeIndex, setActiveIndex] = useState(null);
-    const { data: faqs=[] } = useQuery({
+    const { data: faqs = [], isPending } = useQuery({
         queryKey: ['fqa'],
         queryFn: async () => {
             const res = await axiosPublic.get('fqa')
-            return res.data
+            return res.data.slice(0,5)
         }
     })
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
-      };
+    };
+    if(isPending) return
     return (
         <div className="max-w-4xl mx-auto my-8 p-4">
             <h2 className="text-3xl font-bold text-center mb-6">Frequently Asked Questions</h2>

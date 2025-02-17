@@ -8,6 +8,7 @@ import moment from "moment";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 const Shop = () => {
     const axiosPublic = useAxiosPublic()
@@ -19,7 +20,7 @@ const Shop = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
     const itemPerPages = 10
-    const { data: medicines } = useQuery({
+    const { data: medicines,isPending } = useQuery({
         queryKey: ['medicines', search, sort, currentPage, itemPerPages],
         queryFn: async () => {
             const res = await axiosPublic.get(`/medicines?search=${search}&sort=${sort}&page=${currentPage}&size=${itemPerPages}`)
@@ -79,7 +80,7 @@ const Shop = () => {
                 }
             })
     }
-    console.log(currentPage);
+    if(isPending) return <Loader/>
     return (
         <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />

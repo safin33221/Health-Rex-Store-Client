@@ -1,17 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
+import Loader from "../../Components/Loader";
 
 
 const CategoryCard = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: categoris } = useQuery({
+    const { data: categoris,isPending } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
             const res = await axiosPublic.get('/categoryDetails')
             return res.data
         }
     })
+    if(isPending) return <Loader/>
     return (
         <div className="w-11/12 mx-auto my-14">
             <div className="text-center my-10">

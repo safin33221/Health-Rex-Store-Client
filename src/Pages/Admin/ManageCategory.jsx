@@ -8,12 +8,13 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 const ManageCategory = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const [category, setCategory] = useState({})
-    const { data: categoris =[], refetch } = useQuery({
+    const { data: categoris =[], refetch,isPending } = useQuery({
         queryKey: ['categoris'],
         queryFn: async () => {
             const res = await axiosPublic.get('/category')
@@ -51,6 +52,7 @@ const ManageCategory = () => {
         setCategory(category)
         document.getElementById('updateCategory').showModal()
     }
+    if(isPending) return <Loader/>
     return (
         <div className="lg:w-10/12 mx-auto my-20 w-full  ">
             <Helmet title="HRS | MANAGE CATEGORY" />

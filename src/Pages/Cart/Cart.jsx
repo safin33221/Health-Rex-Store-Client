@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useState } from "react";
+import Loader from "../../Components/Loader";
 
 
 const Cart = () => {
@@ -15,7 +16,7 @@ const Cart = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const [search, setSearch] = useState('')
-    const { data: carts =[], refetch } = useQuery({
+    const { data: carts = [], refetch,isPending } = useQuery({
         queryKey: ['carts', user?.email, search],
         queryFn: async () => {
             const res = await axiosSecure.get(`/carts/${user?.email}?search=${search}`)
@@ -65,13 +66,13 @@ const Cart = () => {
 
             })
     }
-
+    if(isPending) return <Loader/>
     return (
         <div className="md:w-10/12 mx-auto">
             <Helmet title="HRS | CART" />
 
             {
-                carts?.length < 0 ? <>
+                carts?.length > 0 ? <>
                     <h1 className="text-center text-3xl font-bold mt-64">No medicine in your cart yet. Browse and add some!</h1></> :
                     <div className="overflow-x-auto">
                         <div className="flex justify-between items-center py-5">
@@ -86,7 +87,7 @@ const Cart = () => {
                                 <tr >
                                     <th></th>
                                     <th>Name</th>
-                                   
+
                                     <th>Company</th>
                                     <th>Per Unit Price</th>
                                     <th>Quantity</th>
@@ -101,7 +102,7 @@ const Cart = () => {
                                     carts?.map((cart, index) => <tr key={index}>
                                         <th>{index + 1}</th>
                                         <td>{cart?.itemName}</td>
-                                 
+
                                         <td>{cart?.company}</td>
                                         <td>{cart?.pricePerUnit} tk</td>
                                         <td>
@@ -121,9 +122,9 @@ const Cart = () => {
 
                             </tbody>
                         </table>
-                        
-                            <button disabled={carts.length === 0} className="btn bg-primary my-5"><Link to='/cheackOut'>Check Out</Link></button>
-               
+
+                        <button disabled={carts.length === 0} className="btn bg-primary my-5"><Link to='/cheackOut'>Check Out</Link></button>
+
                     </div>
             }
         </div>

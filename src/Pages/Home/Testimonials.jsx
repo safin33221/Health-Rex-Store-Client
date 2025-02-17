@@ -19,16 +19,16 @@ import { EffectCards } from 'swiper/modules';
 
 const Testimonials = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: testimonials = [] } = useQuery({
+    const { data: testimonials = [],isPending } = useQuery({
         queryKey: ['Testimonials'],
         queryFn: async () => {
             const res = await axiosPublic.get("/customerTestimonials")
             return res.data
         }
     })
-   
+   if(isPending) return
     return (
-        <div className='w-11/12 mx-auto pb-10 '>
+        <div className='w-11/12 mx-auto pb-10 my-12 '>
             <div className="text-center mb-10">
                 <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
                     What Our Customers Say__
@@ -37,7 +37,7 @@ const Testimonials = () => {
                 Real Stories from Real People
                 </p>
             </div>
-            <Swiper className='mySwiper h-44'
+            <Swiper className='mySwiper h-44 overflow-hidden z-40'
                 spaceBetween={20}
 
                 speed={2500}

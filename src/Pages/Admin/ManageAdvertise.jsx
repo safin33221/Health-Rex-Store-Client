@@ -3,11 +3,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../Components/Loader";
 
 const ManageAdvertise = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
-    const { data: advertise,refetch } = useQuery({
+    const { data: advertise,refetch,isPending } = useQuery({
         queryKey: ['advertise'],
         queryFn: async () => {
             const res = await axiosSecure.get('/addvertisements')
@@ -23,7 +24,7 @@ const ManageAdvertise = () => {
                 refetch()
             })
     }
-
+    if(isPending) return <Loader/>
     return (
         <div className="lg:w-10/12 pt-10  mx-auto">
             <Helmet title="HRS | MANAGE ADVERTISE"/>

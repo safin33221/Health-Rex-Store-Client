@@ -7,8 +7,7 @@ import useAuth from "../Hooks/useAuth";
 import Loader from "../Components/Loader";
 
 const MainLayout = () => {
-    const {isloading} = useAuth()
-    if(isloading) return <Loader/>
+
     return (
         <div>
             <nav>

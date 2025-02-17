@@ -4,12 +4,13 @@ import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import useAuth from '../../Hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Loader from '../../Components/Loader';
 
 const PaymentManageMent = () => {
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const { data: payments =[], refetch } = useQuery({
+    const { data: payments =[], refetch,isPending } = useQuery({
         queryKey: ['payments', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/manage-payments`)
@@ -23,7 +24,7 @@ const PaymentManageMent = () => {
                 refetch()
             })
     }
-
+    if(isPending) return <Loader/>
     return (
         <div className='lg:w-10/12 mt-14 mx-auto overflow-x-hidden'>
             <Helmet title="HRS | MANAGE PAYMENTS"/>

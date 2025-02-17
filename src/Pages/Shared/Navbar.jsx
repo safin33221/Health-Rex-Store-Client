@@ -72,7 +72,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                     {
-                        user ? null : <div className="flex-none navbar-end">
+                        user ? null : <div className="flex-none ">
                             <div className="dropdown dropdown-end">
                                 <Link to='/signIn'>
                                     <button className="btn btn-outline font-bold">

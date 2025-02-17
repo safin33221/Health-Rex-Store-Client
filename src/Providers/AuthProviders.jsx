@@ -44,6 +44,7 @@ const AuthProviders = ({ children }) => {
         carts,
         paymentDetails,
         isloading,
+        setLoading,
         setPaymentsDetails,
         setCart,
         createUserwithEmail,
