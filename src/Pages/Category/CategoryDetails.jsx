@@ -78,7 +78,7 @@ const CategoryDetails = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className=" bg-secondary">
+                        <tr className=" text-xl">
                             <th></th>
                             <th>Medicine Name</th>
 

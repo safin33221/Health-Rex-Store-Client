@@ -13,7 +13,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 const img_hosting_key = import.meta.env.VITE_IMG_HOSTING_KEY
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
+
+
+import { LuLoaderPinwheel } from "react-icons/lu";
+
 const SignUp = () => {
+    const [loading, setLoading] = useState(false)
     const axiosPublic = useAxiosPublic()
     const [showPass, setShowPass] = useState(false)
     const { createUserwithEmail, updateUserProfile } = useAuth()
@@ -24,6 +29,7 @@ const SignUp = () => {
 
     } = useForm()
     const onsubmit = async (data) => {
+        setLoading(true)
 
         const imgFile = { image: data.image[0] }
         const imglink = await axios.post(img_hosting_api, imgFile, {
@@ -46,6 +52,7 @@ const SignUp = () => {
                         }
                         axiosPublic.post('/users', userInfo)
                             .then(res => {
+                                setLoading(false)
 
                                 Swal.fire({
                                     position: "top-end",
@@ -64,7 +71,7 @@ const SignUp = () => {
         <div className="pt-16 pb-7">
             <Helmet title="HRS | SIGN UP" />
             <form onSubmit={handleSubmit(onsubmit)} >
-                <div className="max-w-xl mx-auto border-2 rounded-lg p-4">
+                <div className="max-w-xl mx-auto border shadow-2xl rounded-lg p-4">
                     <h1 className="text-3xl font-bold text-center py-5">SignUp Now!</h1>
 
 
@@ -80,7 +87,7 @@ const SignUp = () => {
                         <input {...register("userName")} required type="text" className=" focus:outline-none" placeholder="User Name" />
                     </label>
                     <label className="  mb-4">
-                        
+
                         <input {...register("image")} required type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                     </label>
@@ -119,7 +126,9 @@ const SignUp = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outlin=font-bold mx-auto w-full">Sign Up</button>
+                        <button className="btn btn-outlin=font-bold mx-auto w-full">{
+                            loading ? <LuLoaderPinwheel className="animate-spin text-xl" /> : "Sign Up"
+                        }</button>
                     </label>
                     <p>Already have an Account? <Link to='/signIn' className="text-blue-800">Sign In Now</Link></p>
                 </div>

@@ -72,7 +72,7 @@ const Cart = () => {
             <Helmet title="HRS | CART" />
 
             {
-                carts?.length > 0 ? <>
+                carts?.length < 0 ? <>
                     <h1 className="text-center text-3xl font-bold mt-64">No medicine in your cart yet. Browse and add some!</h1></> :
                     <div className="overflow-x-auto">
                         <div className="flex justify-between items-center py-5">
@@ -83,7 +83,7 @@ const Cart = () => {
                         </div>
                         <table className="table table-zebra">
                             {/* head */}
-                            <thead className="bg-secondary rounded-lg" >
+                            <thead className="text-xl rounded-lg" >
                                 <tr >
                                     <th></th>
                                     <th>Name</th>
@@ -93,7 +93,7 @@ const Cart = () => {
                                     <th>Quantity</th>
                                     <th>
                                         <button onClick={() => handleClearAll(user?.email)}
-                                            className="btn btn-sm bg-primary">Clear All</button>
+                                            className="btn btn-sm b">Clear All</button>
                                     </th>
                                 </tr>
                             </thead>
@@ -123,7 +123,7 @@ const Cart = () => {
                             </tbody>
                         </table>
 
-                        <button disabled={carts.length === 0} className="btn bg-primary my-5"><Link to='/cheackOut'>Check Out</Link></button>
+                        <button disabled={carts.length === 0} className="btn btn-outline my-5"><Link to='/cheackOut'>Check Out</Link></button>
 
                     </div>
             }

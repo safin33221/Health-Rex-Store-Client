@@ -8,8 +8,11 @@ import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import { use } from 'react';
+import { LuLoaderPinwheel } from 'react-icons/lu';
 
 const SignIn = () => {
+    const [loading, setLoading] = useState(false)
     const [showPass, setShowPass] = useState(false)
     const { signInuser, siginUserWithGoogle } = useAuth()
     const axiosPublic = useAxiosPublic()
@@ -20,9 +23,10 @@ const SignIn = () => {
 
     } = useForm()
     const onsubmit = async (data) => {
+        setLoading(true)
         signInuser(data.email, data.password)
             .then(res => {
-
+                setLoading(false)
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -89,7 +93,7 @@ const SignIn = () => {
                             <path
                                 d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                         </svg>
-                        <input {...register("email")} type="email" className=" focus::outline-none" placeholder="Email" />
+                        <input {...register("email")} type="email" className=" bg-none focus:outline-none" placeholder="Email" />
                     </label>
                     <label className="input input-bordered flex items-center relative gap-2 mb-4">
                         <svg
@@ -107,7 +111,11 @@ const SignIn = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outline mx-auto w-full">Sign In</button>
+                        <button className="btn btn-outline mx-auto w-full">
+                            {
+                                loading ? <LuLoaderPinwheel className="animate-spin text-xl" /> : "Sign In"
+                            }
+                        </button>
                     </label>
                     <p>New in this site? <Link to='/signUp' className='text-blue-800'>Sign Up Now</Link></p>
                     <label className="flex items-center gap-2 mb-4 mx-auto">

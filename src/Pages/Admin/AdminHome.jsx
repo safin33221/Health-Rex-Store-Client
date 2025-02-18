@@ -3,17 +3,19 @@ import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
+import Loader from '../../Components/Loader';
 
 const AdminHome = () => {
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
-    const { data: states } = useQuery({
+    const { data: states,isPending } = useQuery({
         queryKey: ['states'],
         queryFn: async () => {
             const res = await axiosPublic.get('/admin/sales-states')
             return res.data
         }
     })
+    if(isPending) return <Loader/>
    
     return (
         <div className='lg:w-10/12 mx-auto'>
