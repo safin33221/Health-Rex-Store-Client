@@ -68,7 +68,7 @@ const SignUp = () => {
             })
     }
     return (
-        <div className="pt-16 pb-7">
+        <div className="pt-16 pb-7 px-4 mx-auto">
             <Helmet title="HRS | SIGN UP" />
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border shadow-2xl rounded-lg p-4">
