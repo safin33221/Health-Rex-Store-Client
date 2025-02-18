@@ -19,7 +19,7 @@ const Profile = () => {
             </Helmet>
 
             <div className="w-11/12 h-96 relative mx-auto p-4 bg-base-300 border rounded-lg shadow-lg  flex items-center justify-center mt-24">
-                <div className="flex items-center gap-10">
+                <div className="flex flex-col md:flex-row items-center gap-10">
                     <div className="relative">
                         <img
                             className="w-52 h-52 mb-4 rounded-full shadow-lg"

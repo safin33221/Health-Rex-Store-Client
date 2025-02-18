@@ -31,7 +31,7 @@ const CategoryCard = () => {
                 {
                     categoris?.slice(0, 6).map((category, idx) =>
                         <Link to={`/categoryDetails/${category.category}`} key={idx}>
-                            <div key={idx} className="card   border duration-100   shadow-xl hover:shadow-2xl max-w-[300px] mx-auto">
+                            <div key={idx} className="card  bg-base-200  border duration-100   shadow-xl hover:shadow-2xl max-w-[300px] mx-auto">
                                 <figure>
                                     <img
                                         className="h-44 w-full shadow-xl border-b"

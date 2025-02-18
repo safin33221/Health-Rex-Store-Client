@@ -64,7 +64,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <img src={logo} className="w-16" alt="" />
-                <a className="btn btn-ghost text-xl">HealthRxStore</a>
+                <a className="btn btn-ghost text-xl hidden md:flex">HealthRxStore</a>
             </div>
             <div className="navbar-end  ">
                 <div className="flex items-center">
