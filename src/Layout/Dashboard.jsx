@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 import useRole from '../Hooks/useRole';
 import { FaBars, FaHome, FaUsersCog } from 'react-icons/fa';
@@ -11,10 +11,25 @@ import { FcSalesPerformance } from 'react-icons/fc';
 import { MdManageHistory } from 'react-icons/md';
 import useAuth from '../Hooks/useAuth';
 import { CgProfile } from 'react-icons/cg';
+import Swal from 'sweetalert2';
 
 const Dashboard = () => {
     const [role] = useRole()
-    const { toggleTheme, theme, handleLogout } = useAuth()
+    const { toggleTheme, theme, sigoutUser } = useAuth()
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        sigoutUser()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You have been log out succefully",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                navigate('/')
+            })
+    }
     return (
         <div className='flex '>
 
@@ -148,7 +163,7 @@ const Dashboard = () => {
                         <li><NavLink to='/'><FaHome />Home </NavLink></li>
                         <li><NavLink to='/shop'><FaShop />Shop </NavLink></li>
                         <li><NavLink to='/dashboard/profile'><CgProfile /> Profile </NavLink></li>
-                        <li><button className="btn btn-outline btn-sm my-2" onClick={() => handleLogout()}>Logout</button></li>
+                        <li><button className="btn btn-outline btn-sm my-2" onClick={handleLogout}>Logout</button></li>
                         {/* Theme Controlar */}
 
                         {/* Theme Controler */}
