@@ -27,6 +27,8 @@ import Profile from "../Pages/Shared/Profile";
 import ErrorPage from "../Pages/Shared/ErrorPage ";
 import About from "../Pages/About/About";
 
+import DoctorDetails from "../Pages/DoctorDetails/DoctorDetails";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />
+            },
+            {
+                path: '/Doctors',
+                element: <DoctorDetails />
             },
             {
                 path: '/categoryDetails/:category',

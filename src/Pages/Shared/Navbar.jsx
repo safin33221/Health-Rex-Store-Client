@@ -16,8 +16,8 @@ const Navbar = () => {
         <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
         <li><NavLink to='/shop'><FaShop />Shop</NavLink></li>
         <li><NavLink to='/about'><CgDetailsMore />About</NavLink></li>
-        
-        
+
+
     </>
     const handleLogout = () => {
         sigoutUser()
@@ -146,7 +146,7 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className="menu bg-base-100 bg-opacity-70 bg-blend-overlay backdrop-blur-sm    menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                                
+                                <li><NavLink to='/Doctors'>Doctor Profiles </NavLink></li>
                                 {
                                     role === 'admin' && <li><NavLink to='/dashboard/adminHome'>Dashboard </NavLink></li>
                                 }
