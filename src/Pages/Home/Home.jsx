@@ -5,6 +5,7 @@ import DiscountsProducts from "./DiscountsProducts";
 import Testimonials from "./Testimonials";
 import Fqa from "./Fqa";
 import OurMission from "./OurMisson";
+import WhyChooseUs from "./WhyChooseUs";
 
 const Home = () => {
     return (
@@ -21,6 +22,9 @@ const Home = () => {
             </section>
             <section>
                 <OurMission/>
+            </section>
+            <section>
+                <WhyChooseUs/>
             </section>
             <section>
                 <Testimonials />
