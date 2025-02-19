@@ -4,6 +4,7 @@ import CategoryCard from "./CategoryCard";
 import DiscountsProducts from "./DiscountsProducts";
 import Testimonials from "./Testimonials";
 import Fqa from "./Fqa";
+import OurMission from "./OurMisson";
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
             </section>
             <section>
                 <DiscountsProducts />
+            </section>
+            <section>
+                <OurMission/>
             </section>
             <section>
                 <Testimonials />

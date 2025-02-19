@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import { FaHome } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 import useRole from "../../Hooks/useRole";
+import { CgDetailsMore } from "react-icons/cg";
 
 const Navbar = () => {
     const { user, sigoutUser, carts, toggleTheme } = useAuth()
@@ -14,7 +15,7 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
         <li><NavLink to='/shop'><FaShop />Shop</NavLink></li>
-        <li><NavLink to='/about'><FaShop />About</NavLink></li>
+        <li><NavLink to='/about'><CgDetailsMore />About</NavLink></li>
         
         
     </>

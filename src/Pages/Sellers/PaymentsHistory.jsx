@@ -24,9 +24,9 @@ const PaymentsHistory = () => {
                         <h1 className="text-lg md:text-2xl font-bold ml-20">Payment History</h1>
                         <table className="table">
                             {/* head */}
-                            <thead className="bg-secondary">
+                            <thead className="font-bold">
                                 <tr>
-                                    <th></th>
+                                    <th>No.</th>
                                     <th>Buyer</th>
                                     <th>Transtion Id</th>
                                     <th>Status</th>

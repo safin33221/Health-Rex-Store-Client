@@ -63,7 +63,7 @@ const AddAdvertice = ({ refetch }) => {
                         </label>
                         <label className="my-2">
                             <span>Banner Image:</span>
-                            <input {...register("image")} required type="file" className=" input p-3 w-full  focus:outline-none " placeholder="image" />
+                            <input {...register("image")} required type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                         </label>
 
@@ -71,7 +71,7 @@ const AddAdvertice = ({ refetch }) => {
 
                         <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Post</button>
+                            <button className="btn  btn-outline mx-auto w-full">Post</button>
                         </label>
 
                     </div>

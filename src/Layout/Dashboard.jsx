@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 
 import useRole from '../Hooks/useRole';
-import { FaBars, FaHome, FaUsersCog } from 'react-icons/fa';
+import { FaBars, FaChartLine, FaHome, FaUsersCog } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { FaShop } from 'react-icons/fa6';
 import { BiCategoryAlt } from 'react-icons/bi';
@@ -12,6 +12,7 @@ import { MdManageHistory } from 'react-icons/md';
 import useAuth from '../Hooks/useAuth';
 import { CgProfile } from 'react-icons/cg';
 import Swal from 'sweetalert2';
+
 
 const Dashboard = () => {
     const [role] = useRole()
@@ -55,7 +56,7 @@ const Dashboard = () => {
                                         Manage Users</NavLink></li>
                                     <li><NavLink to='/dashboard/manageCategory'> <BiCategoryAlt /> Manage Category</NavLink></li>
                                     <li><NavLink to='/dashboard/managePayments'><IoWalletSharp />Payment management</NavLink></li>
-                                    <li><NavLink to='/dashboard/salesReport'> <FcSalesPerformance className=' text-black' />Sales Report</NavLink></li>
+                                    <li><NavLink to='/dashboard/salesReport'> <FaChartLine className=' text-black' />Sales Report</NavLink></li>
                                     <li><NavLink to='/dashboard/manageAdvertise'> <MdManageHistory />Manage banner Advertise</NavLink></li>
                                 </ul>
                             }

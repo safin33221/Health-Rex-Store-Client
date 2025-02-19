@@ -22,7 +22,7 @@ const AskForAd = () => {
             {
                 advertise?.length <= 0 ? 
                 <div className=" flex flex-col items-center justify-center mt-20 ">
-                    <h1 className="text-2xl font-bold text-gray-800 mb-2">
+                    <h1 className="text-2xl font-bold ">
                         No Advertisements Found!
                     </h1>
                     <p className="text-gray-600 text-center max-w-md">
@@ -30,13 +30,13 @@ const AskForAd = () => {
                     </p>
                 </div> :
                     <div className="overflow-x-auto">
-                        <h1 className="text-lg md:text-2xl font-bold ml-20 mb-6">Ads Histroy</h1>
+                        <h1 className="text-lg md:text-2xl font-bold  mb-6">Ads Histroy</h1>
                         <table className="table">
                             {/* head */}
-                            <thead className="bg-secondary">
+                            <thead className="">
                                 <tr>
                                     <th>
-
+                                        No.
                                     </th>
                                     <th>Image</th>
                                     <th>Name</th>
@@ -88,7 +88,7 @@ const AskForAd = () => {
                     </div>
             }
             <button onClick={() => document.getElementById('addAdvertice').showModal()}
-                className="btn bg-primary my-10 font-bold">Add Advertise</button>
+                className="btn  my-10 font-bold">Add Advertise</button>
 
             <AddAdvertice refetch={refetch} />
 

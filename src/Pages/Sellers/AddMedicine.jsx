@@ -77,65 +77,67 @@ const AddMedicine = ({ refetch }) => {
 
                         <label className="  flex items-center gap-2 my-2">
 
-                            <input {...register("itemName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="itemName" />
+                            <input {...register("itemName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="itemName" />
                         </label>
                         <label className="  flex items-center gap-2 mb-4">
 
-                            <input {...register("genericName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="genericName" />
+                            <input {...register("genericName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="genericName" />
 
                         </label>
                         <label className="  flex items-center gap-2 my-4">
 
-                            <textarea {...register("shortDescription")} type="text" className="textarea textarea-bordered textarea-md w-full focus:outline-none focus:border-accent" placeholder="shortDescription" />
+                            <textarea {...register("shortDescription")} type="text" className="textarea textarea-bordered textarea-md w-full focus:outline-none " placeholder="shortDescription" />
                         </label>
                         <label className="my-2">
 
-                            <input {...register("image")} type="file" className=" input p-3 w-full  focus:outline-none " placeholder="image" />
+                            <input {...register("image")} type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                         </label>
-                        <label className="   flex items-center gap-2 my-4">
-                            <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent focus:border-accent'>
-                                {
-                                    categoris?.map(category => <option key={category._id} value={category.name}>{category.name}</option>)
-                                }
+                        <div className='md:flex gap-3'>
+                            <label className="   flex items-center gap-2 my-4">
+                                <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent '>
+                                    {
+                                        categoris?.map(category => <option key={category._id} value={category.name}>{category.name}</option>)
+                                    }
 
-                            </select>
+                                </select>
 
-                        </label>
-                        <label className="   flex items-center gap-2 my-4" >
-                            <select {...register('company')} required id="company" className='select select-bordered focus:outline-accent focus:border-accent'>
-                                <option value="ABC Pharma">ABC Pharma</option>
-                                <option value="HealthCo">HealthCo</option>
-                                <option value="BioMed">BioMed</option>
-                                <option value="MediCare">MediCare</option>
-                                <option value="GlucoseCare">GlucoseCare</option>
-                                <option value="CardioPlus">CardioPlus</option>
-                                <option value="DigestCare">DigestCare</option>
-                                <option value="BreatheEasy">BreatheEasy</option>
-                                <option value="VitaLife">VitaLife</option>
-                            </select>
+                            </label>
+                            <label className="   flex items-center gap-2 my-4" >
+                                <select {...register('company')} required id="company" className='select select-bordered focus:outline-accent '>
+                                    <option value="ABC Pharma">ABC Pharma</option>
+                                    <option value="HealthCo">HealthCo</option>
+                                    <option value="BioMed">BioMed</option>
+                                    <option value="MediCare">MediCare</option>
+                                    <option value="GlucoseCare">GlucoseCare</option>
+                                    <option value="CardioPlus">CardioPlus</option>
+                                    <option value="DigestCare">DigestCare</option>
+                                    <option value="BreatheEasy">BreatheEasy</option>
+                                    <option value="VitaLife">VitaLife</option>
+                                </select>
+
+                            </label>
+                        </div>
+                        <label className="  flex items-center gap-2 mb-4">
+
+                            <input {...register("massUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Mass Unit" />
 
                         </label>
                         <label className="  flex items-center gap-2 mb-4">
 
-                            <input {...register("massUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="Mass Unit" />
+                            <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Price Per Unit" />
 
                         </label>
                         <label className="  flex items-center gap-2 mb-4">
 
-                            <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="Price Per Unit" />
-
-                        </label>
-                        <label className="  flex items-center gap-2 mb-4">
-
-                            <input {...register("discountPercentage")} defaultValue={0} type="text" className=" input p-3 w-full input-bordered focus:outline-none focus:border-accent" placeholder="Discount Percentage	" />
+                            <input {...register("discountPercentage")} defaultValue={0} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Discount Percentage	" />
 
                         </label>
 
 
                         <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                            <button className="btn bg-primary hover:bg-green-600 hover:text-text btn-outline mx-auto w-full">Add Medicine</button>
+                            <button className="btn btn-outline mx-auto w-full">Add Medicine</button>
                         </label>
 
                     </div>

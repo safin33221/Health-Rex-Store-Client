@@ -68,11 +68,11 @@ const ManageMedicines = () => {
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5 ml-16">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div className="felx gap-x-10" >
-                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl focus:outline-none border-secondary select-sm md:select-lg" name="" id="">
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl focus:outline-none border-secondary select-sm " name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
-                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm " />
                 </div>
             </div>
 
@@ -80,7 +80,7 @@ const ManageMedicines = () => {
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
-                        <tr className="bg-secondary">
+                        <tr className="">
                             <th>No.</th>
                             <th>Medicine Name</th>
                             <th>Generic Name</th>
@@ -111,7 +111,7 @@ const ManageMedicines = () => {
                     </tbody>
                 </table>
                 <button onClick={() => document.getElementById('my_modal_5').showModal()}
-                    className="btn bg-primary my-10">Add Medicine</button>
+                    className="btn  my-10">Add Medicine</button>
 
                 <div className="m-5">
                     <button
@@ -120,7 +120,7 @@ const ManageMedicines = () => {
                     {
                         pages?.map((page, idx) => <div key={idx} className=" join">
                             <button
-                                className={`join-item btn mx-2 ${currentPage === page && 'bg-secondary'}`}
+                                className={`join-item btn mx-2 ${currentPage === page && 'bg-[#006775f2]'}`}
                                 onClick={() => setCurrentPage(page)}
                             >{page}</button>
 
