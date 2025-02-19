@@ -29,7 +29,7 @@ const AddAdvertice = ({ refetch }) => {
         axiosSecure.post('/askAddverticement', adInfo)
             .then(res => {
                 refetch()
-                reset()
+                reset( )
                 document.getElementById('addAdvertice').close()
                 toast.success('New Banner Published!', {
                     position: "top-right",

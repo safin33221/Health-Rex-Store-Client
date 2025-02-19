@@ -56,6 +56,7 @@ const ManageCategory = () => {
     return (
         <div className="lg:w-10/12 mx-auto my-20 w-full  ">
             <Helmet title="HRS | MANAGE CATEGORY" />
+            <h1 className="text-2xl font-bold ">Manage Category</h1>
             <div className="overflow-x-auto w-full mx-auto">
                 <table className="table table-lg mx-auto text-lg min-w-[400px]">
                     {/* head */}

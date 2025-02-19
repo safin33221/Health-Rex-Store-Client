@@ -56,6 +56,7 @@ const AuthProviders = ({ children }) => {
         carts,
         paymentDetails,
         isloading,
+        theme,
         setLoading,
         toggleTheme,
         setPaymentsDetails,
@@ -71,6 +72,7 @@ const AuthProviders = ({ children }) => {
         const unsubcribs = onAuthStateChanged(auth, (currentUser) => {
 
             if (currentUser) {
+                console.log(currentUser);
                 setUser(currentUser);
                 const userInfo = { email: currentUser?.email }
                 axiosPublic.post('/jwt', userInfo)

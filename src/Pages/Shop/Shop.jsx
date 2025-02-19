@@ -81,18 +81,18 @@ const Shop = () => {
                 }
             })
     }
-    if(isPending) return <Loader/>
+    
     return (
         <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div className="felx gap-x-10" >
-                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl bg-none focus:outline-none  select-sm md:select-lg" name="" id="">
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl  focus:outline-none  select-sm " name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
-                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered focus:border-secondary input-sm md:input-lg" />
+                    <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered  input-sm " />
                 </div>
             </div>
             <div className="overflow-x-auto rounded-lg">

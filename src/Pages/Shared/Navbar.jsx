@@ -150,14 +150,7 @@ const Navbar = () => {
                             <ul
                                 tabIndex={0}
                                 className="menu bg-base-100 bg-opacity-70 bg-blend-overlay backdrop-blur-sm    menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                                <NavLink to='/profile'>
-                                    <li>
-                                        <a className="justify-between">
-                                            Update Profile
-
-                                        </a>
-                                    </li>
-                                </NavLink>
+                                
                                 {
                                     role === 'admin' && <li><NavLink to='/dashboard/adminHome'>Dashboard </NavLink></li>
                                 }
@@ -168,7 +161,7 @@ const Navbar = () => {
                                     role === 'user' && <li><NavLink to='/dashboard/userPayments'>Dashboard </NavLink></li>
                                 }
 
-                                <li><button className="btn btn-outline btn-sm" onClick={handleLogout}>Logout</button></li>
+                                <li><button className="btn btn-outline btn-sm my-2" onClick={handleLogout}>Logout</button></li>
                             </ul>
                         </div>
                     </div>

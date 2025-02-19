@@ -120,6 +120,10 @@ const router = createBrowserRouter([
                 element: <SellerRoute><PaymentsHistory /></SellerRoute>
             },
 
+            {
+                path:'profile',
+                element:<Profile/>
+            },
 
 
 
