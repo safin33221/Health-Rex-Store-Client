@@ -14,14 +14,9 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
         <li><NavLink to='/shop'><FaShop />Shop</NavLink></li>
-        <li>
-            <select name="language" className="select    w-full min-w-28 focus:outline-none bg-transparent">
-
-                <option defaultValue value="english"> English</option>
-                <option value="bangla">Bangla</option>
-
-            </select>
-        </li>
+        <li><NavLink to='/about'><FaShop />About</NavLink></li>
+        
+        
     </>
     const handleLogout = () => {
         sigoutUser()

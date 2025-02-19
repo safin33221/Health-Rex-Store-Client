@@ -25,6 +25,7 @@ import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import Profile from "../Pages/Shared/Profile";
 import ErrorPage from "../Pages/Shared/ErrorPage ";
+import About from "../Pages/About/About";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop />
+            },
+            {
+                path: '/about',
+                element: <About />
             },
             {
                 path: '/categoryDetails/:category',
