@@ -51,7 +51,7 @@ const UpdateProfile = ({ userData, refetch }) => {
         console.log(info);
         updateUserProfile(name, image)
             .then(res => {
-                axios.patch(`http://localhost:8080/user/${userData?.email}`, info)
+                axios.patch(`https://medicing-selling-server-side.vercel.app/user/${userData?.email}`, info)
                     .then(res => {
                         console.log(res.data);
                         refetch()

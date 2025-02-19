@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import Loader from "../../Components/Loader";
 
 const SellerHome = () => {
     const { user } = useAuth();

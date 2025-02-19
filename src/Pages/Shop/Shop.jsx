@@ -21,7 +21,7 @@ const Shop = () => {
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
     const itemPerPages = 10
-    const { data: medicines,isPending } = useQuery({
+    const { data: medicines, isPending } = useQuery({
         queryKey: ['medicines', search, sort, currentPage, itemPerPages],
         queryFn: async () => {
             const res = await axiosPublic.get(`/medicines?search=${search}&sort=${sort}&page=${currentPage}&size=${itemPerPages}`)
@@ -81,14 +81,14 @@ const Shop = () => {
                 }
             })
     }
-    
+
     return (
         <div className="w-11/12 mx-auto mt-20 py-5">
             <Helmet title="HRS | SHOP" />
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div className="felx gap-x-10" >
-                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-lg  focus:outline-none  select-sm " name="" id="">
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl  focus:outline-none  select-sm " name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>
@@ -96,39 +96,29 @@ const Shop = () => {
                 </div>
             </div>
             <div className="overflow-x-auto rounded-lg">
-                <table className="table">
-                    {/* head */}
-                    <thead className="font-bold text-lg">
-                        <tr className=" ">
-                            <th>No.</th>
-                            <th>Medicine Name</th>
-                            <th>Generic Name</th>
-                            <th>Category</th>
-                            <th>Company</th>
-                            <th>Price Per Unite</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            medicines?.map((medicine, index) => <tr key={index} className="bg-base-200">
-                                <th>{index + 1}</th>
-                                <td>{medicine?.itemName}</td>
-                                <td>{medicine?.genericName}</td>
-                                <td>{medicine?.category}</td>
-                                <td>{medicine?.company}</td>
-                                <td>{medicine.pricePerUnit} BTD</td>
-                                <td>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    {
+                        medicines?.map((medicine, idx) => <div className=" shadow-2xl rounded-lg  ">
+                            <div key={idx} className="">
+                                <img className="w-full h-[150px]  p-0 m-0 rounded-lg" src={medicine?.image} alt="no image" />
+                            </div>
+                            <div className="flex  items-center">
+                                <div className="m-5">
+                                    <h1 className="text-xl ">Name: <span className="font-bold">{medicine?.itemName}</span></h1>
+
+                                    <h1 className="">Mass Unit	: <span className="font-medium">{medicine?.massUnit}</span></h1>
+                                    <h1 className="">Price PerUnit: <span className="font-medium">{medicine?.pricePerUnit} tk</span></h1>
+
+                                </div>
+                                <div className="flex gap-4">
                                     <button onClick={() => handleAddToCart(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><FaCartArrowDown /></button>
                                     <button onClick={() => handleDetails(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><CgDetailsMore /></button>
-                                </td>
-                            </tr>)
-                        }
 
-
-                    </tbody>
-
-                </table>
+                                </div>
+                            </div>
+                        </div>)
+                    }
+                </div>
                 <div className="m-5">
                     <button
                         onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : currentPage)}
@@ -143,7 +133,7 @@ const Shop = () => {
                         </div>)
                     }
                     <button
-                        onClick={() => setCurrentPage(currentPage < pages.length-1 ? currentPage  + 1 : currentPage)}
+                        onClick={() => setCurrentPage(currentPage < pages.length - 1 ? currentPage + 1 : currentPage)}
                         className="btn">Next</button>
                 </div>
             </div>
