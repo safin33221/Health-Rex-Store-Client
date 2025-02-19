@@ -27,10 +27,10 @@ const CheackOut = () => {
         <div className='w-11/12 mx-auto'>
             <Helmet title="HRS | CHEACK OUT"/>
            
-            <div className="max-w-[800px] mx-auto border-2 p-20 ">
+            <div className="max-w-[800px] mx-auto border rounded-lg p-20 ">
             <h1 className="text-lg font-bold">Total Price: {totalPrice} BTD</h1>
                 <h1 className="text-2xl border-b-2 border-black w-fit mx-auto font-bold text-center my-10">Secure Payments with Stripe</h1>
-                <p className="text-gray-600 text-center mb-5">Enter your payment details below to complete your purchase securely</p>
+                <p className=" text-center mb-5">Enter your payment details below to complete your purchase securely</p>
                 <Elements stripe={stripePromice}>
                     <CheckOutForm  />
                 </Elements>

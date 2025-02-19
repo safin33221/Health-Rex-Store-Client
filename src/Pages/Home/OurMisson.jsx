@@ -54,7 +54,7 @@ const OurMission = () => {
                     {missionData.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-base-200 backdrop-blur-lg p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 text-center"
+                            className="bg-base-200 backdrop-blur-lg p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 text-center"
                         >
                             <div className="flex justify-center mb-4">{item.icon}</div>
                             <h3 className="text-xl font-semibold  mb-2">

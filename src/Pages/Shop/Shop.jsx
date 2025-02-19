@@ -88,7 +88,7 @@ const Shop = () => {
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div className="felx gap-x-10" >
-                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl  focus:outline-none  select-sm " name="" id="">
+                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-lg  focus:outline-none  select-sm " name="" id="">
                         <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option>
                     </select>

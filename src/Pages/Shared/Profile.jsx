@@ -34,13 +34,13 @@ const Profile = () => {
                 <title>HRS | PROFILE</title>
             </Helmet>
 
-            <div className=" h-96 ml-20 relative mx-auto p-4  mt-4 border rounded-lg shadow-lg  flex items-center justify-center ">
+            <div className="  relative mx-auto p-4  mt-20 border rounded-lg shadow-lg md:ml-20  flex items-center justify-center ">
                 <button onClick={() => handledleUpdate()}
-                    className="absolute top-5 right-10 btn btn-outline font-bold"> Update Profile</button>
+                    className="absolute top-5 right-2 z-10 md:right-10 btn btn-sm  btn-outline font-bold"> Update Profile</button>
                 <div className="flex flex-col md:flex-row items-center gap-10">
                     <div className="relative">
                         <img
-                            className="w-52 h-52 mb-4 rounded-full shadow-lg"
+                            className=" w-44 h-44 mt-10 md:w-52 md:h-52 mb-4 rounded-full shadow-lg"
                             src={userData?.image || "https://via.placeholder.com/150"}
                             alt="Profile"
                         />
@@ -49,7 +49,7 @@ const Profile = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-4xl font-semibold"> <span className="font-bold">{userData?.name || "N/A"}({userData?.role})</span></h2>
+                        <h2 className="text-xl md:text-4xl font-semibold"> <span className="font-bold">{userData?.name || "N/A"}({userData?.role})</span></h2>
                         <h2 className="text-lg font-semibold">Email: <span className="font-bold">{userData?.email || "N/A"}</span></h2>
                         <h2 className="text-lg font-semibold">Phone: <span className="font-bold">{userData?.phone || "N/A"}</span></h2>
                         <h2 className="text-lg font-semibold">Address: <span className="font-bold">{userData?.address || "N/A"}</span></h2>

@@ -115,14 +115,10 @@ const CheckOutForm = () => {
                 <CardElement
                     options={{
                         style: {
-                            base: {
-                                fontSize: "16px",
-                                color: "#422470",
-                                '::placeholder': {
-                                    color: '#aab7c4'
-                                },
-
-                            },
+                            // base: {
+                            //     fontSize: "16px",
+                               
+                            // },
                             invalid: {
                                 color: '#9e4146'
                             }
@@ -130,7 +126,7 @@ const CheckOutForm = () => {
                     }}
                 ></CardElement>
                 {transtionId && <p>Transtion Id: {transtionId}</p>}
-                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2 text-black bg-primary  mt-10 px-10 font-bold hover:bg-green-500">Pay</button>
+                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2    mt-10 px-10 font-bold ">Pay</button>
             </form>
         </div>
     );

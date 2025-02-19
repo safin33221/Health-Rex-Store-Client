@@ -153,13 +153,13 @@ const Invoice = () => {
                 <PDFDownloadLink
                     document={InvoicePDF}
                     fileName="invoice.pdf"
-                    className="px-4 py-2 bg-primary mt-5 text-white rounded shadow hover:bg-green-600"
+                    className="px-4 py-2  mt-5 btn"
                 >
                     {({ loading }) => (loading ? "Generating PDF..." : "Download Invoice")}
                 </PDFDownloadLink>
             </div>
             {/* Display Invoice Content */}
-            <div className=" ">
+            <div className=" my-4 ">
                 <div className="max-w-4xl mx-auto p-6  border shadow-md rounded-lg">
                     {/* Invoice Header */}
                     <div className="flex justify-between items-center border-b pb-4">

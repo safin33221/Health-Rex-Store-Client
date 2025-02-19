@@ -76,7 +76,7 @@ const Cart = () => {
                     <h1 className="text-center text-3xl font-bold mt-64">No medicine in your cart yet. Browse and add some!</h1></> :
                     <div className="overflow-x-auto">
                         <div className="flex justify-between items-center py-5">
-                            <h1 className="text-xl md:text-2xl py-3 font-bold text-gray-800">
+                            <h1 className="text-xl md:text-2xl py-3 font-bold ">
                                 Total: {carts?.length}
                             </h1>
                             <input onChange={(e) => setSearch(e.target.value)} placeholder="sarch medicine" type="text" className="input focus:outline-none input-bordered" />

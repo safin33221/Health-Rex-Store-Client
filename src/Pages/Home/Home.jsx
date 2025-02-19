@@ -6,6 +6,7 @@ import Testimonials from "./Testimonials";
 import Fqa from "./Fqa";
 import OurMission from "./OurMisson";
 import WhyChooseUs from "./WhyChooseUs";
+import BehindTheScenes from "./BehindTheScenes";
 
 const Home = () => {
     return (
@@ -25,6 +26,9 @@ const Home = () => {
             </section>
             <section>
                 <WhyChooseUs/>
+            </section>
+            <section>
+                <BehindTheScenes/>
             </section>
             <section>
                 <Testimonials />
