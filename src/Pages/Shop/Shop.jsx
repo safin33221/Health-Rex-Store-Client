@@ -10,8 +10,10 @@ import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Loader from "../../Components/Loader";
 import { CgDetailsMore } from "react-icons/cg";
+import useCartData from "../../Hooks/useCartData";
 
 const Shop = () => {
+    const [cartsData, refetch] = useCartData()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
@@ -63,17 +65,18 @@ const Shop = () => {
         }
         axiosSecure.post(`/carts`, cartInfo)
             .then(res => {
+                refetch()
                 if (res.data.insertedId) {
 
                     toast.success(`${cartInfo.itemName} has been added to your cart.`, {
-                        position: "top-right",
+                        position: "top-center",
                         autoClose: 1000,
 
 
                     });
                 } else {
                     toast.error(res.data.message, {
-                        position: "top-right",
+                        position: "top-center",
                         autoClose: 1000,
 
 
