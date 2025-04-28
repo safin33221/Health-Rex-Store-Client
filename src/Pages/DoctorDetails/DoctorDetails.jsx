@@ -94,7 +94,7 @@ const DoctorDetails = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="px-16 mx-auto p-6">
             <div className="text-center mb-10">
                 <h1 className="text-3xl md:text-4xl font-bold">
                     Healthcare Professionals at Your Service
@@ -106,7 +106,7 @@ const DoctorDetails = () => {
             </div>
 
             {/* Doctor's Profile Information */}
-            <div className="grid grid-cols-1  gap-10">
+            <div className="grid grid-cols- md:grid-cols-2  gap-10">
                 {
                     doctors.map((doctor,idx) => <div key={idx} className=" border  p-6 rounded-lg shadow-md">
                         <div className="flex flex-col md:flex-row items-center mb-6">

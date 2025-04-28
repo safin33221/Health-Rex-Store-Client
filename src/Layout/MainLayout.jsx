@@ -5,15 +5,18 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../Hooks/useAuth";
 import Loader from "../Components/Loader";
+import Headroom from "react-headroom";
 
 const MainLayout = () => {
 
     return (
         <div>
-            <nav>
+            <Headroom>
+
                 <Navbar />
-            </nav>
-            <main className="min-h-screen mt-20  mx-auto">
+            </Headroom>
+
+            <main className="min-h-screen   mx-auto">
                 <Outlet />
             </main>
             <footer>

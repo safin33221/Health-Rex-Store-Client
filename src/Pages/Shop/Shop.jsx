@@ -83,7 +83,7 @@ const Shop = () => {
     }
 
     return (
-        <div className="w-11/12 mx-auto mt-20 py-5">
+        <div className="w-11/12 mx-auto  py-5">
             <Helmet title="HRS | SHOP" />
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>

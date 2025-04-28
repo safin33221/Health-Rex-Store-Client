@@ -15,7 +15,7 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
     const axiosPublic = useAxiosPublic()
-    const { data: slides=[] } = useQuery({
+    const { data: slides = [] } = useQuery({
         queryKey: ['slides'],
         queryFn: async () => {
             const res = await axiosPublic.get('/addvertise/success')
@@ -31,19 +31,20 @@ const Sliders = () => {
                 autoplay={{
                     delay: 10,
                     pauseOnMouseEnter: true
-                    
-                    
-                    
-                    
+
+
+
+
                 }}
                 pagination={{
                     clickable: true,
                 }}
                 navigation={{
-                    clickable:true
-                }} 
+                    clickable: true
+                }}
                 modules={[Navigation, Autoplay, Pagination]}
-                
+                style={{ zIndex: '0' }}
+
 
                 className=" w-full">
                 {

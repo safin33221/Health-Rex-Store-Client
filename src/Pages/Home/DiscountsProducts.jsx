@@ -85,7 +85,7 @@ const DiscountsProducts = () => {
 
 
                 }}
-
+                style={{zIndex:'0'}}
 
 
 
