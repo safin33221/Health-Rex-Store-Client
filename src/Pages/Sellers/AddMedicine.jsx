@@ -67,23 +67,22 @@ const AddMedicine = ({ refetch }) => {
         }
     })
     return (
-        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle max-w-[500px] mx-auto">
+        <dialog id="my_modal_5" className="modal modal-bottom max-w-6xl mx-auto">
             <div className="modal-box">
-                <h2 className='text-bold text-xl text-center'>Add Medicine</h2>
+                <h2 className='text-bold text-2xl md:text-4xl font-bold  text-center'>Add Medicine</h2>
                 <form onSubmit={handleSubmit(onsubmit)}>
                     <div className=" mx-auto  rounded-lg p-5 w-full ">
+                        <div className='flex  items-center justify-center gap-4 flex-col md:flex-row'>
+                            <label className="  flex items-center w-full gap-2 ">
 
+                                <input {...register("itemName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="itemName" />
+                            </label>
+                            <label className="  flex items-center w-full gap-2 ">
 
+                                <input {...register("genericName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="genericName" />
 
-                        <label className="  flex items-center gap-2 my-2">
-
-                            <input {...register("itemName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="itemName" />
-                        </label>
-                        <label className="  flex items-center gap-2 mb-4">
-
-                            <input {...register("genericName")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="genericName" />
-
-                        </label>
+                            </label>
+                        </div>
                         <label className="  flex items-center gap-2 my-4">
 
                             <textarea {...register("shortDescription")} type="text" className="textarea textarea-bordered textarea-md w-full focus:outline-none " placeholder="shortDescription" />
@@ -93,9 +92,9 @@ const AddMedicine = ({ refetch }) => {
                             <input {...register("image")} type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                         </label>
-                        <div className='md:flex gap-3'>
-                            <label className="   flex items-center gap-2 my-4">
-                                <select {...register('category')} required id="category " className='select select-bordered focus:outline-accent '>
+                        <div className='md:flex gap-3 w-full'>
+                            <label className="   flex items-center gap-2 my-4 w-full">
+                                <select {...register('category')} required id="category " className='select select-bordered w-full focus:outline-accent '>
                                     {
                                         categoris?.map(category => <option key={category._id} value={category.name}>{category.name}</option>)
                                     }
@@ -103,8 +102,8 @@ const AddMedicine = ({ refetch }) => {
                                 </select>
 
                             </label>
-                            <label className="   flex items-center gap-2 my-4" >
-                                <select {...register('company')} required id="company" className='select select-bordered focus:outline-accent '>
+                            <label className="   flex items-center gap-2 my-4 w-full" >
+                                <select {...register('company')} required id="company" className='select select-bordered w-full focus:outline-accent '>
                                     <option value="ABC Pharma">ABC Pharma</option>
                                     <option value="HealthCo">HealthCo</option>
                                     <option value="BioMed">BioMed</option>
@@ -118,24 +117,26 @@ const AddMedicine = ({ refetch }) => {
 
                             </label>
                         </div>
-                        <label className="  flex items-center gap-2 mb-4">
+                        <div className='flex  items-center justify-center gap-4 flex-col md:flex-row'>
+                            <label className="  flex items-center gap-2 w-full">
 
-                            <input {...register("massUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Mass Unit" />
+                                <input {...register("massUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Mass Unit" />
 
-                        </label>
-                        <label className="  flex items-center gap-2 mb-4">
+                            </label>
+                            <label className="  flex items-center gap-2 w-full">
 
-                            <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Price Per Unit" />
+                                <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Price Per Unit" />
 
-                        </label>
-                        <label className="  flex items-center gap-2 mb-4">
+                            </label>
+                            <label className=" w-full  ">
 
-                            <input {...register("discountPercentage")} defaultValue={0} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Discount Percentage	" />
+                                <input {...register("discountPercentage")}  type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Discount Percentage	" />
 
-                        </label>
+                            </label>
+                        </div>
 
 
-                        <label className="flex items-center gap-2 mb-4 mx-auto">
+                        <label className="flex items-center gap-2 mt-4 mx-auto">
 
                             <button className="btn btn-outline mx-auto w-full">Add Medicine</button>
                         </label>
@@ -143,10 +144,10 @@ const AddMedicine = ({ refetch }) => {
                     </div>
                 </form>
 
-                <div className="modal-action">
-                    <form method="dialog">
+                <div className="modal-action w-full">
+                    <form method="dialog w-full">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-outline btn-sm">cancel</button>
+                        <button className="btn btn-outline w-full block">cancel</button>
                     </form>
                 </div>
             </div>
