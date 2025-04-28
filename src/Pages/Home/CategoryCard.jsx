@@ -34,7 +34,7 @@ const CategoryCard = () => {
                             <div key={idx} className="card  bg-base-200  border duration-100   shadow-xl hover:shadow-2xl max-w-[300px] mx-auto">
                                 <figure>
                                     <img
-                                        className="h-44 w-full shadow-xl border-b"
+                                        className="h-44 w-full shadow-xl border-b bg-center object-center"
                                         src={category?.image}
                                         alt="Shoes" />
 

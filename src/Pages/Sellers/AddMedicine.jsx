@@ -125,7 +125,7 @@ const AddMedicine = ({ refetch }) => {
                             </label>
                             <label className="  flex items-center gap-2 w-full">
 
-                                <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Price Per Unit" />
+                                <input {...register("pricePerUnit")} type="text" className=" input p-3 w-full input-bordered focus:outline-none " placeholder="Price " />
 
                             </label>
                             <label className=" w-full  ">

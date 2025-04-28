@@ -9,6 +9,7 @@ import WhyChooseUs from "./WhyChooseUs";
 import BehindTheScenes from "./BehindTheScenes";
 
 const Home = () => {
+    
     return (
         <div className="">
             <Helmet title="HRS | HOME" />

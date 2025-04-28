@@ -100,7 +100,7 @@ const Shop = () => {
                     {
                         medicines?.map((medicine, idx) => <div className=" shadow-2xl rounded-lg border  ">
                             <div key={idx} className="">
-                                <img className="w-full h-[150px]  p-0 m-0 rounded-lg" src={medicine?.image} alt="no image" />
+                                <img className="w-full h-[150px]   rounded-lg bg-center object-center" src={medicine?.image} alt="no image" />
                             </div>
                             <div className="flex  items-center">
                                 <div className="m-5">
