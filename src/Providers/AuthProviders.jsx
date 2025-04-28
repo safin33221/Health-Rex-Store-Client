@@ -17,12 +17,12 @@ const AuthProviders = ({ children }) => {
     const toggleTheme = () => {
         const newtheme = theme === 'pastel' ? 'forest' : 'pastel'
         setTheme(newtheme)
-        localStorage.setItem('theme',newtheme)
-        
+        localStorage.setItem('theme', newtheme)
+
     }
-    useEffect(()=>{
+    useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)
-    },[theme])
+    }, [theme])
 
     //crete user with email and pass
     const createUserwithEmail = (email, password) => {

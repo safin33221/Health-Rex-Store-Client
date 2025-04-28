@@ -81,7 +81,7 @@ const Cart = () => {
                             </h1>
                             <input onChange={(e) => setSearch(e.target.value)} placeholder="sarch medicine" type="text" className="input focus:outline-none input-bordered" />
                         </div>
-                        <table className="table table-zebra">
+                        <table className="table table-zebra overflow-x-auto">
                             {/* head */}
                             <thead className="text-xl rounded-lg" >
                                 <tr >

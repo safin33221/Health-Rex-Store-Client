@@ -16,6 +16,7 @@ const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 
 import { LuLoaderPinwheel } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
     const [loading, setLoading] = useState(false)
@@ -65,6 +66,11 @@ const SignUp = () => {
                             })
 
                     })
+            })
+            .catch(err=>{
+                setLoading(false)
+                toast.error(err.code)
+             
             })
     }
     return (
@@ -118,11 +124,37 @@ const SignUp = () => {
                         <input {...register("password")} type={showPass ? 'text' : 'password'} className=" focus:outline-none" placeholder="password " />
                         <button type='button' className='absolute right-3 top-4' onClick={() => setShowPass(!showPass)}>{showPass ? <FaEye /> : <FaEyeSlash />}</button>
                     </label>
-                    <label className="flex items-center gap-2 mb-4">
-                        <input {...register('role')} required type="radio" name="role" value="user" />
-                        <span>User</span>
-                        <input  {...register('role')} required type="radio" name="role" value="seller" />
-                        <span>Seller</span>
+                    <label className="flex items-center gap-2 mb-4 justify-between">
+                        <label
+                            htmlFor="role-user"
+                            className="bg-gray-200 w-full p-4 rounded-xl text-center items-center flex justify-center cursor-pointer"
+                        >
+                            <input
+                                {...register('role')}
+                                required
+                                id="role-user"
+                                type="radio"
+                                name="role"
+                                value="user"
+
+                            />
+                            <span>User</span>
+                        </label>
+                        <label
+                            htmlFor="role-seller"
+                            className="bg-gray-200 w-full p-4 rounded-xl text-center items-center flex justify-center cursor-pointer"
+                        >
+                            <input
+                                {...register('role')}
+                                required
+                                id="role-seller"
+                                type="radio"
+                                name="role"
+                                value="seller"
+
+                            />
+                            <span>Seller</span>
+                        </label>
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 

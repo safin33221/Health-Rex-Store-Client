@@ -37,6 +37,7 @@ const SignIn = () => {
                 navigate('/')
             })
             .catch(error => {
+                setLoading(false)
                 if (error.code === "auth/invalid-credential") {
                     return toast.error('Oops! The email or password you entered is incorrect.', {
                         position: "top-right",

@@ -21,7 +21,7 @@ const WhyChooseUs = () => {
 
     return (
         <div className="bg-bsae-100 py-12">
-            <div className="max-w-4xl mx-auto px-6">
+            <div className="w-11/12 mx-auto ">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl md:text-4xl font-bold">
                     Why Choose Us?

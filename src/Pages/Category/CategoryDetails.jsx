@@ -2,12 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
-import { FaEye } from 'react-icons/fa';
+import { FaCartArrowDown, FaEye } from 'react-icons/fa';
 import MedicineDetails from '../Shop/MedicineDetails';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import moment from 'moment';
 import useAuth from '../../Hooks/useAuth';
+import { CgDetailsMore } from 'react-icons/cg';
 
 const CategoryDetails = () => {
     const { user } = useAuth()
@@ -75,39 +76,29 @@ const CategoryDetails = () => {
                 </div>
             </div>
             <div className="overflow-x-auto rounded-lg">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr className=" text-xl">
-                            <th></th>
-                            <th>Medicine Name</th>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                    {
+                        medicines?.map((medicine, idx) => <div className="  border shadow-2xl rounded-lg  ">
+                            <div key={idx} className="">
+                                <img className="w-full h-[150px]  p-0 m-0 rounded-lg" src={medicine?.image} alt="no image" />
+                            </div>
+                            <div className="flex  items-center">
+                                <div className="m-5">
+                                    <h1 className="text-xl "><span className="font-bold">{medicine?.itemName}</span></h1>
 
-                            <th>Generic Name </th>
-                            <th>Category</th>
-                            <th>Company</th>
-                            <th>Price Per Unit</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            medicines?.map((medicine, index) => <tr className="bg-base-200">
-                                <th>{index + 1}</th>
-                                <td>{medicine?.itemName}</td>
-                                <td>{medicine?.genericName}</td>
-                                <td>{medicine?.category}</td>
-                                <td>{medicine?.company}</td>
-                                <td>{medicine.pricePerUnit} BTD</td>
-                                <td>
-                                    <button onClick={() => handleAddToCart(medicine)} className="btn">Select</button>
-                                    <button onClick={() => handleDetails(medicine)} className="btn ml-4"><FaEye /></button>
-                                </td>
-                            </tr>)
-                        }
+                                    <h1 className="">Mass Unit	: <span className="font-medium">{medicine?.massUnit}</span></h1>
+                                    <h1 className="">Price PerUnit: <span className="font-medium">{medicine?.pricePerUnit} tk</span></h1>
 
+                                </div>
+                                <div className="flex gap-4">
+                                    <button onClick={() => handleAddToCart(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><FaCartArrowDown /></button>
+                                    <button onClick={() => handleDetails(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><CgDetailsMore /></button>
 
-                    </tbody>
-                </table>
+                                </div>
+                            </div>
+                        </div>)
+                    }
+                </div>
                 <MedicineDetails medicineDetails={medicineDetails} />
             </div>
         </div>

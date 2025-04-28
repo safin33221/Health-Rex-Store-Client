@@ -98,13 +98,13 @@ const Shop = () => {
             <div className="overflow-x-auto rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     {
-                        medicines?.map((medicine, idx) => <div className=" shadow-2xl rounded-lg  ">
+                        medicines?.map((medicine, idx) => <div className=" shadow-2xl rounded-lg border  ">
                             <div key={idx} className="">
                                 <img className="w-full h-[150px]  p-0 m-0 rounded-lg" src={medicine?.image} alt="no image" />
                             </div>
                             <div className="flex  items-center">
                                 <div className="m-5">
-                                    <h1 className="text-xl ">Name: <span className="font-bold">{medicine?.itemName}</span></h1>
+                                    <h1 className="text-xl "><span className="font-bold">{medicine?.itemName}</span></h1>
 
                                     <h1 className="">Mass Unit	: <span className="font-medium">{medicine?.massUnit}</span></h1>
                                     <h1 className="">Price PerUnit: <span className="font-medium">{medicine?.pricePerUnit} tk</span></h1>

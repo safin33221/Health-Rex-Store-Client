@@ -36,8 +36,8 @@ const About = () => {
     ];
     return (
         <div className=''>
-            <div className='flex items-center mt-24 w-full m-4'>
-                <div className='m-4 rounded-xl mx-auto flex-1'>
+            <div className='flex items-center flex-col md:flex-row mt-24 w-11/12 mx-auto '>
+                <div className='m-4 rounded-xl mx-auto md:w-1/2 '>
                     <img src={about} alt="" className='rounded-xl' />
                 </div>
                 <div className='m-5 flex-1'>
@@ -48,7 +48,7 @@ const About = () => {
 
                         Determined to make healthcare more accessible, we assembled a team of pharmacy experts, tech professionals, and customer service specialists to create a platform that offers certified medicines, fast delivery, and expert healthcare guidance—all in one place.
 
-                       </p>
+                    </p>
                 </div>
             </div>
 
