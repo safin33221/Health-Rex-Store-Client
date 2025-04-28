@@ -33,43 +33,56 @@ const SellerHome = () => {
     if (isPending) return <Loader />;
 
     return (
+
         <div className='lg:w-10/12 mx-auto'>
             <Helmet title="HRS | SELLER HOME" />
-            <h1 className='font-bold text-xl pt-10 '>Welcome '{user?.displayName}'</h1>
-
-            <div className="flex flex-col md:flex-row gap-5 min-w-[350px] mx-auto">
-                {states?.map((state, idx) => (
-                    <div key={idx} className="w-full border transition-all duration-200 ease-in-out text-center p-4 rounded-lg hover:shadow-2xl">
-                        <h1 className='text-xl font-bold'>{state._id}</h1>
-                        <h1 className="text-2xl font-bold">{Number(state?.revenue)?.toFixed(2)} BTD</h1>
-                        <p className="text-gray-500">Total sales: {state.quantity}</p>
+            {
+                !states.length ? (
+                    <div>
+                        <h1 className="text-3xl font-bold text-center mt-44">Data is Empty!</h1>
                     </div>
-                ))}
-            </div>
+                ) :
+                    (
+                        <div>
+                            <h1 className='font-bold text-xl pt-10 '>Welcome '{user?.displayName}'</h1>
 
-            <div className='flex mx-auto'>
-                <BarChart
-                    className='mx-auto'
-                    width={1000}
-                    height={400}
-                    data={states}
-                    margin={{
-                        top: 20,
-                        right: 30,
-                        left: 20,
-                        bottom: 5,
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="_id" />
-                    <YAxis />
-                    <Bar dataKey="revenue" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-                        {states?.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                        ))}
-                    </Bar>
-                </BarChart>
-            </div>
+                            <div className="flex flex-col md:flex-row gap-5 min-w-[350px] mx-auto">
+                                {states?.map((state, idx) => (
+                                    <div key={idx} className="w-full border transition-all duration-200 ease-in-out text-center p-4 rounded-lg hover:shadow-2xl">
+                                        <h1 className='text-xl font-bold'>{state._id}</h1>
+                                        <h1 className="text-2xl font-bold">{Number(state?.revenue)?.toFixed(2)} BTD</h1>
+                                        <p className="text-gray-500">Total sales: {state.quantity}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className='flex mx-auto'>
+                                <BarChart
+                                    className='mx-auto'
+                                    width={1000}
+                                    height={400}
+                                    data={states}
+                                    margin={{
+                                        top: 20,
+                                        right: 30,
+                                        left: 20,
+                                        bottom: 5,
+                                    }}
+                                >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="_id" />
+                                    <YAxis />
+                                    <Bar dataKey="revenue" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+                                        {states?.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                        ))}
+                                    </Bar>
+                                </BarChart>
+                            </div>
+                        </div>
+                    )
+            }
+
         </div>
     );
 };
