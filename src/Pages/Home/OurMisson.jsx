@@ -50,7 +50,7 @@ const OurMission = () => {
                 </div>
 
 
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                     {missionData.map((item, index) => (
                         <div
                             key={index}
@@ -60,7 +60,7 @@ const OurMission = () => {
                             <h3 className="text-xl font-semibold  mb-2">
                                 {item.title}
                             </h3>
-                            <p className="">{item.description}</p>
+                            <p className="text-sm">{item.description}</p>
                         </div>
                     ))}
                 </div>

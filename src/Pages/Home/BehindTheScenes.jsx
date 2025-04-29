@@ -32,8 +32,8 @@ const steps = [
 const BehindTheScenes = () => {
 
     return (
-        <div className="bg-base-100 py-12">
-            <div className="max-w-6xl mx-auto px-6">
+        <div className="bg-base-100 py-12 w-11/12 mx-auto">
+            <div className=" mx-auto ">
                 <div className="text-center mb-10">
                     <h1 className="text-3xl md:text-4xl font-bold">
                     How We Work: Behind the Scenes
@@ -45,13 +45,13 @@ const BehindTheScenes = () => {
                 </div>
                 
 
-                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
                     {steps.map((step, index) => (
                         <div key={index}
-                            className={`p-6 max-w-xs bg-base-200 shadow-md rounded-xl transition-all duration-500 cursor-pointer  text-center`}
+                            className={`py-6 items-center justify-center flex flex-col  bg-base-200 shadow-md rounded-xl transition-all duration-500 cursor-pointer  text-center`}
                           
                         >
-                            <div className="mb-4 ">{step.icon}</div>
+                            <div className="mb-4 text-center mx-auto block ">{step.icon}</div>
                             <h4 className="text-lg font-semibold  mb-2">{step.title}</h4>
                             <p className="">{step.description}</p>
                         </div>
