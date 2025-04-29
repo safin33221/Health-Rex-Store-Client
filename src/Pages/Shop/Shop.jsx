@@ -18,7 +18,7 @@ const Shop = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
     const [search, setSearch] = useState('')
-    const [sort, setSort] = useState('')
+    const [sort, setSort] = useState('ascending')
     const [medicineDetails, setMedicineDetails] = useState(null)
     const [currentPage, setCurrentPage] = useState(0)
     const [count, setCount] = useState(0)
@@ -91,10 +91,12 @@ const Shop = () => {
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
                 <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
                 <div className="felx gap-x-10" >
-                    <select onChange={(e) => setSort(e.target.value)} className="border mr-5  rounded-xl  focus:outline-none  select-sm " name="" id="">
-                        <option value="ascending">Ascending</option>
-                        <option value="dscending">Dscending</option>
-                    </select>
+                    <button onClick={() => setSort(sort == 'ascending'? 'dscending': 'ascending')} className="border mr-5  rounded-xl  focus:outline-none  select-sm " name="" id="">
+                        
+                        {sort =='ascending' ?"Low to High": "High to Low" }
+                        {/* <option value="ascending">Ascending</option>
+                        <option value="dscending">Dscending</option> */}
+                    </button>
                     <input onChange={(e) => setSearch(e.target.value)} placeholder="search medicine " type="text" className="input focus:outline-none input-bordered  input-sm " />
                 </div>
             </div>

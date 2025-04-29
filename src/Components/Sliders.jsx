@@ -46,9 +46,11 @@ const Sliders = () => {
                 style={{ zIndex: '0' }}
 
 
-                className=" w-full">
+                className=" w-full h-[250px] md:h-[500px]">
                 {
-                    slides?.map(slide => <SwiperSlide key={slide._id}><img src={slide?.image} className=' w-full bg-center object-center  md:h-[500px]' alt="" /></SwiperSlide>)
+                    slides?.map(slide => <SwiperSlide key={slide._id}>
+                        <img src={slide?.image} className=' w-full bg-cover  object-center h-full ' alt="" />
+                    </SwiperSlide>)
                 }
             </Swiper>
         </div>
