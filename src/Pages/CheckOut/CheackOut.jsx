@@ -24,7 +24,7 @@ const CheackOut = () => {
     const totalPrice = carts?.reduce((total, item) => total + item.pricePerUnit * item.quantity , 0)
    
     return (
-        <div className='w-11/12 mx-auto'>
+        <div className=' my-12'>
             <Helmet title="HRS | CHEACK OUT"/>
            
             <div className="max-w-[800px] mx-auto border rounded-lg p-20 ">

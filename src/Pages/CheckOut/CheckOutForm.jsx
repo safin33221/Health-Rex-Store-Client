@@ -110,7 +110,7 @@ const CheckOutForm = () => {
 
     }
     return (
-        <div>
+        <div className='my-10 '>
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
