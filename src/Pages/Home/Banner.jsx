@@ -1,12 +1,14 @@
 import React from 'react';
+import Lottie from "lottie-react";
+import bannerAnimation from '../../assets/animation/Animation - 1746265150979.json'
 
 const Banner = () => {
     return (
-        <div className='h-[300px]'>
+        <div className=' m-auto mt-10 md:mt-32'>
 
-            <div className='w-11/12 m-auto'>
-                <div className='md:w-1/2 w-full my-10 space-y-4 '>
-                    <h1 className='text-2xl md:text-4xl font-semibold'><span className='text-[#2E8B57] font-bold text-2xl md:text-5xl'>Fast, Reliable & Affordable</span>
+            <div className='w-11/12 m-auto md:flex  h-full'>
+                <div className='md:w-1/2 w-full my-10 space-y-4 h-full: '>
+                    <h1 className='text-xl md:text-4xl font-semibold'><span className='text-[#2E8B57] font-bold text-3xl md:text-5xl'>Fast, Reliable & Affordable</span>
                         <br />
                         Medicines Delivered to Your Doorstep</h1>
                     <p className='text-sm md:text-xl'>
@@ -15,6 +17,12 @@ const Banner = () => {
                     <button className='btn btn-lg'>
                         🛒 Shop Now
                     </button>
+                </div>
+                <div className=' w-8/12 mx-auto md:w-1/2'>
+                    <Lottie animationData={bannerAnimation}
+                        loop={true}
+                        className="md:w-9/12 mx-auto"
+                    ></Lottie>
                 </div>
             </div>
 

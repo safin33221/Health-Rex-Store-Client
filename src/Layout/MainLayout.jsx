@@ -10,7 +10,7 @@ import Headroom from "react-headroom";
 const MainLayout = () => {
 
     return (
-        <div>
+        <div className="max-w-screen-xl mx-auto">
             <Headroom >
 
                 <Navbar />
