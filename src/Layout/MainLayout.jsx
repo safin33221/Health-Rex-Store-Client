@@ -11,12 +11,12 @@ const MainLayout = () => {
 
     return (
         <div>
-            <Headroom>
+            <Headroom >
 
                 <Navbar />
             </Headroom>
 
-            <main className="min-h-screen   mx-auto">
+            <main className="">
                 <Outlet />
             </main>
             <footer>

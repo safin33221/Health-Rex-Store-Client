@@ -7,12 +7,16 @@ import Fqa from "./Fqa";
 import OurMission from "./OurMisson";
 import WhyChooseUs from "./WhyChooseUs";
 import BehindTheScenes from "./BehindTheScenes";
+import Banner from "./Banner";
 
 const Home = () => {
     
     return (
         <div className="">
             <Helmet title="HRS | HOME" />
+            <section>
+                <Banner/>
+            </section>
             <section>
                 <Sliders />
             </section>

@@ -15,7 +15,7 @@ const AuthProviders = ({ children }) => {
 
     //theme tollager
     const toggleTheme = () => {
-        const newtheme = theme === 'pastel' ? 'forest' : 'pastel'
+        const newtheme = theme === 'pastel' ? 'dracula' : 'pastel'
         setTheme(newtheme)
         localStorage.setItem('theme', newtheme)
 

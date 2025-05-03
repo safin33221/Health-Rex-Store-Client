@@ -30,7 +30,7 @@ const Sliders = () => {
                 Limited-Time Health Deals – Shop Smart, Stay Healthy!__
                 </h1>
                 <p className="mt-4 text-lg md:text-xl ">
-                Discover exclusive offers on top-rated health products, supplements, and medical essentials. Don’t miss out—grab your discounts before they’re gone! Stay fit, save more, and shop with confidence at HealthRex Store.
+              Don’t miss out—grab your discounts before they’re gone! Stay fit, save more, and shop with confidence at HealthRex Store.
 
 
                 </p>
