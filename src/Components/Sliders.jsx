@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 
 // import required modules
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
@@ -24,9 +24,21 @@ const Sliders = () => {
     })
 
     return (
-        <div className='w-full'>
+        <div className='mx-auto w-11/12'>
+            <div className="text-center my-10">
+                <h1 className="text-2xl md:text-4xl font-bold ">
+                Limited-Time Health Deals – Shop Smart, Stay Healthy!__
+                </h1>
+                <p className="mt-4 text-lg md:text-xl ">
+                Discover exclusive offers on top-rated health products, supplements, and medical essentials. Don’t miss out—grab your discounts before they’re gone! Stay fit, save more, and shop with confidence at HealthRex Store.
+
+
+                </p>
+
+            </div>
             <Swiper
                 speed={7000}
+                spaceBetween={10}
                 loop={Infinity}
                 autoplay={{
                     delay: 10,
@@ -36,24 +48,31 @@ const Sliders = () => {
 
 
                 }}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={{
-                    clickable: true
-                }}
-                modules={[Navigation, Autoplay, Pagination]}
+               
+                navigation={true}
+                modules={[Navigation, Autoplay]}
                 style={{ zIndex: '0' }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 1, // 1 slide on mobile screens
+                    },
+                    768: {
+                        slidesPerView: 2, // 2 slides on tablets
+                    },
+                    1024: {
+                        slidesPerView: 3, // 3 slides on larger screens
+                    },
+                }}
 
 
-                className=" w-full h-[250px] md:h-[500px]">
+                className=" w-full h-[200px] md:h-[200px]">
                 {
                     slides?.map(slide => <SwiperSlide key={slide._id}>
                         <img src={slide?.image} className=' w-full bg-cover  object-center h-full ' alt="" />
                     </SwiperSlide>)
                 }
             </Swiper>
-        </div>
+        </div >
     );
 };
 

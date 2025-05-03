@@ -64,11 +64,16 @@ const Navbar = () => {
                 <img src={logo} className="w-16" alt="" />
                 <a className="btn btn-ghost text-xl hidden md:flex">HealthRxStore</a>
             </div>
+            <div
+                className="navbar-center"
+            >
+                <ul className="menu hidden lg:flex gap-3 menu-horizontal px-1 items-center justify-center">
+                    {links}
+                </ul>
+
+            </div>
             <div className="navbar-end  ">
                 <div className="flex items-center">
-                    <ul className="menu hidden lg:flex gap-3 menu-horizontal px-1 items-center justify-center">
-                        {links}
-                    </ul>
 
 
                     {/* Theme Controlar */}
