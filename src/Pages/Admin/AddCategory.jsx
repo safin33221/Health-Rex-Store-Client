@@ -57,7 +57,7 @@ const AddCategory = ({ refetch }) => {
 
                         <label className="flex items-center gap-2 mb-4 mx-auto mt-5">
 
-                            <button className="btn  mx-auto w-full">Add</button>
+                            <button className="py-4     px-12   bg-[#2E8B57] text-white mt-10  mx-auto w-full">Add</button>
                         </label>
 
                     </div>
@@ -66,7 +66,7 @@ const AddCategory = ({ refetch }) => {
                 <div className="modal-action">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-outline btn-sm">cancel</button>
+                        <button className="py-4     px-12   bg-[#2E8B57] text-white mt-10">cancel</button>
                     </form>
                 </div>
             </div>

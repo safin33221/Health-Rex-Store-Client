@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from '../../assets/logo.png'
+import logo2 from '../../assets/logo2.png'
 
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
@@ -61,8 +61,8 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <img src={logo} className="w-16" alt="" />
-                <a className="btn btn-ghost text-xl hidden md:flex">HealthRxStore</a>
+                <img src={logo2} className="w-44" alt="" />
+                {/* <a className="btn btn-ghost text-xl hidden md:flex">HealthRxStore</a> */}
             </div>
             <div
                 className="navbar-center"
@@ -109,7 +109,7 @@ const Navbar = () => {
                         user ? null : <div className="flex-none ">
                             <div className="dropdown dropdown-end">
                                 <Link to='/signIn'>
-                                    <button className="btn bg-[#2E8B57] text-white  font-bold">
+                                    <button className="py-4     px-12   bg-[#2E8B57] text-white ">
                                         Join Us
                                     </button>
                                 </Link>

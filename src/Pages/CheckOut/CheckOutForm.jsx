@@ -126,7 +126,7 @@ const CheckOutForm = () => {
                     }}
                 ></CardElement>
                 {transtionId && <p>Transtion Id: {transtionId}</p>}
-                <button disabled={!stripe || !clientSecret || !totalPrice} className="btn btn-xl py-2    mt-10 px-10 font-bold ">Pay</button>
+                <button disabled={!stripe || !clientSecret || !totalPrice} className="  py-4     px-12   bg-[#2E8B57] text-white mt-10 font-bold">Pay</button>
             </form>
         </div>
     );
