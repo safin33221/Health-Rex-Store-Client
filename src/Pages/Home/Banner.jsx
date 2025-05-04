@@ -16,7 +16,7 @@ const Banner = () => {
                         Shop from a wide range of genuine healthcare products with confidence. From everyday essentials to prescription drugs, HealthRex Store brings pharmacy convenience to your fingertips—anytime, anywhere.
                     </p>
                   <Link to={`/shop`}>
-                  <button  className='py-4     px-12   bg-[#2E8B57] text-white '>
+                  <button  className='py-4  mt-5   px-12   bg-[#2E8B57] text-white '>
                         🛒 Shop Now
                     </button>
                   </Link>

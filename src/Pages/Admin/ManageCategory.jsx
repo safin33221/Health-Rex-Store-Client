@@ -87,7 +87,7 @@ const ManageCategory = () => {
                 </table>
             </div>
             <button onClick={() => document.getElementById('addCategory').showModal()}
-                className="btn my-10 ">Add Category</button>
+                className="py-4   px-6  md:px-12   bg-[#2E8B57] text-white ">Add Category</button>
 
             <AddCategory refetch={refetch} />
             <UpdateCategoryModal category={category} refetch={refetch} />

@@ -78,14 +78,14 @@ const ManageAdvertise = () => {
                                         add?.status === 'pending' &&
                                             <button
                                                 onClick={() => handleStatus(add, 'success')}
-                                                className=" text-xl "><FaRegEyeSlash /></button>
+                                                className=" py-4   px-6 max-w-40 min-w-40   bg-red-500 text-white text-xl text-center flex items-center gap-3 "><FaRegEyeSlash />Hide</button>
                                             
                                     }
                                     {
                                         add?.status === 'success' &&
                                         
                                         <button onClick={() => handleStatus(add, 'pending')}
-                                         className=" text-xl "><FaRegEye /></button>
+                                         className=" py-4   px-6   max-w-40 min-w-40    bg-[#2E8B57] text-white  text-xl text-center flex items-center gap-3  "><FaRegEye />Show</button>
                                             
                                     }
                                 </th>

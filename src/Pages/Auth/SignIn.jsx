@@ -75,7 +75,7 @@ const SignIn = () => {
             })
     }
     return (
-        <div className="pt-24 pb-10 px-4 mx-auto ">
+        <div className="pt-24 pb-10 px-4 mx-auto md:min-h-screen m-auto ">
             <Helmet title="HRS | SIGN IN" />
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border rounded-lg p-4 ">
