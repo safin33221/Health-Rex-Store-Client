@@ -138,7 +138,7 @@ const AddMedicine = ({ refetch }) => {
 
                         <label className="flex items-center gap-2 mt-4 mx-auto">
 
-                            <button className="btn btn-outline mx-auto w-full">Add Medicine</button>
+                            <button className="btn btn-outline mx-auto w-full bg-[#2E8B57] text-white">Add Medicine</button>
                         </label>
 
                     </div>
@@ -147,7 +147,7 @@ const AddMedicine = ({ refetch }) => {
                 <div className="modal-action w-full">
                     <form method="dialog w-full">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-outline w-full block">cancel</button>
+                        <button  className="btn btn-outline w-full block">cancel</button>
                     </form>
                 </div>
             </div>

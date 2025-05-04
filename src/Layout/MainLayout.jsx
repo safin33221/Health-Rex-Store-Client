@@ -10,13 +10,13 @@ import Headroom from "react-headroom";
 const MainLayout = () => {
 
     return (
-        <div className="max-w-screen-xl mx-auto">
+        <div >
             <Headroom >
 
                 <Navbar />
             </Headroom>
 
-            <main className="">
+            <main className="max-w-screen-xl mx-auto">
                 <Outlet />
             </main>
             <footer>

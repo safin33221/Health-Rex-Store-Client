@@ -20,15 +20,15 @@ const AskForAd = () => {
             <Helmet title="HRS | POST ADS" />
             {/* <h1>ask for ads------------{medicine?.length}</h1> */}
             {
-                advertise?.length <= 0 ? 
-                <div className=" flex flex-col items-center justify-center mt-20 ">
-                    <h1 className="text-2xl font-bold ">
-                        No Advertisements Found!
-                    </h1>
-                    <p className="text-gray-600 text-center max-w-md">
-                        You haven’t posted any advertisements yet. Start promoting your products or services to reach a wider audience and boost your sales!
-                    </p>
-                </div> :
+                advertise?.length <= 0 ?
+                    <div className=" flex flex-col items-center justify-center mt-20 ">
+                        <h1 className="text-2xl font-bold ">
+                            No Advertisements Found!
+                        </h1>
+                        <p className="text-gray-600 text-center max-w-md">
+                            You haven’t posted any advertisements yet. Start promoting your products or services to reach a wider audience and boost your sales!
+                        </p>
+                    </div> :
                     <div className="overflow-x-auto">
                         <h1 className="text-lg md:text-2xl font-bold  mb-6">Ads Histroy</h1>
                         <table className="table">
@@ -54,10 +54,10 @@ const AskForAd = () => {
                                         <td>
                                             <div className="flex items-center gap-3">
                                                 <div className="avatar">
-                                                    <div className="bg-cover h-24 w-24">
+                                                    <div className=" h-24 w-36">
                                                         <img
                                                             src={add?.image}
-                                                            className=" bg-contain"
+                                                            className=" bg-cover object-center"
                                                             alt="Avatar Tailwind CSS Component" />
                                                     </div>
                                                 </div>
@@ -75,7 +75,9 @@ const AskForAd = () => {
                                         </td>
 
                                         <th>
-                                            {add?.status}
+                                            <h1
+                                                className={`${add?.status === 'pending' ? 'bg-red-300' : 'bg-green-300'} h-fit p-3`}
+                                            >{add?.status}</h1>
                                         </th>
                                     </tr>)
                                 }
@@ -88,7 +90,7 @@ const AskForAd = () => {
                     </div>
             }
             <button onClick={() => document.getElementById('addAdvertice').showModal()}
-                className="btn  my-10 font-bold">Add Advertise</button>
+                className="btn bg-[#2E8B57] text-white my-10 font-bold">Add Advertise</button>
 
             <AddAdvertice refetch={refetch} />
 

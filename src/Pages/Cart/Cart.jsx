@@ -71,7 +71,7 @@ const Cart = () => {
     const total_amount = carts?.reduce((a, b) => a + (b.pricePerUnit * b.quantity), 0)
     if (isPending) return <Loader />
     return (
-        <div className="md:w-10/12 mx-auto my-5">
+        <div className="md:w-10/12 mx-auto my-5 min-h-screen">
             <Helmet title="HRS | CART" />
 
             {
@@ -149,17 +149,14 @@ const Cart = () => {
                                             <td>Delivery Charge</td>
                                             <td>30 Tk</td>
                                         </tr>
-                                        <tr className="border-b-2 border-gray-200">
-                                            <td>Discount</td>
-                                            <td>{0} Tk </td>
-                                        </tr>
+                                        
                                         <tr>
                                             <td>Total</td>
                                             <td>{total_amount + 30}Tk</td>
                                         </tr>
                                         <tr>
                                             <td colSpan={2}>
-                                                <Link to='/cheackOut'> <button disabled={carts.length === 0} className="btn mx-auto rounded-none block btn-outline w-full ">Check Out
+                                                <Link to='/cheackOut'> <button disabled={carts.length === 0} className="btn mx-auto bg-[#2E8B57] text-white  rounded-none block btn-outline w-full ">Check Out
                                                 </button></Link>
                                             </td>
                                         </tr>

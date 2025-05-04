@@ -75,7 +75,7 @@ const SignIn = () => {
             })
     }
     return (
-        <div className="pt-24 px-4 mx-auto">
+        <div className="pt-24 pb-10 px-4 mx-auto ">
             <Helmet title="HRS | SIGN IN" />
             <form onSubmit={handleSubmit(onsubmit)} >
                 <div className="max-w-xl mx-auto border rounded-lg p-4 ">
@@ -112,7 +112,7 @@ const SignIn = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outline mx-auto w-full">
+                        <button className="btn bg-[#2E8B57] text-white mx-auto w-full">
                             {
                                 loading ? <LuLoaderPinwheel className="animate-spin text-xl" /> : "Sign In"
                             }

@@ -111,7 +111,7 @@ const ManageMedicines = () => {
                     </tbody>
                 </table>
                 <button onClick={() => document.getElementById('my_modal_5').showModal()}
-                    className="btn  my-10">Add Medicine</button>
+                    className="btn  bg-[#2E8B57] text-white my-10">Add Medicine</button>
 
                 <div className="m-5">
                     <button
@@ -120,7 +120,7 @@ const ManageMedicines = () => {
                     {
                         pages?.map((page, idx) => <div key={idx} className=" join">
                             <button
-                                className={`join-item btn mx-2 ${currentPage === page && 'bg-[#006775f2]'}`}
+                                className={`join-item btn mx-2 ${currentPage === page && 'bg-[#2E8B57] text-white'}`}
                                 onClick={() => setCurrentPage(page)}
                             >{page}</button>
 

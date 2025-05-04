@@ -94,7 +94,7 @@ const SignUp = () => {
                     </label>
                     <label className="  mb-4">
 
-                        <input {...register("image")} required type="file" className="file-input file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
+                        <input {...register("image")} required type="file" className="file-input text-white file-input-bordered  w-full focus:outline-none mb-3" placeholder="image" />
 
                     </label>
                     <label className="input input-bordered flex items-center gap-2 mb-4">
@@ -127,7 +127,7 @@ const SignUp = () => {
                     <label className="flex items-center gap-2 mb-4 justify-between">
                         <label
                             htmlFor="role-user"
-                            className="bg-gray-200 w-full p-4 rounded-xl text-center items-center flex justify-center cursor-pointer"
+                            className="bg-[#2E8B57] text-white w-full p-4  text-center items-center flex justify-center cursor-pointer"
                         >
                             <input
                                 {...register('role')}
@@ -142,7 +142,7 @@ const SignUp = () => {
                         </label>
                         <label
                             htmlFor="role-seller"
-                            className="bg-gray-200 w-full p-4 rounded-xl text-center items-center flex justify-center cursor-pointer"
+                            className="bg-[#2E8B57] text-white w-full p-4  text-center items-center flex justify-center cursor-pointer"
                         >
                             <input
                                 {...register('role')}
@@ -158,7 +158,7 @@ const SignUp = () => {
                     </label>
                     <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                        <button className="btn btn-outlin=font-bold mx-auto w-full">{
+                        <button className="btn btn-outlin=font-bold mx-auto w-full bg-[#2E8B57] text-white">{
                             loading ? <LuLoaderPinwheel className="animate-spin text-xl" /> : "Sign Up"
                         }</button>
                     </label>

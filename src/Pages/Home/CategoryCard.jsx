@@ -53,7 +53,7 @@ const CategoryCard = () => {
                         slidesPerView: 1.2, // 1 slide on mobile screens
                     },
                     768: {
-                        slidesPerView: 2, // 2 slides on tablets
+                        slidesPerView: 3, // 2 slides on tablets
                     },
                     1024: {
                         slidesPerView: 5, // 3 slides on larger screens

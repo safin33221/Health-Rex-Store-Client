@@ -109,7 +109,7 @@ const Navbar = () => {
                         user ? null : <div className="flex-none ">
                             <div className="dropdown dropdown-end">
                                 <Link to='/signIn'>
-                                    <button className="btn btn-outline font-bold">
+                                    <button className="btn bg-[#2E8B57] text-white  font-bold">
                                         Join Us
                                     </button>
                                 </Link>

@@ -71,7 +71,7 @@ const AddAdvertice = ({ refetch }) => {
 
                         <label className="flex items-center gap-2 mb-4 mx-auto">
 
-                            <button className="btn  btn-outline mx-auto w-full">Post</button>
+                            <button className="btn  bg-[#2E8B57] text-white mx-auto w-full">Post</button>
                         </label>
 
                     </div>
@@ -80,7 +80,7 @@ const AddAdvertice = ({ refetch }) => {
                 <div className="modal-action">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-outline btn-sm">cancel</button>
+                        <button className="btn  btn-sm">cancel</button>
                     </form>
                 </div>
             </div>

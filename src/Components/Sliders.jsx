@@ -2,15 +2,15 @@ import React, { useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination, Autoplay } from 'swiper/modules';
+
+
+
+
+import { Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
-
-
-
-// import required modules
-import { Navigation, Autoplay } from 'swiper/modules';
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 
 const Sliders = () => {
@@ -27,7 +27,7 @@ const Sliders = () => {
         <div className='mx-auto w-11/12'>
             <div className="text-center my-10">
                 <h1 className="text-2xl md:text-4xl font-bold ">
-                Limited-Time Health Deals – Shop Smart, Stay Healthy!__
+                Shop Smart, Stay Healthy!__
                 </h1>
                 <p className="mt-4 text-lg md:text-xl ">
               Don’t miss out—grab your discounts before they’re gone! Stay fit, save more, and shop with confidence at HealthRex Store.
@@ -37,20 +37,15 @@ const Sliders = () => {
 
             </div>
             <Swiper
-                speed={7000}
-                spaceBetween={10}
-                loop={Infinity}
-                autoplay={{
-                    delay: 10,
-                    pauseOnMouseEnter: true
-
-
-
-
-                }}
+                 navigation={true}
+                 modules={[Pagination, Autoplay, Navigation]}
+                 spaceBetween={10}
+ 
+ 
+ 
+                 // autoplay={{ delay: 3000, disableOnInteraction: false }}
+              
                
-                navigation={true}
-                modules={[Navigation, Autoplay]}
                 style={{ zIndex: '0' }}
                 breakpoints={{
                     640: {

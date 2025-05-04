@@ -27,7 +27,7 @@ const SalesReports = () => {
                     currentTableRef={tableRef.current}
                 >
 
-                    <button className='btn '> Export excel </button>
+                    <button className='btn bg-[#2E8B57] text-white'> Export excel </button>
 
                 </DownloadTableExcel>
             </div>
