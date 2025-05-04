@@ -10,7 +10,7 @@ import {
 } from "@react-pdf/renderer";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import logo from "../../assets/logo.png";
+import logo2 from "../../assets/logo2.png";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
@@ -51,7 +51,7 @@ const Invoice = () => {
             marginBottom: 20,
         },
         logoSection: { flexDirection: "row", alignItems: "center", gap: 10 },
-        logo: { width: 60, height: 60 },
+        logo: { width: '176px',  },
         title: { fontSize: 18, fontWeight: "bold" },
         subtitle: { color: "#666" },
         customerDetails: { marginBottom: 20 },
@@ -73,6 +73,10 @@ const Invoice = () => {
             borderTop: "1px solid #ccc",
             paddingTop: 10,
         },
+        headBox:{
+            display:'flex', 
+            
+        },
         footer: { textAlign: "center", fontSize: 10, marginTop: 20, color: "#888" },
     });
 
@@ -86,9 +90,9 @@ const Invoice = () => {
                     {/* Header */}
                     <View style={styles.header}>
                         <View style={styles.logoSection}>
-                            <Image style={styles.logo} src={logo} />
-                            <View>
-                                <Text style={styles.title}>HealthRxStore</Text>
+                            <View style={styles.headBox}>
+                                <Image style={styles.logo} src={logo2} />
+                                {/* <Text style={styles.title}>HealthRxStore</Text> */}
                                 <Text style={styles.subtitle}>Your Trusted Medicine Partner</Text>
                             </View>
                         </View>
@@ -164,9 +168,9 @@ const Invoice = () => {
                     {/* Invoice Header */}
                     <div className="flex justify-between items-center border-b pb-4">
                         <div className="flex gap-3 items-center ">
-                            <img className="w-24" src={logo} alt="" />
                             <div>
-                                <h1 className="text-2xl font-bold ">HealthRxStore</h1>
+                                <img className="w-44" src={logo2} alt="" />
+                                {/* <h1 className="text-2xl font-bold ">HealthRxStore</h1> */}
                                 <p className="">Your Trusted Medicine Partner</p>
                             </div>
                         </div>
