@@ -9,8 +9,9 @@ import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Loader from "../../Components/Loader";
-import { CgDetailsMore } from "react-icons/cg";
+import { CgDetailsMore, CgMoreVerticalO } from "react-icons/cg";
 import useCartData from "../../Hooks/useCartData";
+import { FaArrowDownShortWide, FaArrowUpWideShort } from "react-icons/fa6";
 
 const Shop = () => {
     const [cartsData, refetch] = useCartData()
@@ -89,11 +90,11 @@ const Shop = () => {
         <div className="w-11/12 mx-auto  py-5">
             <Helmet title="HRS | SHOP" />
             <div className="flex flex-col md:flex-row justify-between md:items-center py-5">
-                <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1>
-                <div className="felx gap-x-10" >
+                {/* <h1 className="text-lg md:text-2xl font-bold">Total Medicines: {medicines?.length}</h1> */}
+                <div className="flex " >
                     <button onClick={() => setSort(sort == 'ascending'? 'dscending': 'ascending')} className="border mr-5  focus:outline-none  select-sm " name="" id="">
                         
-                        {sort =='ascending' ?"Low to High": "High to Low" }
+                        {sort =='ascending'?<div className="flex items-center gap-2 md:text-2xl text-xl">price <FaArrowDownShortWide /></div>:<div className="flex items-center gap-2 md:text-2xl text-xl">price <FaArrowUpWideShort /></div> }
                         {/* <option value="ascending">Ascending</option>
                         <option value="dscending">Dscending</option> */}
                     </button>
@@ -103,11 +104,11 @@ const Shop = () => {
             <div className="overflow-x-auto rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
                     {
-                        medicines?.map((medicine, idx) => <div className=" shadow-2xl rounded-lg border  ">
+                        medicines?.map((medicine, idx) => <div className=" max-w-sm mx-4 shadow-2xl  border  ">
                             <div key={idx} className="">
-                                <img className="w-full h-[150px]   rounded-lg bg-center object-center" src={medicine?.image} alt="no image" />
+                                <img className="w-full h-[200px]   shadow-lg bg-center object-center" src={medicine?.image} alt="no image" />
                             </div>
-                            <div className="flex  items-center">
+                            <div className="flex  items-center justify-between mx-4">
                                 <div className="m-5">
                                     <h1 className="text-xl "><span className="font-bold">{medicine?.itemName}</span></h1>
 
@@ -116,8 +117,8 @@ const Shop = () => {
 
                                 </div>
                                 <div className="flex gap-4">
-                                    <button onClick={() => handleAddToCart(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><FaCartArrowDown /></button>
-                                    <button onClick={() => handleDetails(medicine)} className="text-2xl btn hover:text-[#006775f2] transition-all duration-200 ease-linear"><CgDetailsMore /></button>
+                                    <button onClick={() => handleAddToCart(medicine)} className="text-2xl  hover:text-[#006775f2] transition-all duration-200 ease-linear"><FaCartArrowDown /></button>
+                                    <button onClick={() => handleDetails(medicine)} className="text-2xl  hover:text-[#006775f2] transition-all duration-200 ease-linear"><CgMoreVerticalO /></button>
 
                                 </div>
                             </div>
