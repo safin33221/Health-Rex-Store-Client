@@ -84,7 +84,7 @@ const AuthProviders = ({ children }) => {
                         }
                     })
             } else {
-                setUser(currentUser);
+                setUser(null);
                 setLoading(false)
                 localStorage.removeItem('token')
             }

@@ -23,7 +23,7 @@ const UserPayments = () => {
             <Helmet title="HRS | PAYMENT HISTORY" />
             <h1 className="text-2xl font-bold ml-20">Payments History</h1>
             {
-                paymentsHistory.length > 0 ? <div className="overflow-x-auto min-w-96 mt-10">
+                paymentsHistory?.length > 0 ? <div className="overflow-x-auto min-w-96 mt-10">
                     <table className="table">
                         {/* head */}
                         <thead className="">

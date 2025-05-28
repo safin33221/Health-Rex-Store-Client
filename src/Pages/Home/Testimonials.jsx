@@ -78,7 +78,7 @@ const Testimonials = () => {
 
                 {
                     testimonials.map((review) => (
-                        <SwiperSlide>
+                        <SwiperSlide key={ review?._id}>
                             <figure
                                 className='relative  cursor-pointer h-full mx-auto  rounded-xl border p-4 bg-base-200  hover:shadow-2xl transition-all duration-300  overflow-hidden '
                             >

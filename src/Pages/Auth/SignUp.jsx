@@ -162,7 +162,7 @@ const SignUp = () => {
                             loading ? <LuLoaderPinwheel className="animate-spin text-xl" /> : "Sign Up"
                         }</button>
                     </label>
-                    <p>Already have an Account? <Link to='/signIn' className="text-blue-800">Sign In Now</Link></p>
+                    <p>Already have an Account? <Link to='/auth/signIn' className="text-blue-800">Sign In Now</Link></p>
                 </div>
             </form>
         </div>

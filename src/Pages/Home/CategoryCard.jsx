@@ -62,7 +62,7 @@ const CategoryCard = () => {
             >
                 {
                     categoris?.map((category, idx) =>
-                        <SwiperSlide>
+                        <SwiperSlide key={idx}>
                             <Link to={`/categoryDetails/${category.category}`} key={idx}>
                                 <div key={idx} className="max-w-sm card  bg-base-200  border duration-100   shadow-xl hover:shadow-2xl  mx-auto">
                                     <figure>

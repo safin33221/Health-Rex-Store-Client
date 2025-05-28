@@ -13,7 +13,8 @@ const Navbar = () => {
     const { user, sigoutUser, carts, toggleTheme } = useAuth()
     const navigate = useNavigate()
     const [role] = useRole()
-    const [cartsData] = useCartData()
+    const [cartsData, refetch, isPending] = useCartData()
+   
     const links = <>
         <li><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
         <li><NavLink to='/shop'><FaShop />Shop</NavLink></li>
@@ -108,7 +109,7 @@ const Navbar = () => {
                     {
                         user ? null : <div className="flex-none ">
                             <div className="dropdown dropdown-end">
-                                <Link to='/signIn'>
+                                <Link to='/auth/signIn'>
                                     <button className="py-4   px-6  md:px-12   bg-[#2E8B57] text-white ">
                                         Join Us
                                     </button>

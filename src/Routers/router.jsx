@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
-        errorElement:<ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -67,6 +67,16 @@ const router = createBrowserRouter([
                 path: '/invoice/:transtionId',
                 element: <PrivetRoutes><Invoice /></PrivetRoutes>
             },
+
+            {
+                path: '/profile',
+                element: <PrivetRoutes><Profile /></PrivetRoutes>
+            },
+        ]
+    },
+    {
+        path: '/auth',
+        children: [
             {
                 path: 'signUp',
                 element: <SignUp />
@@ -74,10 +84,6 @@ const router = createBrowserRouter([
             {
                 path: 'signIn',
                 element: <SignIn />
-            },
-            {
-                path: '/profile',
-                element: <PrivetRoutes><Profile /></PrivetRoutes>
             },
         ]
     },
@@ -132,8 +138,8 @@ const router = createBrowserRouter([
             },
 
             {
-                path:'profile',
-                element:<Profile/>
+                path: 'profile',
+                element: <Profile />
             },
 
 
