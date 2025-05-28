@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import customer from '../../assets/customer.png'
 
 const Fqa = () => {
     const axiosPublic = useAxiosPublic();
@@ -66,11 +67,11 @@ const Fqa = () => {
             </div>
 
             {/* Right Column: Illustration or CTA */}
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-center flex flex-col items-center">
                 <img
-                    src="https://cdn.dribbble.com/users/18730/screenshots/14779847/media/859b21f87a56eea5cd283c061a6b27f9.gif"
+                    src={customer}
                     alt="FAQ Illustration"
-                    className="w-full max-w-sm mx-auto md:mx-0"
+                    className="w-full max-w-[350px] mx-auto md:mx-0"
                 />
                 <h3 className="text-2xl font-bold mt-6">Still have questions?</h3>
                 <p className="text-gray-600 mt-2">
