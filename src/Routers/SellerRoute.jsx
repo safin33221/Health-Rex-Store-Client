@@ -17,7 +17,7 @@ const SellerRoute = ({ children }) => {
     }
     else {
         sigoutUser()
-        return navigate('/signIn')
+        return navigate('/auth/signIn')
     }
 };
 

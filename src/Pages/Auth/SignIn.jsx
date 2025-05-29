@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { FaArrowLeft, FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
 import { Helmet } from 'react-helmet-async';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
@@ -30,7 +30,7 @@ const SignIn = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "You have been login  succefully",
+                    title: "You have been login  successfully",
                     showConfirmButton: false,
                     timer: 1000
                 });
@@ -38,8 +38,9 @@ const SignIn = () => {
             })
             .catch(error => {
                 setLoading(false)
-                if (error.code === "auth/invalid-credential") {
-                    return toast.error('Oops! The email or password you entered is incorrect.', {
+                console.log(error.code);
+                if (error.code =="auth/invalid-credential") {
+                    return Swal.fire('Oops! The email or password you entered is incorrect.', {
                         position: "top-right",
                         autoClose: 2000,
                         hideProgressBar: false,
@@ -87,6 +88,7 @@ const SignIn = () => {
 
                     <form onSubmit={handleSubmit(onsubmit)} >
                         <div className="max-w-xl mx-auto border rounded-lg p-4 ">
+                            <Link to={`/`} className='p-2 border flex  items-center  gap-2 text-lg w-fit' > <FaArrowLeft/> Back to home</Link>
                             <h1 className="text-3xl font-bold text-center py-5">SignIn Now!</h1>
 
 
